@@ -1,489 +1,272 @@
-<!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>HFL Teams</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com" rel="preconnect"/>
-<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-          darkMode: "class",
-          theme: {
-            extend: {
-              "colors": {
-                      "tertiary-fixed-dim": "#ffb68e",
-                      "surface-container-lowest": "#120e06",
-                      "on-secondary": "#002f65",
-                      "inverse-primary": "#7c5800",
-                      "background": "#17130b",
-                      "on-primary-fixed": "#271900",
-                      "surface-bright": "#3f382f",
-                      "tertiary-fixed": "#ffdbca",
-                      "secondary-fixed-dim": "#abc7ff",
-                      "error": "#ffb4ab",
-                      "on-primary-fixed-variant": "#5e4200",
-                      "surface-container-highest": "#3a342b",
-                      "on-error": "#690005",
-                      "outline-variant": "#504535",
-                      "on-tertiary": "#532200",
-                      "inverse-surface": "#ece1d3",
-                      "on-secondary-fixed-variant": "#00458e",
-                      "surface": "#17130b",
-                      "on-secondary-container": "#f2f4ff",
-                      "surface-dim": "#17130b",
-                      "secondary-container": "#046dd9",
-                      "surface-container-high": "#2f2920",
-                      "surface-tint": "#fabc41",
-                      "primary-fixed": "#ffdea8",
-                      "on-surface-variant": "#d4c4ae",
-                      "on-error-container": "#ffdad6",
-                      "primary-fixed-dim": "#fabc41",
-                      "primary": "#ffd999",
-                      "error-container": "#93000a",
-                      "on-tertiary-container": "#843a00",
-                      "on-background": "#ece1d3",
-                      "surface-container": "#241f16",
-                      "on-primary-container": "#6a4a00",
-                      "tertiary": "#ffd6c1",
-                      "surface-variant": "#3a342b",
-                      "secondary": "#abc7ff",
-                      "surface-container-low": "#201b13",
-                      "primary-container": "#f5b83d",
-                      "outline": "#9c8f7b",
-                      "secondary-fixed": "#d7e3ff",
-                      "on-primary": "#422d00",
-                      "on-secondary-fixed": "#001b3f",
-                      "tertiary-container": "#ffb084",
-                      "on-tertiary-fixed": "#331200",
-                      "on-tertiary-fixed-variant": "#763300",
-                      "inverse-on-surface": "#363026",
-                      "on-surface": "#ece1d3"
-              },
-              "borderRadius": {
-                      "DEFAULT": "0.25rem",
-                      "lg": "0.5rem",
-                      "xl": "0.75rem",
-                      "full": "9999px"
-              },
-              "spacing": {
-                      "stack-lg": "32px",
-                      "container-max": "1280px",
-                      "section-gap": "80px",
-                      "margin-desktop": "48px",
-                      "margin-mobile": "16px",
-                      "stack-md": "16px",
-                      "stack-sm": "8px",
-                      "gutter": "24px"
-              },
-              "fontFamily": {
-                      "headline-md": [
-                              "Bebas Neue"
-                      ],
-                      "headline-lg": [
-                              "Bebas Neue"
-                      ],
-                      "label-bold": [
-                              "Inter"
-                      ],
-                      "display-lg-mobile": [
-                              "Bebas Neue"
-                      ],
-                      "body-lg": [
-                              "Inter"
-                      ],
-                      "label-sm": [
-                              "Inter"
-                      ],
-                      "body-md": [
-                              "Inter"
-                      ],
-                      "display-lg": [
-                              "Bebas Neue"
-                      ],
-                      "headline-xl": [
-                              "Bebas Neue"
-                      ]
-              },
-              "fontSize": {
-                      "headline-md": [
-                              "24px",
-                              {
-                                      "lineHeight": "28px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "headline-lg": [
-                              "32px",
-                              {
-                                      "lineHeight": "36px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "label-bold": [
-                              "14px",
-                              {
-                                      "lineHeight": "20px",
-                                      "letterSpacing": "0.1em",
-                                      "fontWeight": "700"
-                              }
-                      ],
-                      "display-lg-mobile": [
-                              "48px",
-                              {
-                                      "lineHeight": "48px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "body-lg": [
-                              "18px",
-                              {
-                                      "lineHeight": "28px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "label-sm": [
-                              "12px",
-                              {
-                                      "lineHeight": "16px",
-                                      "fontWeight": "500"
-                              }
-                      ],
-                      "body-md": [
-                              "16px",
-                              {
-                                      "lineHeight": "24px",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "display-lg": [
-                              "80px",
-                              {
-                                      "lineHeight": "80px",
-                                      "letterSpacing": "0.02em",
-                                      "fontWeight": "400"
-                              }
-                      ],
-                      "headline-xl": [
-                              "40px",
-                              {
-                                      "lineHeight": "44px",
-                                      "letterSpacing": "0.03em",
-                                      "fontWeight": "400"
-                              }
-                      ]
-              }
-      },
-          },
-        }
-    </script>
-<style>
-        /* Custom styles for stadium cinematic effects */
-        body {
-            background-color: #05070B; /* Deep base dark */
-            color: theme('colors.on-surface');
-        }
-        
-        .stadium-glow {
-            position: absolute;
-            top: -20%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80vw;
-            height: 40vh;
-            background: radial-gradient(ellipse at center, rgba(255, 217, 153, 0.15) 0%, rgba(5, 7, 11, 0) 70%);
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        .card-stadium-beam {
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 150%;
-            height: 100%;
-            background: radial-gradient(circle at top center, var(--beam-color, rgba(255, 217, 153, 0.1)), transparent 60%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            pointer-events: none;
-        }
-
-        .team-card:hover .card-stadium-beam {
-            opacity: 1;
-        }
-        
-        .team-card {
-            background-color: #111827; /* Layer 2 Card */
-            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .team-card:hover {
-            transform: scale(1.02) translateY(-4px);
-            border-color: theme('colors.primary');
-            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255, 217, 153, 0.2);
-        }
-
-        .glass-panel {
-            background: rgba(13, 17, 23, 0.7); /* Layer 1 Container with glassmorphism */
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        
-        .btn-primary-gold {
-            background-color: theme('colors.primary');
-            color: #000;
-            transition: all 0.2s ease;
-        }
-        
-        .btn-primary-gold:hover {
-            box-shadow: 0 0 15px rgba(255, 217, 153, 0.4);
-            transform: translateY(-1px);
-        }
-        
-        .btn-primary-gold:active {
-            transform: translateY(1px);
-        }
-
-        .filter-tab {
-            position: relative;
-            transition: color 0.3s ease;
-        }
-        
-        .filter-tab::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 0;
-            height: 2px;
-            background-color: theme('colors.primary');
-            transition: width 0.3s ease;
-        }
-
-        .filter-tab.active {
-            color: theme('colors.primary-fixed');
-        }
-        
-        .filter-tab.active::after {
-            width: 100%;
-        }
-    </style>
-<script>
-/* HFL preview: serve the layout that matches the viewport. Add ?full to any URL to opt out. */
-(function () {
-  try {
-    if (location.search.indexOf('full') > -1) return;
-    var narrow = window.matchMedia('(max-width: 767px)').matches;
-    var f = location.pathname.split('/').pop() || 'index.html';
-    if (narrow) { location.replace('m/' + f + location.hash); }
-  } catch (e) {}
-})();
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Teams — HFL Season 2</title>
+<meta name="description" content="The eight franchises of HFL Season 2, their crests, taglines and squad values." />
+<meta name="theme-color" content="#07090C" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Teams — HFL Season 2" />
+<meta property="og:description" content="The eight franchises of HFL Season 2, their crests, taglines and squad values." />
+<meta property="og:image" content="assets/img/gallery/season-2-team-lineup.jpg" />
+<link rel="icon" href="assets/img/crests/hfl.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="assets/css/hfl.css" />
+<script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="antialiased min-h-screen flex flex-col relative overflow-x-hidden">
-<!-- Stadium Global Glow -->
-<div class="stadium-glow"></div>
-<!-- TopNavBar Shared Component -->
-<nav class="w-full sticky top-0 z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-2xl">
-<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
-<!-- Brand -->
-<a class="font-headline-lg text-headline-lg tracking-tighter text-primary-fixed dark:text-primary-fixed hover:opacity-80 transition-opacity" href="index.html">
-                HFL
-            </a>
-<!-- Desktop Navigation Links -->
-<div class="hidden md:flex items-center gap-stack-lg">
-<a class="font-label-bold text-label-bold text-primary-fixed border-b-2 border-primary-fixed pb-1 hover:bg-surface-container-highest/50 transition-all duration-300 scale-95 active:scale-90 px-2" href="teams.html">TEAMS</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-colors hover:bg-surface-container-highest/50 transition-all duration-300 scale-95 active:scale-90 px-2 pb-1" href="squad.html">SQUAD</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-colors hover:bg-surface-container-highest/50 transition-all duration-300 scale-95 active:scale-90 px-2 pb-1" href="sponsors.html">SPONSORS</a>
-<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-colors hover:bg-surface-container-highest/50 transition-all duration-300 scale-95 active:scale-90 px-2 pb-1" href="gallery.html">GALLERY</a>
-</div>
-<!-- Actions (Search & Trailing Primary) -->
-<div class="flex items-center gap-stack-md">
-<button class="text-on-surface-variant hover:text-primary-fixed transition-colors scale-95 active:scale-90 p-2 rounded-full hover:bg-surface-container-highest/50">
-<span class="material-symbols-outlined">search</span>
-</button>
-<button class="hidden md:block btn-primary-gold font-label-bold text-label-bold px-6 py-2 rounded scale-95 active:scale-90 transition-transform">
-                    JOIN LEAGUE
-                </button>
-<!-- Mobile Menu Toggle -->
-<button class="md:hidden text-on-surface-variant p-2 rounded-full hover:bg-surface-container-highest/50">
-<span class="material-symbols-outlined">menu</span>
-</button>
-</div>
-</div>
-</nav>
-<!-- Main Content Canvas -->
-<main class="flex-grow w-full max-w-container-max mx-auto px-margin-desktop py-section-gap relative z-10 flex flex-col gap-section-gap">
-<!-- Header Section -->
-<header class="flex flex-col items-center text-center gap-stack-md mt-8">
-<h1 class="font-display-lg text-display-lg text-on-surface uppercase tracking-tighter">
-                League <span class="text-primary drop-shadow-[0_0_15px_rgba(255,217,153,0.3)]">Franchises</span>
-</h1>
-<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
-                Explore the elite teams competing in this season's Hussaini Football League. Witness passion, strategy, and unyielding glory under the stadium lights.
-            </p>
+<body class="">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="index.html" aria-label="Hussaini Football League — home">
+      <img class="wordmark__crest" src="assets/img/crests/hfl.png" alt="" width="30" height="34" />
+      HFL<span>.</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+<a class="site-nav__link" href="index.html">Home</a>
+<a class="site-nav__link" href="fixtures.html">Fixtures</a>
+<a class="site-nav__link" href="teams.html" aria-current="page">Teams</a>
+<a class="site-nav__link" href="squads.html">Squads</a>
+<a class="site-nav__link" href="gallery.html">Gallery</a>
+<a class="site-nav__link" href="sponsors.html">Partners</a>
+    </nav>
+    <div class="header-actions">
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+        <span class="burger__box"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
 </header>
-<!-- Filter Controls -->
-<section class="w-full flex justify-center mb-4">
-<div class="glass-panel rounded-full p-1 inline-flex gap-2">
-<button class="filter-tab active font-label-bold text-label-bold px-8 py-3 rounded-full hover:bg-white/5 transition-colors" data-filter="all">ALL TEAMS</button>
-<button class="filter-tab font-label-bold text-label-bold text-on-surface-variant px-8 py-3 rounded-full hover:bg-white/5 transition-colors" data-filter="group-a">GROUP A</button>
-<button class="filter-tab font-label-bold text-label-bold text-on-surface-variant px-8 py-3 rounded-full hover:bg-white/5 transition-colors" data-filter="group-b">GROUP B</button>
+
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <ul class="menu__list">
+<li class="menu__item"><a class="menu__link" href="index.html"><span class="menu__num">01</span>Home</a></li>
+<li class="menu__item"><a class="menu__link" href="fixtures.html"><span class="menu__num">02</span>Fixtures</a></li>
+<li class="menu__item"><a class="menu__link" href="teams.html" aria-current="page"><span class="menu__num">03</span>Teams</a></li>
+<li class="menu__item"><a class="menu__link" href="squads.html"><span class="menu__num">04</span>Squads</a></li>
+<li class="menu__item"><a class="menu__link" href="gallery.html"><span class="menu__num">05</span>Gallery</a></li>
+<li class="menu__item"><a class="menu__link" href="sponsors.html"><span class="menu__num">06</span>Partners</a></li>
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <p class="label label--gold">Season 2 · #HFLS2</p>
+    <p class="muted" style="font-size:var(--fs-sm)">One Team. One Dream. One Champion.</p>
+  </div>
 </div>
+<main id="main">
+<section class="page-head">
+  <div class="shell page-head__inner">
+    <p class="label label--gold" data-reveal>8 Teams. 1 Trophy. Unlimited Glory.</p>
+    <h1 data-reveal>Teams</h1>
+    <p class="lead" data-reveal>Eight franchises, split into two groups of four. Every squad was
+      assembled at the Season 2 auction.</p>
+  </div>
 </section>
-<!-- Teams Grid -->
-<section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter pb-section-gap">
-<!-- Team Card 1 -->
-<article class="team-card rounded-xl border border-white/5 overflow-hidden relative flex flex-col group cursor-pointer" style="--beam-color: rgba(220, 38, 38, 0.15)">
-<div class="card-stadium-beam"></div>
-<!-- Card Header Image/Pattern area -->
-<div class="h-32 w-full relative bg-gradient-to-br from-red-900/40 to-transparent flex items-center justify-center border-b border-white/5">
-<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
-<!-- Placeholder Logo -->
-<div class="w-20 h-20 rounded-full bg-surface-container-highest border-2 border-red-500/50 flex items-center justify-center relative z-10 shadow-[0_0_20px_rgba(220,38,38,0.3)] group-hover:scale-110 transition-transform duration-500">
-<span class="material-symbols-outlined text-4xl text-red-400">local_fire_department</span>
-</div>
-</div>
-<!-- Card Body -->
-<div class="p-6 flex flex-col flex-grow relative z-10 bg-gradient-to-t from-surface-container-lowest to-transparent">
-<div class="flex justify-between items-start mb-6">
-<div>
-<span class="font-label-sm text-label-sm text-red-400 uppercase tracking-widest mb-1 block">Group A</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase leading-none">Crimson Strike</h2>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-8 flex-grow">
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block mb-1">Head Coach</span>
-<span class="font-body-md text-body-md text-on-surface font-medium block">Marcus Thorne</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block mb-1">Captain</span>
-<span class="font-body-md text-body-md text-on-surface font-medium block">Elias Vance</span>
-</div>
-</div>
-<!-- Card Action -->
-<button class="w-full py-3 rounded border border-white/20 text-on-surface font-label-bold text-label-bold uppercase hover:bg-white/5 hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
-                        View Squad
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-</article>
-<!-- Team Card 2 -->
-<article class="team-card rounded-xl border border-white/5 overflow-hidden relative flex flex-col group cursor-pointer" style="--beam-color: rgba(59, 130, 246, 0.15)">
-<div class="card-stadium-beam"></div>
-<div class="h-32 w-full relative bg-gradient-to-br from-blue-900/40 to-transparent flex items-center justify-center border-b border-white/5">
-<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
-<div class="w-20 h-20 rounded-full bg-surface-container-highest border-2 border-blue-500/50 flex items-center justify-center relative z-10 shadow-[0_0_20px_rgba(59,130,246,0.3)] group-hover:scale-110 transition-transform duration-500">
-<span class="material-symbols-outlined text-4xl text-blue-400">water_drop</span>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow relative z-10 bg-gradient-to-t from-surface-container-lowest to-transparent">
-<div class="flex justify-between items-start mb-6">
-<div>
-<span class="font-label-sm text-label-sm text-blue-400 uppercase tracking-widest mb-1 block">Group B</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase leading-none">Azure Surge</h2>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-8 flex-grow">
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block mb-1">Head Coach</span>
-<span class="font-body-md text-body-md text-on-surface font-medium block">David Chen</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block mb-1">Captain</span>
-<span class="font-body-md text-body-md text-on-surface font-medium block">Samir Rossi</span>
-</div>
-</div>
-<button class="w-full py-3 rounded border border-white/20 text-on-surface font-label-bold text-label-bold uppercase hover:bg-white/5 hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
-                        View Squad
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-</article>
-<!-- Team Card 3 -->
-<article class="team-card rounded-xl border border-white/5 overflow-hidden relative flex flex-col group cursor-pointer" style="--beam-color: rgba(34, 197, 94, 0.15)">
-<div class="card-stadium-beam"></div>
-<div class="h-32 w-full relative bg-gradient-to-br from-green-900/40 to-transparent flex items-center justify-center border-b border-white/5">
-<div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(circle at 2px 2px, white 1px, transparent 0); background-size: 20px 20px;"></div>
-<div class="w-20 h-20 rounded-full bg-surface-container-highest border-2 border-green-500/50 flex items-center justify-center relative z-10 shadow-[0_0_20px_rgba(34,197,94,0.3)] group-hover:scale-110 transition-transform duration-500">
-<span class="material-symbols-outlined text-4xl text-green-400">forest</span>
-</div>
-</div>
-<div class="p-6 flex flex-col flex-grow relative z-10 bg-gradient-to-t from-surface-container-lowest to-transparent">
-<div class="flex justify-between items-start mb-6">
-<div>
-<span class="font-label-sm text-label-sm text-green-400 uppercase tracking-widest mb-1 block">Group A</span>
-<h2 class="font-headline-lg text-headline-lg text-on-surface uppercase leading-none">Verdant Kings</h2>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4 mb-8 flex-grow">
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block mb-1">Head Coach</span>
-<span class="font-body-md text-body-md text-on-surface font-medium block">Liam O'Connor</span>
-</div>
-<div>
-<span class="font-label-sm text-label-sm text-on-surface-variant uppercase block mb-1">Captain</span>
-<span class="font-body-md text-body-md text-on-surface font-medium block">Jack Sterling</span>
-</div>
-</div>
-<button class="w-full py-3 rounded border border-white/20 text-on-surface font-label-bold text-label-bold uppercase hover:bg-white/5 hover:border-primary hover:text-primary transition-all flex items-center justify-center gap-2">
-                        View Squad
-                        <span class="material-symbols-outlined text-sm">arrow_forward</span>
-</button>
-</div>
-</article>
+
+<section class="section">
+  <div class="shell">
+    <div class="section-head" data-reveal>
+      <div class="section-head__text">
+        <p class="label label--gold">Group A</p>
+        <h2>First four</h2>
+      </div>
+    </div>
+    <div class="grid grid--4">
+<a class="card team-card" href="squads.html#kothari-sparks" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/kothari-sparks.png" alt="Kothari Sparks crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#F5A623"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group A</p>
+      <h3 style="margin-top:var(--sp-2)">Kothari Sparks</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Sparking Glory Every Game</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹2,00,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+<a class="card team-card" href="squads.html#globe-warriors" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/globe-warriors.png" alt="Globe Warriors crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#F58220"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group A</p>
+      <h3 style="margin-top:var(--sp-2)">Globe Warriors</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Across the Globe, We Dominate</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹1,70,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+<a class="card team-card" href="squads.html#jindal-infernos" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/jindal-infernos.png" alt="Jindal Infernos crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#E53935"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group A</p>
+      <h3 style="margin-top:var(--sp-2)">Jindal Infernos</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Fire on the Front Foot</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹1,99,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+<a class="card team-card" href="squads.html#nr-chargers" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/nr-chargers.png" alt="NR Chargers crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#FFC107"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group A</p>
+      <h3 style="margin-top:var(--sp-2)">NR Chargers</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Charging Toward Glory</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹2,00,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+    </div>
+  </div>
+</section>
+<section class="section">
+  <div class="shell">
+    <div class="section-head" data-reveal>
+      <div class="section-head__text">
+        <p class="label label--gold">Group B</p>
+        <h2>Second four</h2>
+      </div>
+    </div>
+    <div class="grid grid--4">
+<a class="card team-card" href="squads.html#imperial-knights" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/imperial-knights.png" alt="Imperial Knights crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#8B5CF6"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group B</p>
+      <h3 style="margin-top:var(--sp-2)">Imperial Knights</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Rule the Game</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹1,95,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+<a class="card team-card" href="squads.html#texal-rising-phoenix" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/texal-rising-phoenix.png" alt="Texal Rising Phoenix crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#F97316"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group B</p>
+      <h3 style="margin-top:var(--sp-2)">Texal Rising Phoenix</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Higher. Hotter. Harder to Beat.</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹2,00,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+<a class="card team-card" href="squads.html#paramount-predators" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/paramount-predators.png" alt="Paramount Predators crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#3B82F6"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group B</p>
+      <h3 style="margin-top:var(--sp-2)">Paramount Predators</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Born to Rule the Field</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹1,59,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+<a class="card team-card" href="squads.html#perfect-strikers" data-reveal>
+  <div class="team-card__media">
+    <div class="team-card__crest-wrap"><img src="assets/img/crests/perfect-strikers.png" alt="Perfect Strikers crest" loading="lazy" /></div>
+    <span class="team-card__accent" style="background:#EF4444"></span>
+  </div>
+  <div class="team-card__body">
+    <div>
+      <p class="label label--gold">Group B</p>
+      <h3 style="margin-top:var(--sp-2)">Perfect Strikers</h3>
+      <p class="muted" style="font-size:var(--fs-sm);margin-top:var(--sp-2)">Every Strike, On Target</p>
+    </div>
+    <div class="team-card__stats">
+      <span class="team-card__stat"><b class="tnum">8</b><span class="label">Players</span></span>
+      <span class="team-card__stat"><b class="tnum">₹94,000</b><span class="label">Squad value</span></span>
+    </div>
+  </div>
+</a>
+    </div>
+  </div>
 </section>
 </main>
-<!-- Footer Shared Component -->
-<footer class="w-full mt-section-gap border-t border-outline-variant/10 bg-surface-container-lowest dark:bg-surface-container-lowest z-10 relative">
-<div class="flex flex-col items-center gap-stack-lg px-margin-desktop py-12 max-w-container-max mx-auto">
-<a class="font-headline-xl text-headline-xl text-primary-fixed hover:text-primary transition-colors" href="index.html">
-                HFL
-            </a>
-<div class="flex flex-wrap justify-center gap-stack-md">
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors hover:text-on-surface opacity-80 hover:opacity-100 uppercase tracking-widest" href="#">ABOUT</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors hover:text-on-surface opacity-80 hover:opacity-100 uppercase tracking-widest" href="#">LEAGUE RULES</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors hover:text-on-surface opacity-80 hover:opacity-100 uppercase tracking-widest" href="sponsors.html">PARTNERS</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors hover:text-on-surface opacity-80 hover:opacity-100 uppercase tracking-widest" href="#">CONTACT</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors hover:text-on-surface opacity-80 hover:opacity-100 uppercase tracking-widest" href="#">PRIVACY</a>
-<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-primary-fixed transition-colors hover:text-on-surface opacity-80 hover:opacity-100 uppercase tracking-widest" href="#">TERMS</a>
-</div>
-<p class="font-body-md text-body-md text-on-surface-variant opacity-60 text-center">
-                © 2024 HUSSAINI FOOTBALL LEAGUE. ALL RIGHTS RESERVED.
-            </p>
-</div>
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__cta">
+      <div>
+        <p class="label label--gold">#HFLS2</p>
+        <h2 style="margin-top:var(--sp-3)">One Team. One Dream. One Champion.</h2>
+      </div>
+      <a class="btn btn--primary" href="fixtures.html">See the schedule <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
+
+    <div class="site-footer__grid">
+      <div class="site-footer__col">
+        <img src="assets/img/crests/hfl.png" alt="" width="56" height="64" style="height:56px;width:auto" />
+        <p class="muted" style="font-size:var(--fs-sm);max-width:34ch">
+          Hussaini Football League — Season 2. 8 Teams. 1 Trophy. Unlimited Glory.
+        </p>
+      </div>
+      
+      <div class="site-footer__col">
+        <h4 class="label">League</h4>
+        <a href="fixtures.html">Fixtures</a>
+        <a href="teams.html">Teams</a>
+        <a href="squads.html">Squads</a>
+      </div>
+      <div class="site-footer__col">
+        <h4 class="label">Media</h4>
+        <a href="gallery.html">Gallery</a>
+        <a href="sponsors.html">Partners</a>
+      </div>
+    </div>
+
+    <p class="site-footer__mark" aria-hidden="true">HFL</p>
+
+    <div class="site-footer__base">
+      <p>© <span data-year>2026</span> Hussaini Football League. All rights reserved.</p>
+      <p>Fixtures, squads and partners are taken from the official Season 2 artwork.</p>
+    </div>
+  </div>
 </footer>
-<script>
-        // Simple vanilla JS for filter tab interaction
-        document.addEventListener('DOMContentLoaded', () => {
-            const tabs = document.querySelectorAll('.filter-tab');
-            
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    // Remove active from all
-                    tabs.forEach(t => {
-                        t.classList.remove('active', 'text-primary-fixed');
-                        t.classList.add('text-on-surface-variant');
-                    });
-                    
-                    // Add active to clicked
-                    tab.classList.add('active', 'text-primary-fixed');
-                    tab.classList.remove('text-on-surface-variant');
-                    
-                    // Note: Actual filtering logic would go here, 
-                    // perhaps hiding/showing cards based on a data attribute.
-                    // For this UI demo, we just handle the visual state of the tabs.
-                });
-            });
-        });
-    </script>
-</body></html>
+<script src="assets/js/hfl.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Source artwork the client sent over WhatsApp. These are the *inputs* — every
+# usable pixel has been distilled into assets/img/ (crests, gallery, sponsors).
+# The banners PDF alone is 92 MB, which would bloat the repo and slow every
+# clone, so the originals stay local rather than in git.
+*.pdf
+WhatsApp Image*.jpeg
+
+# Build scratch
+tools/_tmp*
+_probe.html

@@ -1,47 +1,74 @@
-# Hussaini Football League — Season 2 (Client Preview)
+# Hussaini Football League — Season 2
 
-Static preview site for the HFL Season 2 digital experience, built from the Stitch
-design export. Deployed on GitHub Pages for client review.
+Client preview site for HFL Season 2, deployed on GitHub Pages.
 
-## Pages
+**Live:** https://vamshi-mididoddi.github.io/hussaini-football-league/
 
-| URL | Page |
+## How to change something
+
+Everything on the site is generated from one data file. Edit the data, run the
+build, commit — never hand-edit the HTML, it gets overwritten.
+
+```bash
+node tools/build.js
+```
+
+- `tools/data.js` — teams, squads, fixtures, knockout ties, partners. **This is the
+  only file with content in it.**
+- `tools/build.js` — page templates plus the header, nav and footer, defined once
+  so they cannot drift apart between pages.
+- `assets/css/hfl.css` — design tokens (`:root`) and every component.
+- `assets/js/hfl.js` — sticky header, mobile menu, scroll reveal, countdown.
+
+Pages are written to the repo root: `index`, `fixtures`, `teams`, `squads`,
+`gallery`, `sponsors`. There is no `/m/` mobile variant — the pages are
+responsive from 375 px up.
+
+## Where the content came from
+
+All of it is transcribed from the client's own artwork, not invented:
+
+| Content | Source |
 | --- | --- |
-| `/` | Home — hero, upcoming fixtures, league standings |
-| `/fixtures.html` | Match Center — fixtures, formation, match stats |
-| `/teams.html` | League Franchises |
-| `/squad.html` | Squad Profile — Athletico Gold |
-| `/gallery.html` | Media Gallery |
-| `/sponsors.html` | Elite Partner Network |
+| 8 teams, crests, taglines, groups | Season 2 lineup + tournament groups posters |
+| 64 players, positions, auction values | The eight players-list posters |
+| 16 group fixtures, kickoff times | `Schedule HFL26.pdf` pages 2–3 and 5–6 |
+| Knockout bracket | `Schedule HFL26.pdf` page 8 |
+| Partners and their tiers | `S2 Banners Final File Printing.pdf` |
 
-Each page has a desktop layout at the root and a matching mobile layout under `/m/`.
-A small script in the `<head>` sends visitors to whichever layout fits their viewport
-(the breakpoint is 768px). Append `?full` to any URL to stay on the layout you asked
-for — useful for checking the mobile design on a laptop:
+Team crests were lifted off their JPEG backdrops into transparent PNGs; sponsor
+logos were cropped from the print banners and sit on light tiles because they are
+dark ink on white.
 
-    /m/index.html?full
+The source PDFs and WhatsApp images are gitignored — they total ~112 MB and every
+usable pixel is already in `assets/img/`. Keep local copies.
 
-## Repo layout
+## Design
 
-    index.html, fixtures.html, ...          desktop pages (edit these)
-    m/index.html, m/fixtures.html, ...      mobile pages (edit these)
-    stitch_hussaini_football_league_digital_experience/
-                                            original Stitch export + reference
-                                            screenshots + DESIGN.md (do not edit)
+Broadcast-grade, nocturnal, precise — built against UEFA/FIFA-style sports
+editorial rather than a template.
 
-The root and `m/` files are the live site and the source of truth for changes. The
-`stitch_...` folder is kept untouched as the original design reference.
+- **Type:** Archivo (variable, expanded) for display, Inter for text.
+- **Colour:** near-black `#07090C`, broadcast-white `#F2F5F9` body, cool-grey
+  secondary, and gold `#F5B83D` held under 10% of surface area.
+- **Hero:** the ground is drawn in CSS/SVG — a turf plane laid back in 3D with
+  real pitch markings and floodlight pools. No photograph exists in the supplied
+  artwork, and vector means it stays sharp at any width for no download cost.
 
 ## Known gaps
 
-- Footer and utility links (`About`, `Privacy`, `Terms`, `Contact`, `League Rules`,
-  `Fan Zone`, `More`, `Analytics`, `Resources`) have no pages behind them yet and are
-  intentionally inert.
-- `Statistics` and `Tactical View` on the Match Center are in-page tabs in the design,
-  not separate pages, and are not wired up.
-- All imagery is served from the Stitch CDN (`lh3.googleusercontent.com`). Those URLs
-  are outside our control and should be replaced with real HFL assets before launch.
-- Tailwind runs from the Play CDN, which is fine for a preview but should be compiled
-  for production.
-- All content — fixtures, standings, player names, sponsors — is placeholder design
-  copy, not real league data.
+- **The knockout times don't add up.** Page 8 of the schedule puts the
+  quarter-finals at 7:15–9:30 PM but the semi-finals at 7:15 and 8:15 PM, which
+  is before the quarters finish. Worth confirming with the organisers.
+- `Jindal Infernos` is spelled `Infernose` on the lineup poster and `Infernos` on
+  the groups poster; the site uses `Infernos`. The NR Chargers crest also reads
+  `RR Chargers` on the groups poster.
+- Two players appear in two squads — `Mufaddal Shakir` (Globe Warriors and
+  Paramount Predators) and `Hussain Fakkad` (Kothari Sparks and Jindal Infernos).
+  These may be different people who share a name, or a transcription error on the
+  posters.
+- No standalone Jindal Infernos crest was supplied; theirs is lifted from the
+  corner of their players-list poster and is lower resolution than the rest.
+- `Emerald Cheetahs` artwork was supplied but the team is not in the Season 2
+  lineup, so it is not used.
+- Standings sit at zero until the first match; there is no results entry yet.

@@ -1,498 +1,485 @@
-<!DOCTYPE html>
-
-<html class="dark" lang="en"><head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>HFL Match Center | Globe Warriors vs Texal Rising Phoenix</title>
-<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;family=Bebas+Neue&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
-<script id="tailwind-config">
-        tailwind.config = {
-            darkMode: "class",
-            theme: {
-                extend: {
-                    "colors": {
-                        "primary": "#ffd999",
-                        "on-primary-fixed": "#271900",
-                        "primary-fixed-dim": "#fabc41",
-                        "on-tertiary-fixed-variant": "#763300",
-                        "on-primary-container": "#6a4a00",
-                        "surface-container-low": "#201b13",
-                        "background": "#05070B",
-                        "surface-container-lowest": "#120e06",
-                        "on-secondary": "#002f65",
-                        "surface-bright": "#3f382f",
-                        "tertiary-fixed": "#ffdbca",
-                        "on-tertiary": "#532200",
-                        "primary-container": "#f5b83d",
-                        "surface-container": "#241f16",
-                        "on-secondary-fixed-variant": "#00458e",
-                        "tertiary": "#ffd6c1",
-                        "secondary-fixed-dim": "#abc7ff",
-                        "on-primary-fixed-variant": "#5e4200",
-                        "primary-fixed": "#ffdea8",
-                        "on-error-container": "#ffdad6",
-                        "on-secondary-fixed": "#001b3f",
-                        "on-surface": "#ece1d3",
-                        "on-error": "#690005",
-                        "inverse-primary": "#7c5800",
-                        "surface-variant": "#3a342b",
-                        "on-primary": "#422d00",
-                        "inverse-on-surface": "#363026",
-                        "secondary-container": "#046dd9",
-                        "outline-variant": "#504535",
-                        "surface-container-highest": "#3a342b",
-                        "secondary": "#abc7ff",
-                        "outline": "#9c8f7b",
-                        "error-container": "#93000a",
-                        "surface": "#17130b",
-                        "secondary-fixed": "#d7e3ff",
-                        "on-surface-variant": "#d4c4ae",
-                        "inverse-surface": "#ece1d3",
-                        "on-tertiary-container": "#843a00",
-                        "surface-dim": "#17130b",
-                        "on-background": "#ece1d3",
-                        "error": "#ffb4ab",
-                        "on-tertiary-fixed": "#331200",
-                        "surface-container-high": "#2f2920",
-                        "tertiary-container": "#ffb084",
-                        "surface-tint": "#fabc41",
-                        "tertiary-fixed-dim": "#ffb68e",
-                        "on-secondary-container": "#f2f4ff"
-                    },
-                    "borderRadius": {
-                        "DEFAULT": "0.25rem",
-                        "lg": "0.5rem",
-                        "xl": "0.75rem",
-                        "full": "9999px"
-                    },
-                    "spacing": {
-                        "margin-mobile": "16px",
-                        "stack-lg": "32px",
-                        "gutter": "24px",
-                        "container-max": "1280px",
-                        "section-gap": "80px",
-                        "margin-desktop": "48px",
-                        "stack-md": "16px",
-                        "stack-sm": "8px"
-                    },
-                    "fontFamily": {
-                        "body-md": ["Inter"],
-                        "body-lg": ["Inter"],
-                        "headline-md": ["Bebas Neue"],
-                        "display-lg": ["Bebas Neue"],
-                        "display-lg-mobile": ["Bebas Neue"],
-                        "label-bold": ["Inter"],
-                        "headline-xl": ["Bebas Neue"],
-                        "label-sm": ["Inter"],
-                        "headline-lg": ["Bebas Neue"]
-                    },
-                    "fontSize": {
-                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
-                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "400"}],
-                        "display-lg": ["80px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}],
-                        "display-lg-mobile": ["48px", {"lineHeight": "48px", "fontWeight": "400"}],
-                        "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700"}],
-                        "headline-xl": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
-                        "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
-                        "headline-lg": ["32px", {"lineHeight": "36px", "fontWeight": "400"}]
-                    }
-                },
-            },
-        }
-    </script>
-<style>
-        body {
-            background-color: #05070B;
-            color: #ece1d3;
-            overflow-x: hidden;
-        }
-        .stadium-glow {
-            background: radial-gradient(circle at center, rgba(250, 188, 65, 0.15) 0%, transparent 70%);
-        }
-        .glass-panel {
-            background: rgba(17, 24, 39, 0.7);
-            backdrop-filter: blur(24px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-        .pitch-texture {
-            background-image: radial-gradient(#1a2e1a 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-        }
-        .masonry {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-auto-rows: 200px;
-            gap: 16px;
-        }
-        .masonry-item-large {
-            grid-row: span 2;
-        }
-    </style>
-<script>
-/* HFL preview: serve the layout that matches the viewport. Add ?full to any URL to opt out. */
-(function () {
-  try {
-    if (location.search.indexOf('full') > -1) return;
-    var narrow = window.matchMedia('(max-width: 767px)').matches;
-    var f = location.pathname.split('/').pop() || 'index.html';
-    if (narrow) { location.replace('m/' + f + location.hash); }
-  } catch (e) {}
-})();
-</script>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>Fixtures — HFL Season 2</title>
+<meta name="description" content="Every HFL Season 2 fixture: 16 group matches on 8 and 9 August 2026, and the knockout stage on 15 August." />
+<meta name="theme-color" content="#07090C" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="Fixtures — HFL Season 2" />
+<meta property="og:description" content="Every HFL Season 2 fixture: 16 group matches on 8 and 9 August 2026, and the knockout stage on 15 August." />
+<meta property="og:image" content="assets/img/gallery/season-2-team-lineup.jpg" />
+<link rel="icon" href="assets/img/crests/hfl.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="assets/css/hfl.css" />
+<script>document.documentElement.classList.add('js');</script>
 </head>
-<body class="font-body-md">
-<!-- Top Navigation -->
-<header class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 h-16 flex justify-between items-center px-margin-desktop shadow-lg">
-<div class="flex items-center gap-stack-md">
-<span class="font-headline-md text-headline-md text-primary tracking-tighter">HFL</span>
-</div>
-<nav class="hidden md:flex gap-8">
-<a class="font-body-md text-body-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="fixtures.html">Fixtures</a>
-<a class="font-body-md text-body-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="index.html#standings">Standings</a>
-<a class="font-body-md text-body-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="teams.html">Teams</a>
-<a class="font-body-md text-body-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="sponsors.html">Sponsors</a>
-<a class="font-body-md text-body-md uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="gallery.html">News</a>
-</nav>
-<button class="bg-primary/10 border border-primary text-primary px-6 py-2 rounded-full font-label-bold uppercase tracking-widest text-label-bold scale-95 active:scale-90 transition-all">
-            Live Scores
-        </button>
+<body class="">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+  <div class="site-header__inner">
+    <a class="wordmark" href="index.html" aria-label="Hussaini Football League — home">
+      <img class="wordmark__crest" src="assets/img/crests/hfl.png" alt="" width="30" height="34" />
+      HFL<span>.</span>
+    </a>
+    <nav class="site-nav" aria-label="Primary">
+<a class="site-nav__link" href="index.html">Home</a>
+<a class="site-nav__link" href="fixtures.html" aria-current="page">Fixtures</a>
+<a class="site-nav__link" href="teams.html">Teams</a>
+<a class="site-nav__link" href="squads.html">Squads</a>
+<a class="site-nav__link" href="gallery.html">Gallery</a>
+<a class="site-nav__link" href="sponsors.html">Partners</a>
+    </nav>
+    <div class="header-actions">
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Open menu">
+        <span class="burger__box"><i></i><i></i><i></i></span>
+      </button>
+    </div>
+  </div>
 </header>
-<!-- Side Navigation -->
-<aside class="hidden lg:flex flex-col h-screen w-64 fixed left-0 top-0 pt-20 bg-surface-container-low border-r border-outline-variant/20 z-40">
-<div class="px-6 mb-8">
-<h2 class="font-headline-md text-headline-md text-primary">Match Center</h2>
-<p class="text-on-surface-variant text-label-sm">Hussaini Football League</p>
-</div>
-<div class="flex flex-col gap-1">
-<a class="flex items-center gap-4 py-4 px-6 bg-primary/10 text-primary border-l-4 border-primary transition-all duration-200" href="fixtures.html">
-<span class="material-symbols-outlined">sensors</span>
-<span class="font-body-md text-body-md">Live Match</span>
-</a>
-<a class="flex items-center gap-4 py-4 px-6 text-on-surface-variant hover:bg-surface-variant hover:pl-8 transition-all duration-200" href="#">
-<span class="material-symbols-outlined">bar_chart</span>
-<span class="font-body-md text-body-md">Statistics</span>
-</a>
-<a class="flex items-center gap-4 py-4 px-6 text-on-surface-variant hover:bg-surface-variant hover:pl-8 transition-all duration-200" href="squad.html">
-<span class="material-symbols-outlined">location_on</span>
-<span class="font-body-md text-body-md">Player Heatmap</span>
-</a>
-<a class="flex items-center gap-4 py-4 px-6 text-on-surface-variant hover:bg-surface-variant hover:pl-8 transition-all duration-200" href="#">
-<span class="material-symbols-outlined">tactic</span>
-<span class="font-body-md text-body-md">Tactical View</span>
-</a>
-<a class="flex items-center gap-4 py-4 px-6 text-on-surface-variant hover:bg-surface-variant hover:pl-8 transition-all duration-200" href="#">
-<span class="material-symbols-outlined">groups</span>
-<span class="font-body-md text-body-md">Fan Zone</span>
-</a>
-</div>
-<div class="mt-auto p-6">
-<button class="w-full bg-primary text-on-primary-fixed py-3 rounded-lg font-label-bold uppercase tracking-widest shadow-lg shadow-primary/20">Watch Live</button>
-</div>
-</aside>
-<!-- Main Content -->
-<main class="lg:pl-64 pt-16 min-h-screen">
-<!-- Match Summary Hero -->
-<section class="relative w-full h-[60vh] flex flex-col items-center justify-center overflow-hidden border-b border-outline-variant/10">
 
-<div class="absolute inset-0 stadium-glow"></div>
-<div class="relative z-10 flex items-center justify-between w-full max-w-5xl px-margin-desktop">
-<!-- Home Team -->
-<div class="flex flex-col items-center gap-stack-md group">
-<div class="w-32 h-32 md:w-48 md:h-48 glass-panel rounded-full flex items-center justify-center p-4 transition-transform group-hover:scale-105 border-primary/20">
-<img class="w-3/4 h-3/4 object-contain" data-alt="A stylized logo of Globe Warriors football team, featuring a majestic blue and gold atlas motif with a football at the center, rendered in high-definition digital vector style with metallic gold highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuANwvVrcsUFcdOhIEBO5T91yUnuTNp9_y2QTcarSc-C1qf3yNydsBz-h57kIGiEegSuWCjSnWghncZgJ7ByLE9E04ZP-q0T7SxBf60eZgr6ApNloIivDTbqluitnLTMxHZYgLkTelEpMULpxaRONJYSrXfqRa-mcfQec03So9wRd2EwEKvsXA_05vr2WLcbQ_-DH1zr_dLJWc8TzT92ewJIYVGZJhv3TejgFfNIYmbYq9SIWgMS-IcH"/>
+<div class="menu" id="menu" aria-hidden="true">
+  <nav aria-label="Mobile">
+    <ul class="menu__list">
+<li class="menu__item"><a class="menu__link" href="index.html"><span class="menu__num">01</span>Home</a></li>
+<li class="menu__item"><a class="menu__link" href="fixtures.html" aria-current="page"><span class="menu__num">02</span>Fixtures</a></li>
+<li class="menu__item"><a class="menu__link" href="teams.html"><span class="menu__num">03</span>Teams</a></li>
+<li class="menu__item"><a class="menu__link" href="squads.html"><span class="menu__num">04</span>Squads</a></li>
+<li class="menu__item"><a class="menu__link" href="gallery.html"><span class="menu__num">05</span>Gallery</a></li>
+<li class="menu__item"><a class="menu__link" href="sponsors.html"><span class="menu__num">06</span>Partners</a></li>
+    </ul>
+  </nav>
+  <div class="menu__foot">
+    <p class="label label--gold">Season 2 · #HFLS2</p>
+    <p class="muted" style="font-size:var(--fs-sm)">One Team. One Dream. One Champion.</p>
+  </div>
 </div>
-<h3 class="font-headline-lg text-headline-lg text-white">Globe Warriors</h3>
-</div>
-<!-- Score/VS -->
-<div class="flex flex-col items-center">
-<span class="font-label-bold text-primary uppercase tracking-widest mb-2 bg-primary/10 px-4 py-1 rounded-full">Live Match</span>
-<div class="flex items-baseline gap-4">
-<span class="font-display-lg text-display-lg text-white">2</span>
-<span class="font-headline-md text-headline-md text-primary/40">-</span>
-<span class="font-display-lg text-display-lg text-white">1</span>
-</div>
-<span class="font-body-md text-on-surface-variant mt-2">72' Minute</span>
-</div>
-<!-- Away Team -->
-<div class="flex flex-col items-center gap-stack-md group">
-<div class="w-32 h-32 md:w-48 md:h-48 glass-panel rounded-full flex items-center justify-center p-4 transition-transform group-hover:scale-105 border-secondary/20">
-<img class="w-3/4 h-3/4 object-contain" data-alt="A striking logo for Texal Rising Phoenix football team, showcasing a fierce phoenix rising from flames with vibrant oranges, deep reds, and black accents, designed in a cinematic high-contrast sports mascot style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAWOxdIvuALIkslFJWg-uplmYGqw4gkJfKMN6uTHNntAnH10EJUMWQEXv3-xFUeb4j_gB7ujAg1OoJWb9wnI63P5cmg8c2M7e5nhmHpnTLmD5T1phfugyukYB2JvycEy5mB-Vp9Z_lC-vhbVVRsmwbHyboGo-e-sTN4ZRgWPdv_2k3Mg4XSg_IWYnzDRv5WzxUToJQLEZkftAarbBE6tmMNkVYevCi5GXH3h5zvtDgTmIjoCvhJsa-x"/>
-</div>
-<h3 class="font-headline-lg text-headline-lg text-white">Texal Phoenix</h3>
-</div>
-</div>
-<!-- Match Conditions Ticker -->
-<div class="absolute bottom-0 w-full glass-panel border-t-0 py-4 px-margin-desktop flex justify-center gap-12 overflow-x-auto no-scrollbar">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[20px]">device_thermostat</span>
-<span class="text-label-sm text-on-surface-variant uppercase tracking-wider">Temp: <span class="text-white font-bold">24°C</span></span>
-</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[20px]">humidity_low</span>
-<span class="text-label-sm text-on-surface-variant uppercase tracking-wider">Humidity: <span class="text-white font-bold">62%</span></span>
-</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[20px]">grass</span>
-<span class="text-label-sm text-on-surface-variant uppercase tracking-wider">Pitch: <span class="text-white font-bold">Excellent</span></span>
-</div>
-<div class="flex items-center gap-2 border-l border-outline-variant/30 pl-12">
-<span class="material-symbols-outlined text-primary text-[20px]">person</span>
-<span class="text-label-sm text-on-surface-variant uppercase tracking-wider">Ref: <span class="text-white font-bold">Hatim Rangoon</span></span>
-</div>
-</div>
+<main id="main">
+<section class="page-head">
+  <div class="shell page-head__inner">
+    <p class="label label--gold" data-reveal>Season 2 schedule</p>
+    <h1 data-reveal>Fixtures</h1>
+    <p class="lead" data-reveal>Sixteen group matches across two nights, then the knockout stage.
+      Halves are 15 minutes; after every half the next team takes the pitch.</p>
+  </div>
 </section>
-<!-- Tactical View & Statistics -->
-<section class="px-margin-desktop py-section-gap max-w-container-max mx-auto grid grid-cols-1 lg:grid-cols-12 gap-gutter">
-<!-- Tactical Lineup (Starting XI) -->
-<div class="lg:col-span-8 flex flex-col gap-stack-md">
-<div class="flex justify-between items-center">
-<h2 class="font-headline-lg text-headline-lg text-white">Tactical Formation <span class="text-primary">4-3-3</span></h2>
-<div class="flex gap-2">
-<button class="p-2 glass-panel rounded-full hover:border-primary/50 transition-colors">
-<span class="material-symbols-outlined">swap_horiz</span>
-</button>
-</div>
-</div>
-<div class="relative w-full aspect-[4/3] glass-panel rounded-xl overflow-hidden border-outline-variant/10 p-6 flex flex-col">
-<div class="absolute inset-0 pitch-texture opacity-30"></div>
-<div class="absolute inset-x-0 top-1/2 -translate-y-1/2 h-0.5 bg-white/10"></div>
-<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border-2 border-white/10 rounded-full"></div>
-<div class="absolute top-0 left-1/2 -translate-x-1/2 w-80 h-32 border-2 border-t-0 border-white/10"></div>
-<div class="absolute bottom-0 left-1/2 -translate-x-1/2 w-80 h-32 border-2 border-b-0 border-white/10"></div>
-<!-- Player Nodes (Warriors) -->
-<div class="relative flex-1 grid grid-rows-4 items-center">
-<!-- Attack -->
-<div class="flex justify-around px-8">
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary-fixed font-bold border-4 border-black/20 group-hover:scale-110 transition-transform">9</div>
-<span class="text-label-sm text-white font-bold bg-black/40 px-2 py-0.5 rounded backdrop-blur-sm">Ali</span>
-</div>
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary-fixed font-bold border-4 border-black/20 group-hover:scale-110 transition-transform">10</div>
-<span class="text-label-sm text-white font-bold bg-black/40 px-2 py-0.5 rounded backdrop-blur-sm">Najmi</span>
-</div>
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-12 h-12 rounded-full bg-primary flex items-center justify-center text-on-primary-fixed font-bold border-4 border-black/20 group-hover:scale-110 transition-transform">7</div>
-<span class="text-label-sm text-white font-bold bg-black/40 px-2 py-0.5 rounded backdrop-blur-sm">Hatim</span>
-</div>
-</div>
-<!-- Midfield -->
-<div class="flex justify-center gap-24">
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-10 h-10 rounded-full bg-primary/80 flex items-center justify-center text-on-primary-fixed font-bold border-2 border-white/20 group-hover:scale-110 transition-transform">8</div>
-<span class="text-label-sm text-on-surface-variant">Mustafa</span>
-</div>
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-10 h-10 rounded-full bg-primary/80 flex items-center justify-center text-on-primary-fixed font-bold border-2 border-white/20 group-hover:scale-110 transition-transform">6</div>
-<span class="text-label-sm text-on-surface-variant">Bakir</span>
-</div>
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-10 h-10 rounded-full bg-primary/80 flex items-center justify-center text-on-primary-fixed font-bold border-2 border-white/20 group-hover:scale-110 transition-transform">5</div>
-<span class="text-label-sm text-on-surface-variant">Taha</span>
-</div>
-</div>
-<!-- Defense -->
-<div class="flex justify-around px-4">
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-10 h-10 rounded-full bg-primary/60 flex items-center justify-center text-on-primary-fixed font-bold border-2 border-white/20 group-hover:scale-110 transition-transform">2</div>
-<span class="text-label-sm text-on-surface-variant">Idris</span>
-</div>
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-10 h-10 rounded-full bg-primary/60 flex items-center justify-center text-on-primary-fixed font-bold border-2 border-white/20 group-hover:scale-110 transition-transform">4</div>
-<span class="text-label-sm text-on-surface-variant">Yousuf</span>
-</div>
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-10 h-10 rounded-full bg-primary/60 flex items-center justify-center text-on-primary-fixed font-bold border-2 border-white/20 group-hover:scale-110 transition-transform">3</div>
-<span class="text-label-sm text-on-surface-variant">Murtaza</span>
-</div>
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-10 h-10 rounded-full bg-primary/60 flex items-center justify-center text-on-primary-fixed font-bold border-2 border-white/20 group-hover:scale-110 transition-transform">12</div>
-<span class="text-label-sm text-on-surface-variant">Adam</span>
-</div>
-</div>
-<!-- Keeper -->
-<div class="flex justify-center">
-<div class="flex flex-col items-center gap-1 group">
-<div class="w-12 h-12 rounded-full bg-primary-fixed-dim flex items-center justify-center text-on-primary-fixed font-bold border-4 border-black/20 group-hover:scale-110 transition-transform">1</div>
-<span class="text-label-sm text-white font-bold bg-black/40 px-2 py-0.5 rounded backdrop-blur-sm">Burhan</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-<!-- Key Match Stats -->
-<div class="lg:col-span-4 flex flex-col gap-stack-md">
-<h2 class="font-headline-lg text-headline-lg text-white">Match Stats</h2>
-<div class="glass-panel rounded-xl p-6 flex flex-col gap-6">
-<!-- Stat Item -->
-<div class="flex flex-col gap-2">
-<div class="flex justify-between text-label-sm uppercase tracking-widest text-on-surface-variant">
-<span>Warriors</span>
-<span class="text-white font-bold">Possession</span>
-<span>Phoenix</span>
-</div>
-<div class="flex items-center gap-4">
-<span class="text-headline-md font-bold text-primary">58%</span>
-<div class="flex-1 h-2 bg-surface-variant rounded-full overflow-hidden flex">
-<div class="h-full bg-primary" style="width: 58%"></div>
-<div class="h-full bg-secondary" style="width: 42%"></div>
-</div>
-<span class="text-headline-md font-bold text-secondary">42%</span>
-</div>
-</div>
-<!-- Stat Item -->
-<div class="flex flex-col gap-2">
-<div class="flex justify-between text-label-sm uppercase tracking-widest text-on-surface-variant">
-<span>12</span>
-<span class="text-white font-bold">Total Shots</span>
-<span>8</span>
-</div>
-<div class="flex items-center gap-4">
-<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden flex">
-<div class="h-full bg-primary" style="width: 65%"></div>
-</div>
-<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden flex justify-end">
-<div class="h-full bg-secondary" style="width: 45%"></div>
-</div>
-</div>
-</div>
-<!-- Stat Item -->
-<div class="flex flex-col gap-2">
-<div class="flex justify-between text-label-sm uppercase tracking-widest text-on-surface-variant">
-<span>6</span>
-<span class="text-white font-bold">Shots on Target</span>
-<span>4</span>
-</div>
-<div class="flex items-center gap-4">
-<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden flex">
-<div class="h-full bg-primary" style="width: 80%"></div>
-</div>
-<div class="flex-1 h-1.5 bg-surface-variant rounded-full overflow-hidden flex justify-end">
-<div class="h-full bg-secondary" style="width: 50%"></div>
-</div>
-</div>
-</div>
-<div class="grid grid-cols-2 gap-4 mt-4">
-<div class="p-4 bg-surface-container-high rounded-lg text-center">
-<span class="block text-primary text-headline-md font-bold">88%</span>
-<span class="text-label-sm text-on-surface-variant uppercase">Pass Accuracy</span>
-</div>
-<div class="p-4 bg-surface-container-high rounded-lg text-center">
-<span class="block text-primary text-headline-md font-bold">5</span>
-<span class="text-label-sm text-on-surface-variant uppercase">Corners</span>
-</div>
-</div>
-</div>
-</div>
+
+
+<section class="section" data-reveal>
+  <div class="shell">
+    <div class="section-head">
+      <div class="section-head__text">
+        <p class="label label--gold">Day 1 · Group Stage</p>
+        <h2>Saturday 8 August 2026</h2>
+      </div>
+      <span class="badge">8 matches</span>
+    </div>
+    <ol class="fixture-list">
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M1</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T19:00">7:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Jindal Infernos</span>
+      <img src="assets/img/crests/jindal-infernos.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/paramount-predators.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Paramount Predators</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M2</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T19:15">7:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Globe Warriors</span>
+      <img src="assets/img/crests/globe-warriors.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/texal-rising-phoenix.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Texal Rising Phoenix</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M3</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T20:00">8:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Kothari Sparks</span>
+      <img src="assets/img/crests/kothari-sparks.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/imperial-knights.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Imperial Knights</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M4</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T20:15">8:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">NR Chargers</span>
+      <img src="assets/img/crests/nr-chargers.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/perfect-strikers.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Perfect Strikers</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M5</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T21:00">9:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Kothari Sparks</span>
+      <img src="assets/img/crests/kothari-sparks.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/texal-rising-phoenix.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Texal Rising Phoenix</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M6</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T21:15">9:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Globe Warriors</span>
+      <img src="assets/img/crests/globe-warriors.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/imperial-knights.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Imperial Knights</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M7</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T22:00">10:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Jindal Infernos</span>
+      <img src="assets/img/crests/jindal-infernos.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/perfect-strikers.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Perfect Strikers</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M8</span>
+    <time class="fixture__time tnum" datetime="2026-08-08T22:15">10:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">NR Chargers</span>
+      <img src="assets/img/crests/nr-chargers.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/paramount-predators.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Paramount Predators</span>
+    </div>
+  </div>
+</li>
+    </ol>
+  </div>
 </section>
-<!-- Match Gallery (Masonry) -->
-<section class="px-margin-desktop py-section-gap bg-surface-container-lowest/50">
-<div class="max-w-container-max mx-auto">
-<div class="flex justify-between items-end mb-12">
-<div>
-<span class="text-primary font-label-bold uppercase tracking-[0.2em] mb-2 block">Visual Experience</span>
-<h2 class="font-display-lg text-headline-xl text-white">Match Day Gallery</h2>
-</div>
-<button class="text-primary font-label-bold flex items-center gap-2 hover:gap-4 transition-all uppercase tracking-widest border-b border-primary/20 pb-1">
-                        View All Media <span class="material-symbols-outlined">trending_flat</span>
-</button>
-</div>
-<div class="masonry">
-<div class="masonry-item-large glass-panel rounded-xl overflow-hidden group">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A cinematic action shot of a football player in a blue kit striking the ball during a nighttime match under powerful stadium floodlights, creating a dramatic high-contrast aesthetic with particles of grass and water spraying into the air." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAqJ7nUzw-_NyHaTv-Xs1-fo01ISIcFhP1rVSam7MN5acKm8cSrIy1gJuuKEtFRc-7cvLrw2bErYcnFI1j1Wanu3yegxpoR3f0PusDCSnDqiLXnFWAyC2NEjo5LwBp_1n1Fhd3zqTNrqcaGJr4GvtvYjZHhaqbQPZ2jOuNhTae4p9X_JEitTkeNQaOQeA_Jb-NykQYqi4fKD2-qz4mmJ6W0zxBVaXgwp8qvrvH4v4Xjy7SBANfNRY4N"/>
-</div>
-<div class="glass-panel rounded-xl overflow-hidden group">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Intense close-up of a team captain's face showing determination and sweat during a high-stakes football match, lit with dramatic golden stadium lights against a dark night background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxl25-08vX64rxIbmr90tliGdLww_WsRBa2l1K0FsKWkX5jiwHk86CNqT26Xd3_NQ3VqulibOF51XYPK4P1DdSP39qlAcgfYZ70-C8S_3T7tbHDIOSt3Bsh23KjcMBGbWXJQUc2Ju2qwIfV4PS14NLrKOgp9GEBNx_rR8FZ7EhdiEjxIXG9GD3XTADaIiv18Jkpx5wDJskwg7BeeqtH9BwFQID0KL73O7VMcRiF3kU21KfMlJNH6Zd"/>
-</div>
-<div class="glass-panel rounded-xl overflow-hidden group">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A wide-angle view of a professional football stadium packed with fans, glowing under giant floodlights at night, with the Hussaini Football League branding visible on digital banners." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAPzQCfm8a3ALiK0pRKkR1KTQiR0P97LlbY8IIvSMmqK9Zs6GreuEW8TBb0CflcOcHhhssR9UFQPNC0TNKwgHuHzv-KgnWOQyvRD5lDrjRhMkDX-2a3SiCFzZhIz0CsrCwmwzgVJO9Q5B2AKNC-TQHgXnY-1t6Vd-xEGPQXTAhBEr19XazG5A_uIPloqqOXfaLnEGiy8f_jiAm_eakaeDKsuV6ZmbjH5k3U69AURgKNWC9oT8C8CG9j"/>
-</div>
-<div class="masonry-item-large glass-panel rounded-xl overflow-hidden group">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="A team celebration scene after a goal, players hugging in a circle under golden spotlights, with a bokeh background of the cheering crowd, captured in a high-end cinematic sports photography style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA81W3akiXibuLjEUVnkvxsOmWU4oOI_6CoZajWANg86JvmSdDYqOosqI0UvKusHRz0KQHKEn9Weoyiqw3HOKcG9vxtKXmcAq7LYkWA_Q5xaZEgxYz6unv96SFSmkpP5kbEZIyXE8j-WxkbYPr23Vg8m8TPQRaP6Zzbdo_jqF6dt1bPRtf-vBJBiszPsY1ovLcEqUKYJAVUox00Lht-l-XQAI0liKGtuDUr1mHYEoxp6WgZQuY7ZD15"/>
-</div>
-<div class="glass-panel rounded-xl overflow-hidden group">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="Extreme close-up of football cleats making contact with the ball on a lush green pitch, illuminated by cool blue stadium lights, capturing the moment of impact with high-speed photography detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAF6kBoWlkUCmwWmLGrvpcg8tCDkJc1VGSjlQc1KcOZxawKFfCfxVZRPnjii-OkQrBiN1fBWUEqu7kXg-FikVdBJzxOEFR1iZtoqYcjaKngYZ7BKeUE7Kn3KRVvWSAZjGlmY55I6hi8Taczn61-HYERPLA2beEf3RooLlEeshS7RyKwd1aDON9O-R_gVCEsGC1ruzOjPFyr6B-pjJkl4p5wynmDT4x-CZ_bA3feLgBZ1M3aWxzvktmm"/>
-</div>
-<div class="glass-panel rounded-xl overflow-hidden group">
-<img class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" data-alt="The HFL Season 2 trophy glowing on a pedestal at the center of the pitch before kickoff, with lens flares from the stadium lights and a misty atmosphere creating a sense of prestige." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_dJr6TGrlraf96qlGC82WQbhXiIq9n9t3sIOpbfoB8m5rhYO2PykQ7Y-F-TrJejqPUnp8COiiEx6jslmm5RJOrpH8RUVBKpH2KSr-fICukjRZRU2UujYxddcA0FaOy8QG9sx1JO_U2k9AGp4lxFXcepCPp3gyco0UtrG0bpJaw6YeHWW61t9SwIfL8FQQu-JRn1i17dpoqnvLjxxkJ1rAygEyB2x18wbWUvKFpDSb3Sh86O-OxJ1k"/>
-</div>
-</div>
-</div>
+<section class="section" data-reveal>
+  <div class="shell">
+    <div class="section-head">
+      <div class="section-head__text">
+        <p class="label label--gold">Day 2 · Group Stage</p>
+        <h2>Sunday 9 August 2026</h2>
+      </div>
+      <span class="badge">8 matches</span>
+    </div>
+    <ol class="fixture-list">
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M9</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T19:00">7:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Kothari Sparks</span>
+      <img src="assets/img/crests/kothari-sparks.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/paramount-predators.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Paramount Predators</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M10</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T19:15">7:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Globe Warriors</span>
+      <img src="assets/img/crests/globe-warriors.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/perfect-strikers.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Perfect Strikers</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M11</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T20:00">8:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Jindal Infernos</span>
+      <img src="assets/img/crests/jindal-infernos.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/imperial-knights.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Imperial Knights</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M12</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T20:15">8:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">NR Chargers</span>
+      <img src="assets/img/crests/nr-chargers.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/texal-rising-phoenix.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Texal Rising Phoenix</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M13</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T21:00">9:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Kothari Sparks</span>
+      <img src="assets/img/crests/kothari-sparks.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/perfect-strikers.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Perfect Strikers</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M14</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T21:15">9:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Globe Warriors</span>
+      <img src="assets/img/crests/globe-warriors.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/paramount-predators.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Paramount Predators</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M15</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T22:00">10:00 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">Jindal Infernos</span>
+      <img src="assets/img/crests/jindal-infernos.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/texal-rising-phoenix.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Texal Rising Phoenix</span>
+    </div>
+  </div>
+</li>
+<li class="fixture" data-reveal>
+  <div class="fixture__meta">
+    <span class="label">M16</span>
+    <time class="fixture__time tnum" datetime="2026-08-09T22:15">10:15 PM</time>
+  </div>
+  <div class="fixture__tie">
+    <div class="fixture__side fixture__side--home">
+      <span class="fixture__name">NR Chargers</span>
+      <img src="assets/img/crests/nr-chargers.png" alt="" loading="lazy" width="40" height="40" />
+    </div>
+    <span class="fixture__vs" aria-label="versus">V</span>
+    <div class="fixture__side fixture__side--away">
+      <img src="assets/img/crests/imperial-knights.png" alt="" loading="lazy" width="40" height="40" />
+      <span class="fixture__name">Imperial Knights</span>
+    </div>
+  </div>
+</li>
+    </ol>
+  </div>
 </section>
-<!-- Footer -->
-<footer class="w-full bg-surface-container-lowest border-t border-outline-variant mt-section-gap">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto">
-<div class="md:col-span-2">
-<span class="font-headline-lg text-headline-lg text-primary block mb-4">HFL</span>
-<p class="text-on-surface-variant max-w-sm">Hussaini Football League is the premier platform for professional football talent, uniting communities through the spirit of the game.</p>
-</div>
-<div>
-<h4 class="font-label-bold text-white uppercase tracking-widest mb-4">Quick Links</h4>
-<ul class="flex flex-col gap-2">
-<li><a class="text-on-surface-variant hover:text-primary transition-all" href="sponsors.html">Sponsor Portal</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-all" href="gallery.html">Media Center</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Contact Support</a></li>
-</ul>
-</div>
-<div>
-<h4 class="font-label-bold text-white uppercase tracking-widest mb-4">Legal</h4>
-<ul class="flex flex-col gap-2">
-<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Privacy Policy</a></li>
-<li><a class="text-on-surface-variant hover:text-primary transition-all" href="#">Terms of Service</a></li>
-</ul>
-</div>
-</div>
-<div class="border-t border-outline-variant/10 py-6 px-margin-desktop text-center">
-<p class="text-label-sm text-on-surface-variant">© 2024 Hussaini Football League. All Rights Reserved.</p>
-</div>
-</footer>
+
+<section class="section section--raised">
+  <div class="shell">
+    <div class="section-head" data-reveal>
+      <div class="section-head__text">
+        <p class="label label--gold">Day 3 · Knockout Stage</p>
+        <h2>Saturday 15 August 2026</h2>
+      </div>
+      <span class="badge">7 ties</span>
+    </div>
+    <div class="bracket">
+    <div class="round" data-reveal>
+      <h3 class="round__name">Quarter Finals</h3>
+      <ul class="round__ties">
+        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">QF1</span><time class="tnum">7:15 PM</time></div>
+          <p class="tie__side">1st ranked team</p>
+          <span class="tie__vs" aria-hidden="true">V</span>
+          <p class="tie__side">8th ranked team</p>
+        </li>
+        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">QF2</span><time class="tnum">8:00 PM</time></div>
+          <p class="tie__side">2nd ranked team</p>
+          <span class="tie__vs" aria-hidden="true">V</span>
+          <p class="tie__side">7th ranked team</p>
+        </li>
+        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">QF3</span><time class="tnum">8:45 PM</time></div>
+          <p class="tie__side">3rd ranked team</p>
+          <span class="tie__vs" aria-hidden="true">V</span>
+          <p class="tie__side">6th ranked team</p>
+        </li>
+        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">QF4</span><time class="tnum">9:30 PM</time></div>
+          <p class="tie__side">4th ranked team</p>
+          <span class="tie__vs" aria-hidden="true">V</span>
+          <p class="tie__side">5th ranked team</p>
+        </li>
+      </ul>
+    </div>
+    <div class="round" data-reveal>
+      <h3 class="round__name">Semi Finals</h3>
+      <ul class="round__ties">
+        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">SF1</span><time class="tnum">7:15 PM</time></div>
+          <p class="tie__side">Winner of QF1</p>
+          <span class="tie__vs" aria-hidden="true">V</span>
+          <p class="tie__side">Winner of QF4</p>
+        </li>
+        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">SF2</span><time class="tnum">8:15 PM</time></div>
+          <p class="tie__side">Winner of QF2</p>
+          <span class="tie__vs" aria-hidden="true">V</span>
+          <p class="tie__side">Winner of QF3</p>
+        </li>
+      </ul>
+    </div>
+    <div class="round" data-reveal>
+      <h3 class="round__name">Final</h3>
+      <ul class="round__ties">
+        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">Final</span><time class="tnum">9:30 PM</time></div>
+          <p class="tie__side">Winner of SF1</p>
+          <span class="tie__vs" aria-hidden="true">V</span>
+          <p class="tie__side">Winner of SF2</p>
+        </li>
+      </ul>
+    </div>
+    </div>
+    <p class="muted" style="margin-top:var(--sp-6);font-size:var(--fs-sm)" data-reveal>
+      Knockout pairings resolve from the final group-stage ranking, so both sides stay open until Day 2 ends.
+    </p>
+  </div>
+</section>
 </main>
-<!-- Mobile Bottom Navigation -->
-<nav class="flex justify-around items-center h-20 pb-safe px-4 fixed bottom-0 w-full rounded-t-xl bg-surface-container-lowest/90 backdrop-blur-2xl border-t border-primary/20 z-50 md:hidden">
-<a class="text-primary flex flex-col items-center gap-1 scale-110 transition-transform" href="index.html">
-<span class="material-symbols-outlined">home</span>
-<span class="font-label-sm text-label-sm-mobile">Home</span>
-</a>
-<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim transition-colors" href="fixtures.html">
-<span class="material-symbols-outlined">sports_soccer</span>
-<span class="font-label-sm text-label-sm-mobile">Fixtures</span>
-</a>
-<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim transition-colors" href="teams.html">
-<span class="material-symbols-outlined">shield</span>
-<span class="font-label-sm text-label-sm-mobile">Teams</span>
-</a>
-<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim transition-colors" href="index.html#standings">
-<span class="material-symbols-outlined">leaderboard</span>
-<span class="font-label-sm text-label-sm-mobile">Table</span>
-</a>
-<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim transition-colors" href="#">
-<span class="material-symbols-outlined">more_horiz</span>
-<span class="font-label-sm text-label-sm-mobile">More</span>
-</a>
-</nav>
-<script>
-        // Micro-interactions for tactical board
-        document.querySelectorAll('.group').forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                // Add any extra interactive logic here
-            });
-        });
+<footer class="site-footer">
+  <div class="shell">
+    <div class="site-footer__cta">
+      <div>
+        <p class="label label--gold">#HFLS2</p>
+        <h2 style="margin-top:var(--sp-3)">One Team. One Dream. One Champion.</h2>
+      </div>
+      <a class="btn btn--primary" href="fixtures.html">See the schedule <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M1 7h11M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    </div>
 
-        // Smooth scroll for internal links if needed
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
-</body></html>
+    <div class="site-footer__grid">
+      <div class="site-footer__col">
+        <img src="assets/img/crests/hfl.png" alt="" width="56" height="64" style="height:56px;width:auto" />
+        <p class="muted" style="font-size:var(--fs-sm);max-width:34ch">
+          Hussaini Football League — Season 2. 8 Teams. 1 Trophy. Unlimited Glory.
+        </p>
+      </div>
+      
+      <div class="site-footer__col">
+        <h4 class="label">League</h4>
+        <a href="fixtures.html">Fixtures</a>
+        <a href="teams.html">Teams</a>
+        <a href="squads.html">Squads</a>
+      </div>
+      <div class="site-footer__col">
+        <h4 class="label">Media</h4>
+        <a href="gallery.html">Gallery</a>
+        <a href="sponsors.html">Partners</a>
+      </div>
+    </div>
+
+    <p class="site-footer__mark" aria-hidden="true">HFL</p>
+
+    <div class="site-footer__base">
+      <p>© <span data-year>2026</span> Hussaini Football League. All rights reserved.</p>
+      <p>Fixtures, squads and partners are taken from the official Season 2 artwork.</p>
+    </div>
+  </div>
+</footer>
+<script src="assets/js/hfl.js" defer></script>
+</body>
+</html>
