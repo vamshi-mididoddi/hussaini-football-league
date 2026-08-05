@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HFL | Team Squad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#422d00",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-primary-container": "#6a4a00",
+                    "inverse-on-surface": "#363026",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#3a342b",
+                    "secondary": "#abc7ff",
+                    "on-secondary-container": "#f2f4ff",
+                    "on-surface": "#ece1d3",
+                    "on-primary-fixed": "#271900",
+                    "surface-container-high": "#2f2920",
+                    "tertiary-container": "#ffb084",
+                    "on-tertiary-fixed": "#331200",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "error": "#ffb4ab",
+                    "surface": "#17130b",
+                    "on-error": "#690005",
+                    "tertiary": "#ffd6c1",
+                    "primary-fixed-dim": "#fabc41",
+                    "secondary-container": "#046dd9",
+                    "on-secondary": "#002f65",
+                    "inverse-primary": "#7c5800",
+                    "surface-dim": "#17130b",
+                    "primary-container": "#f5b83d",
+                    "surface-container-lowest": "#120e06",
+                    "secondary-fixed-dim": "#abc7ff",
+                    "outline": "#9c8f7b",
+                    "tertiary-fixed": "#ffdbca",
+                    "surface-bright": "#3f382f",
+                    "secondary-fixed": "#d7e3ff",
+                    "on-tertiary-container": "#843a00",
+                    "on-secondary-fixed": "#001b3f",
+                    "inverse-surface": "#ece1d3",
+                    "surface-container": "#241f16",
+                    "on-background": "#ece1d3",
+                    "surface-tint": "#fabc41",
+                    "on-surface-variant": "#d4c4ae",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "surface-container-low": "#201b13",
+                    "on-tertiary": "#532200",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "background": "#17130b",
+                    "primary": "#ffd999",
+                    "surface-container-highest": "#3a342b",
+                    "outline-variant": "#504535",
+                    "primary-fixed": "#ffdea8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "section-gap": "80px",
+                    "margin-desktop": "48px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Bebas Neue"],
+                    "label-bold": ["Inter"],
+                    "headline-lg": ["Bebas Neue"],
+                    "display-lg-mobile": ["Bebas Neue"],
+                    "headline-xl": ["Bebas Neue"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Bebas Neue"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "36px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "48px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["80px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #05070B;
+            color: #ece1d3;
+            -webkit-font-smoothing: antialiased;
+        }
+        .stadium-glow {
+            background: radial-gradient(circle at 50% -20%, rgba(255, 217, 153, 0.15) 0%, transparent 70%);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .player-img-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50%;
+            background: linear-gradient(to top, #111827, transparent);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script>
+/* HFL preview: serve the layout that matches the viewport. Add ?full to any URL to opt out. */
+(function () {
+  try {
+    if (location.search.indexOf('full') > -1) return;
+    var narrow = window.matchMedia('(max-width: 767px)').matches;
+    var f = location.pathname.split('/').pop() || 'index.html';
+    if (!narrow) { location.replace('../' + f + location.hash); }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="font-body-md overflow-x-hidden pb-24 md:pb-0">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary text-headline-xl">sports_soccer</span>
+<span class="font-headline-xl text-headline-xl tracking-widest text-primary">HFL</span>
+</div>
+<div class="hidden md:flex gap-8 items-center">
+<a class="font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="index.html">HOME</a>
+<a class="font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="fixtures.html">FIXTURES</a>
+<a class="font-label-bold text-on-surface-variant hover:text-primary transition-colors" href="index.html#standings">TABLE</a>
+<a class="font-label-bold text-primary transition-colors" href="teams.html">TEAMS</a>
+</div>
+<button class="bg-primary text-on-primary font-label-bold px-6 py-2 rounded-full hover:opacity-80 transition-opacity active:scale-95 duration-200">
+            WATCH LIVE
+        </button>
+</nav>
+<!-- Hero Banner -->
+<header class="relative w-full h-[60vh] md:h-[80vh] flex items-center justify-center overflow-hidden stadium-glow pt-16">
+
+<div class="relative z-10 text-center flex flex-col items-center">
+<div class="w-32 h-32 md:w-48 md:h-48 mb-6 drop-shadow-[0_0_30px_rgba(255,217,153,0.3)]">
+<img class="w-full h-full object-contain" data-alt="A luxurious professional football club crest designed with elegant gold and obsidian black details, featuring a stylized eagle and geometric patterns. The logo is rendered in a high-fidelity 3D metallic style with sharp edges and premium specular highlights, set against a dark cinematic background consistent with a high-stakes night-match atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCyu9004__1njHS2Rbm1pwT94ZK0A9b1P-GfSLYidryKwJxIZ716A9JSGeODDTQ_3V83bXlm74WUYLNm7rPBcJyeC4Ph2UlXoLSQrFSv3sthe4whGuNYmIKtfiD5jP5xkO3ypmTGaJb_6pPr6cEw5KqQu0WBGlfb6MLqo8lbJNpQ0-s60gxaI2df8OodHp8zIdIeJGK5LIrN8Fy2uTG5ngqeAeXBj5XGk3j6AP8aGseUBXQjwHA1IIQ"/>
+</div>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-primary uppercase tracking-tighter">
+                ATHLETICO GOLD
+            </h1>
+<p class="font-label-bold text-on-surface-variant tracking-[0.4em] mt-2 opacity-60">2023/24 OFFICIAL SQUAD</p>
+</div>
+</header>
+<!-- Content Sections -->
+<main class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop py-section-gap space-y-section-gap">
+<!-- Goalkeepers -->
+<section>
+<div class="flex items-center gap-4 mb-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary">GOALKEEPERS</h2>
+<div class="h-px flex-grow bg-gradient-to-r from-primary/30 to-transparent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- GK 1 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-72 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A high-intensity action photograph of a professional football goalkeeper lunging to save a ball. The lighting is cinematic stadium lighting from above, creating sharp highlights and deep shadows. The player wears a premium black and gold kit. The overall mood is focused and high-energy, with a dark, blurred stadium background under the night sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD3ek0WwFE9NVvs4vg9iZj8ixvcXQwxxkjujsxypeGGr35kCxG8pvAin8w10OCpbeQ7artZuGZmoS-cZz58AFj8QjYk1UTyNeXG7MKN1sR2F6ZpyzmbKZCuC2TdvzPRWA39BjrLb3fVv9jt6cIM6Vj9nPUyg8b5PTiDSdXXVi79PEMVdQwtvMz-8HzCSUAElAFHa5NP7tAp9sw_8EY3OZ28cCfKFFlYCKHNqSro_ZyhiPAI9I7WoSYH"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">01</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">First Choice</span>
+<h3 class="font-headline-md text-headline-md text-white">MARCUS VANCE</h3>
+<p class="font-label-sm text-on-surface-variant/60">GK • 6'4" • 31 YRS</p>
+</div>
+</div>
+<!-- GK 2 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-72 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A professional athlete portrait of a backup goalkeeper in a secondary team kit. The shot is medium-length, showing the athlete's confident posture. Soft golden rim lighting emphasizes the silhouette against a deep charcoal background. The style is minimalist and prestigious, capturing the discipline of professional football." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDLrbtowQVnz_ua6KWD0TDY0Tg6eFn4mmg3K6YhlVQyMDKXEZJV9qJ_8CskRAmBVM1Bgv_WmL9409T3SOaSgxnUT9cV4vRfK-JWj9op-XLFQegXkfSmudlDZWQTws67tFsTh_AaP7uJmCp6e3Q4-y0LnJkDqgTyNE4Q6WXHhr9ZcyNYgC0xfq7b-aHBnfmZuuNwKr7z6JSmY3w6qs5_mM0cdOy406VZUp4HNup0BqOGTU48F_I0gYfW"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">13</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Reserve</span>
+<h3 class="font-headline-md text-headline-md text-white">LIAM CHEN</h3>
+<p class="font-label-sm text-on-surface-variant/60">GK • 6'2" • 24 YRS</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Defenders -->
+<section>
+<div class="flex items-center gap-4 mb-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary">DEFENDERS</h2>
+<div class="h-px flex-grow bg-gradient-to-r from-primary/30 to-transparent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- DEF 1 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-72 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A powerful action shot of a professional football defender making a slide tackle. Water droplets from the pitch grass are suspended in the air, captured with a high-speed shutter. The stadium lights create a dramatic spotlight effect on the player's intense expression. Color palette is dominated by dark navy, gold, and vibrant pitch green." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8DpyYEfR-E8MJeSTdiHklbwlKQxpIqOST49vqIAFBKtzJcog0JRUYbh1cPPwI8-oapGYOAIy-0oRKFWlA_G_5yZb2kXzzFYZzzVHV56dr-c5FrWWfl82WqEcTD1-RLV-O2RG7SiA3J2oycrtiWHzoPApPgsl8s14XYZuI7i7lKlCIxSBlDg8IW1w9DESEl4BY3sL_PCX42qo2OpWwQNQocZaUGoZE6msJ6iPBNPyBeYHUJJbtwiVA"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">04</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Captain</span>
+<h3 class="font-headline-md text-headline-md text-white">ELIAS THORNE</h3>
+<p class="font-label-sm text-on-surface-variant/60">CB • 6'3" • 28 YRS</p>
+</div>
+</div>
+<!-- DEF 2 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-72 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Dynamic photo of a football wingback sprinting down the sideline. Motion blur is used artistically on the background to convey incredible speed. The player wears a sleek, modern gold and black athletic kit. The lighting is low-key with high-contrast golden highlights on the fabric textures and muscle definition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAOdf4psM7Db9LMOY5bOy-bEOsWBCmDd_-1-FJsbiGk91hs4dyPBra0pv4onK_T805-lldhhat9YxnyndZfUGT-Jsaw8-ncHdubMDd4C-nal9uNuw0DJYznKJF-FJUz0nW6UDUFhlTpgGtOPFr7ZFh_AiqdKVGFJYPZOxQ-ClTucgXLjPHdR9-i9vCca-kD9ygWeaP2ssmEqfMcMjvDira1WBdejobOaXuA06I64lDUbFFxxFEhnPvo"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">02</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Fullback</span>
+<h3 class="font-headline-md text-headline-md text-white">RODRIGO PAZ</h3>
+<p class="font-label-sm text-on-surface-variant/60">RB • 5'10" • 25 YRS</p>
+</div>
+</div>
+<!-- DEF 3 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-72 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A defender heading the ball during a corner kick. The shot captures the peak of the jump, with arms out for balance and eyes locked on the ball. Cinematic stadium night environment with hazy atmosphere and bright floodlights. Dramatic shadows create a three-dimensional feel to the athlete's form in the dark luxury aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDdbVmTpfyCz6nvnTbi5J_FAN0aVBget9hc3git4XqUtK7CWqqjnX1ZuG0yD6wtTkxve-3sg3guky4L7G65sts2QYMYVdyVrmcimK1f2IfSSbFl4vzakTYCdaeHMrh5sP14m_csOdKciVlL7ClS4hV6fALiMYuyIa2zEmE0YueblarFTm6jCQ8cikMR3l4IuR_Eh8INEJ-T59frVzkIOStxSpoG9k99JUGOww6d7e4t6cuUgiSYY6b-"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">05</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Center Back</span>
+<h3 class="font-headline-md text-headline-md text-white">SIMON KOCH</h3>
+<p class="font-label-sm text-on-surface-variant/60">CB • 6'2" • 26 YRS</p>
+</div>
+</div>
+<!-- DEF 4 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-72 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Action portrait of a defender directing the team with a pointed finger. The focus is sharp on his face and hand, with the background stadium crowd blurred into a sea of dark and light. Golden hour lighting simulation with warm tones against the cool stadium blues. Premium sports photography style with deep blacks and vibrant highlights." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMloUX8vlMp26QJpHnmT0t9dGk2VuJl9uUoJUR1-pgpfYlfEjUWF-wt0IKdbwVEMcE2JT_j6V7hn0jpEwZ6g3lKG71vOW8GJQtvx93wr_YN_CIQlrV1LtvCC2nNC8F6hrTAAi-aAEa_-AF83fkMyc5dDRruQx-5VgAJsxgI__kaDlADosEfOl5TH87HBpddnhdwICkHxf4GKXUTbWpv4isKSC2bCM-u3LIBF51lt44gUGw-_m79avy"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">03</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Fullback</span>
+<h3 class="font-headline-md text-headline-md text-white">LUCA MORETTI</h3>
+<p class="font-label-sm text-on-surface-variant/60">LB • 5'11" • 29 YRS</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Midfielders -->
+<section>
+<div class="flex items-center gap-4 mb-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary">MIDFIELDERS</h2>
+<div class="h-px flex-grow bg-gradient-to-r from-primary/30 to-transparent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- MID 1 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-80 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A midfield maestro controlling the ball with elegant touch. The lighting is a focused spotlight from above, making the gold detailing on his kit shimmer. The dark background emphasizes the precision and focus of the player. Minimalist high-end sports aesthetics with sophisticated depth and atmospheric fog." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaSxrjyw4azh2zQx1L9FJwE29sBaekGOqUGGouYM2AQtH8HmKxfg6dgtteG8BbwIyHKPqaCOGlLimWtxyDDfzYX1UUya_3xCjXnTFR8Fa079aq2xFKm2NNcsMlHLUBmWwIXONOGtlgOBlXamtBlqqg1O789-tEzTyeyVf4x1BEMcminUBnT07tvcBd8OPQasEwWm1qwweY0gnHY0i72Gxs3hFmrzGMXYF1Sd_Zciijnqqao7hInyQt"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">08</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Playmaker</span>
+<h3 class="font-headline-md text-headline-md text-white">JULIAN SAGE</h3>
+<p class="font-label-sm text-on-surface-variant/60">CM • 5'9" • 27 YRS</p>
+</div>
+</div>
+<!-- MID 2 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-80 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A defensive midfielder battling for possession in a high-intensity mid-air challenge. Muscles are tensed, showing the physical peak of the athlete. Cinematic stadium atmosphere with artificial light flare and deep shadows. The color story is obsidian, charcoal, and warm metallic gold, reflecting a luxury sports brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLMOSu5KlmJDnMcZrYYHBPvKvy4zk_3lKKzUWj3BR7fb-NCVzFNOlJ5n_WTahEMnu1n3wGtGWtbtKsgLYmIFMjGYhv184i0AlZM2O2c1_ClEVJJZliUfBV4kTB5oCSYI3Jhzw_72ovp1TLk6o42f2kCD23DRz3CS-tzfIRcZEuqmM5sSDpPHyOU-Ns6RDT3qGtZqw85z7gGF07Xnehp-qYEYmbsJr4Ejpfheu9_P0aoclEv2sh-PrE"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">06</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Anchor</span>
+<h3 class="font-headline-md text-headline-md text-white">VIKTOR DRAGOS</h3>
+<p class="font-label-sm text-on-surface-variant/60">CDM • 6'1" • 30 YRS</p>
+</div>
+</div>
+<!-- MID 3 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-80 w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="An attacking midfielder celebrating after a successful assist, with a joyful expression and open arms. Warm stadium floodlighting creates a glow around the player, contrasting with the dark night sky. High-contrast photography style with rich textures in the kit fabric and grass surface. Modern, prestigious media aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxK04HqfDaK9NV576dIf2YOXBcIA9Xuxg6i438D6y3B0IQEjA1BNP_VRG0mk4liDqd1tEnyZYKCVQpHd3o316VfZvImmUO-u4BCd3VHsjkMI7Rp78l1Ox0NZ8n6k29pDONuapdUFXZ5JZfCyYlGwBXd0hbUUXeJ6v5T7mAd-_6IvmNOopq07jFvFEo8x_CWieX91Y1qEbXao8_MdF7_AFf9uEp5dk_NJIB61fVfwV5Z0pPnKSdzPb1"/>
+<div class="absolute top-4 right-4 font-headline-xl text-headline-xl opacity-20 text-white group-hover:opacity-100 group-hover:text-primary transition-all">10</div>
+</div>
+<div class="p-stack-md relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Creative</span>
+<h3 class="font-headline-md text-headline-md text-white">XAVIER BLANC</h3>
+<p class="font-label-sm text-on-surface-variant/60">CAM • 5'10" • 23 YRS</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Forwards -->
+<section>
+<div class="flex items-center gap-4 mb-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-primary">FORWARDS</h2>
+<div class="h-px flex-grow bg-gradient-to-r from-primary/30 to-transparent"></div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-gutter">
+<!-- FWD 1 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-[500px] w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A superstar striker captured mid-shot, with incredible power and focus. The ball is blurred as it leaves his foot. Dramatic stadium rim lighting highlights his silhouette. The overall aesthetic is aggressive yet sophisticated, using dark tones and golden accents to represent victory and elite performance." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDKp1aYDDQnzbUy_z7PMRvqCOcajTAo9Y62hSJtvPeVGbnXgWc-TJ7StR7_9lKHtNMBiOJ2XrvxsPov8fTDqXLql1_EBMOn757WqFOw-W6b_38Cn8yjFUbm_n4edF4BJM2QLYENNvz6zBv29mPAQnephs3d2Fk2HLZpsmdjxnruufBlKQvIBbpEH3UYQJpGutEKL0y6JZQ-nb_76o5qlZdf08lq83GQz8OmuyGtC6J3Hc0PKOmd2Gkw"/>
+<div class="absolute top-6 right-6 font-display-lg text-headline-xl opacity-10 text-white group-hover:opacity-40 group-hover:text-primary transition-all">07</div>
+</div>
+<div class="p-stack-lg relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Star Forward</span>
+<h3 class="font-headline-xl text-headline-xl text-white">ALESSANDRO VILLA</h3>
+<p class="font-label-sm text-on-surface-variant/60">ST • 6'0" • 26 YRS</p>
+</div>
+</div>
+<!-- FWD 2 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-[500px] w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="Action photo of a clinical finisher celebrating a goal with a knee slide on the turf. Bits of grass and dew fly into the air. The stadium floodlights create a cinematic bokeh effect in the dark background. Luxury sports photography with a focus on emotion and high-stakes drama. Palette of gold, black, and deep navy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPIQqWdYXtD9gggQf3PhxdaJ7HrA6ShOztdVQMMt0y5Gv7_yBNS54SffLQwiXq-LVYdFveaHJ58yOT0sDK8KoGumpxcDLFcota33MeOoepKRwxRq1J0JpLxIV7op0wjr0yhqWsP8DuLtdytSrv868i4cabFagWW6hOE21Qn9rUuwGZrMwIV24ziXMoMe3-vZmE7tu96RVDl-0-dbvmnaYK84nDgsV-ghqs1ae_7oOzURsqCtnQL_Tu"/>
+<div class="absolute top-6 right-6 font-display-lg text-headline-xl opacity-10 text-white group-hover:opacity-40 group-hover:text-primary transition-all">09</div>
+</div>
+<div class="p-stack-lg relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Striker</span>
+<h3 class="font-headline-xl text-headline-xl text-white">KENJI SATO</h3>
+<p class="font-label-sm text-on-surface-variant/60">ST • 6'1" • 24 YRS</p>
+</div>
+</div>
+<!-- FWD 3 -->
+<div class="glass-card group relative rounded-xl overflow-hidden transition-all duration-500 hover:scale-[1.02] hover:border-primary/50">
+<div class="player-img-container relative h-[500px] w-full">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700" data-alt="A fast winger taking on a defender with a creative dribble. The composition is dynamic and diagonal, creating a sense of movement. Sharp focus on the player's boots and ball, with the rest of the dark stadium falling into a deep blur. Modern cinematic lighting with gold flares and dark atmospheric depth." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZJzbRuxirOv48ByBCQitEldcJXfWU4Km0qv4aQotzBOvgn7ZaOFx2flwtetS9W3QVcK8DHSHPaLywiPpVhM2qa70bnkOwhjcowyWbjucDEHq3tJCbSX65oIUsTsQ-35lMm6SCHuXpxnAXzvA0XxoBGEDBrgq1vFxQXDDtAytIZH_8kJcexkkh4TGkoYXhrgV3jMO1OS9qRmVesNR0K9fukUNz_7DiQjt3MxF1HxZLuG7j0_bOh3Ak"/>
+<div class="absolute top-6 right-6 font-display-lg text-headline-xl opacity-10 text-white group-hover:opacity-40 group-hover:text-primary transition-all">11</div>
+</div>
+<div class="p-stack-lg relative z-20">
+<span class="font-label-sm text-primary mb-1 block uppercase">Winger</span>
+<h3 class="font-headline-xl text-headline-xl text-white">MATEO SILVA</h3>
+<p class="font-label-sm text-on-surface-variant/60">LW • 5'8" • 22 YRS</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer / Sponsors -->
+<footer class="bg-surface-container-low border-t border-white/5 py-16 px-margin-mobile md:px-margin-desktop text-center">
+<div class="max-w-container-max mx-auto space-y-stack-lg">
+<div class="flex flex-wrap justify-center gap-12 opacity-30 grayscale contrast-125">
+<div class="h-8 w-24 bg-on-surface/50 rounded flex items-center justify-center font-headline-md text-headline-md">NIKE</div>
+<div class="h-8 w-24 bg-on-surface/50 rounded flex items-center justify-center font-headline-md text-headline-md">EMIRATES</div>
+<div class="h-8 w-24 bg-on-surface/50 rounded flex items-center justify-center font-headline-md text-headline-md">ORACLE</div>
+<div class="h-8 w-24 bg-on-surface/50 rounded flex items-center justify-center font-headline-md text-headline-md">ROLEX</div>
+</div>
+<div class="pt-8">
+<span class="font-headline-xl text-headline-xl tracking-widest text-primary/40 block mb-2">HFL</span>
+<p class="font-label-sm text-on-surface-variant/40">© 2024 HYPER FOOTBALL LEAGUE. ALL RIGHTS RESERVED.</p>
+</div>
+</div>
+</footer>
+<!-- Mobile Navigation Bar -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 backdrop-blur-2xl border-t border-white/10 flex justify-around items-center py-3 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="fixtures.html">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Fixtures</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="index.html#standings">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-sm text-label-sm">Table</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold gap-1 after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full transition-all duration-300 ease-in-out" href="teams.html">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Teams</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm">More</span>
+</a>
+</nav>
+<script>
+        // Subtle Parallax & Hover Interaction Script
+        document.addEventListener('mousemove', (e) => {
+            const glow = document.querySelector('.stadium-glow');
+            if (glow) {
+                const moveX = (e.clientX - window.innerWidth / 2) / 50;
+                const moveY = (e.clientY - window.innerHeight / 2) / 50;
+                glow.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            }
+        });
+
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(section);
+        });
+    </script>
+</body></html>

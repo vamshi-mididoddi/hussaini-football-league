@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Hussaini Football League | Season 2</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Shared Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary": "#ffd999",
+                    "on-primary-fixed": "#271900",
+                    "primary-fixed-dim": "#fabc41",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-primary-container": "#6a4a00",
+                    "surface-container-low": "#201b13",
+                    "background": "#05070B",
+                    "surface-container-lowest": "#120e06",
+                    "on-secondary": "#002f65",
+                    "surface-bright": "#3f382f",
+                    "tertiary-fixed": "#ffdbca",
+                    "on-tertiary": "#532200",
+                    "primary-container": "#f5b83d",
+                    "surface-container": "#241f16",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "tertiary": "#ffd6c1",
+                    "secondary-fixed-dim": "#abc7ff",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "primary-fixed": "#ffdea8",
+                    "on-error-container": "#ffdad6",
+                    "on-secondary-fixed": "#001b3f",
+                    "on-surface": "#ece1d3",
+                    "on-error": "#690005",
+                    "inverse-primary": "#7c5800",
+                    "surface-variant": "#3a342b",
+                    "on-primary": "#422d00",
+                    "inverse-on-surface": "#363026",
+                    "secondary-container": "#046dd9",
+                    "outline-variant": "#504535",
+                    "surface-container-highest": "#3a342b",
+                    "secondary": "#abc7ff",
+                    "outline": "#9c8f7b",
+                    "error-container": "#93000a",
+                    "surface": "#17130b",
+                    "secondary-fixed": "#d7e3ff",
+                    "on-surface-variant": "#d4c4ae",
+                    "inverse-surface": "#ece1d3",
+                    "on-tertiary-container": "#843a00",
+                    "surface-dim": "#17130b",
+                    "on-background": "#ece1d3",
+                    "error": "#ffb4ab",
+                    "on-tertiary-fixed": "#331200",
+                    "surface-container-high": "#2f2920",
+                    "tertiary-container": "#ffb084",
+                    "surface-tint": "#fabc41",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "on-secondary-container": "#f2f4ff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "stack-lg": "32px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "section-gap": "80px",
+                    "margin-desktop": "48px",
+                    "stack-md": "16px",
+                    "stack-sm": "8px"
+            },
+            "fontFamily": {
+                    "body-md": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "headline-md": ["Bebas Neue"],
+                    "display-lg": ["Bebas Neue"],
+                    "display-lg-mobile": ["Bebas Neue"],
+                    "label-bold": ["Inter"],
+                    "headline-xl": ["Bebas Neue"],
+                    "label-sm": ["Inter"],
+                    "headline-lg": ["Bebas Neue"]
+            },
+            "fontSize": {
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "display-lg": ["80px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "48px", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-xl": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "36px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #05070B;
+            color: #ece1d3;
+            overflow-x: hidden;
+        }
+
+        .stadium-glow {
+            background: radial-gradient(circle at top center, rgba(250, 188, 65, 0.08) 0%, transparent 70%);
+        }
+
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .vs-marker {
+            text-shadow: 0 0 20px rgba(250, 188, 65, 0.5);
+        }
+
+        /* Hide scrollbars but keep functionality */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(250, 188, 65, 0.1), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+    </style>
+<script>
+/* HFL preview: serve the layout that matches the viewport. Add ?full to any URL to opt out. */
+(function () {
+  try {
+    if (location.search.indexOf('full') > -1) return;
+    var narrow = window.matchMedia('(max-width: 767px)').matches;
+    var f = location.pathname.split('/').pop() || 'index.html';
+    if (narrow) { location.replace('m/' + f + location.hash); }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="font-body-md text-body-md antialiased">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-outline-variant/30 shadow-lg">
+<div class="flex justify-between items-center px-margin-desktop h-16 max-w-container-max mx-auto">
+<div class="flex items-center gap-8">
+<a class="font-headline-md text-headline-md text-primary tracking-tighter" href="index.html">HFL</a>
+<div class="hidden lg:flex items-center gap-6">
+<a class="font-body-md text-label-sm uppercase tracking-wider text-primary font-bold border-b-2 border-primary pb-1" href="index.html">Home</a>
+<a class="font-body-md text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="fixtures.html">Fixtures</a>
+<a class="font-body-md text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="index.html#standings">Standings</a>
+<a class="font-body-md text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="teams.html">Teams</a>
+<a class="font-body-md text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="sponsors.html">Sponsors</a>
+<a class="font-body-md text-label-sm uppercase tracking-wider text-on-surface-variant hover:text-primary transition-colors duration-300" href="gallery.html">News</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-4 py-2 bg-primary-container/10 border border-primary/30 rounded-full text-primary font-label-bold hover:bg-primary-container/20 transition-all active:scale-95">
+<span class="material-symbols-outlined text-[20px]">sensors</span>
+                    Live Scores
+                </button>
+</div>
+</div>
+</nav>
+<!-- Hero Section -->
+<header class="relative min-h-screen flex flex-col items-center justify-center pt-16 overflow-hidden stadium-glow">
+<!-- Stadium Background Overlay -->
+<div class="absolute inset-0 z-0">
+<div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent z-10"></div>
+<div class="w-full h-full bg-cover bg-center opacity-40 scale-105" data-alt="A cinematic, low-angle photograph of a massive football stadium at night under bright white floodlights. Thick atmospheric fog and lens flares create a dramatic, high-stakes championship mood. The pitch is pristine green, and the overall color grade is deep blue and dark charcoal with intense golden highlights." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDjf8PbaecLC9qMNWA94qGNps-_itNlgeQtOBO0PMoLHg7dlUTf910fDp6CImV4QNgwbFQsjXpg6349t2IE-GMjjhYd0UmeMEG4vFUINXYq9BdHP8puOJFVmXfI4tLZHDMFkLCDRA02ZDvOz9iHrEkl4JNrsJ1MZVBJo2M8KurbbzAlDptde4GYKPxIQ39-UJd3JF09hDaevbfeoV4thujpctU57FoqsyCfYVoeEUICoOGMeJTBmyXG')"></div>
+</div>
+<!-- Hero Content -->
+<div class="relative z-20 text-center px-4 max-w-4xl mx-auto">
+<p class="font-label-bold text-primary tracking-[0.3em] uppercase mb-4 opacity-80">Hussaini Football League</p>
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg leading-none mb-2">SEASON 2</h1>
+<h2 class="font-headline-xl text-primary italic tracking-tight mb-8">THE BATTLE CONTINUES</h2>
+<div class="flex flex-wrap justify-center gap-stack-md">
+<button class="px-8 py-3 bg-primary text-on-primary-fixed font-label-bold rounded-full shadow-[0_0_20px_rgba(250,188,65,0.4)] hover:scale-105 transition-transform">VIEW FIXTURES</button>
+<button class="px-8 py-3 bg-transparent border border-white/20 text-white font-label-bold rounded-full hover:bg-white/5 transition-all">EXPLORE TEAMS</button>
+</div>
+</div>
+<!-- Countdown Timer -->
+<div class="relative z-20 mt-16 glass-card p-6 rounded-2xl flex gap-8 md:gap-12 text-center">
+<div>
+<span class="block font-headline-lg text-primary">18</span>
+<span class="font-label-sm uppercase tracking-widest text-on-surface-variant">Days</span>
+</div>
+<div>
+<span class="block font-headline-lg text-primary">06</span>
+<span class="font-label-sm uppercase tracking-widest text-on-surface-variant">Hrs</span>
+</div>
+<div>
+<span class="block font-headline-lg text-primary">32</span>
+<span class="font-label-sm uppercase tracking-widest text-on-surface-variant">Mins</span>
+</div>
+<div>
+<span class="block font-headline-lg text-primary">45</span>
+<span class="font-label-sm uppercase tracking-widest text-on-surface-variant">Secs</span>
+</div>
+</div>
+<!-- Sponsor Strip -->
+<div class="relative z-20 w-full mt-16 border-t border-b border-white/5 bg-background/40 backdrop-blur-sm py-8 overflow-hidden">
+<div class="max-w-container-max mx-auto px-margin-desktop flex items-center justify-between gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-700 overflow-x-auto no-scrollbar">
+<img class="h-8 w-auto flex-shrink-0" data-alt="A clean, minimalist vector logo of a global sportswear brand, rendered in crisp white on a transparent background, perfect for a high-end sports sponsorship bar." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6NBaPhKESdvJE46WXmJvIUyfbqlY6v6V7K8emSIoORQEyWdjcXYsgPhy9wmpPKz-wGbPblY3-ME0SETQ8sbJv7M4oMxIhTo6XdcvTPeB47ps4tTQvwXwrjElAe35lRdO0LkTYGdWAuj7LknnKB5tvGsh4XGZecaeRlwThMia2ct6itlB5ZAUaw6wH0ChiPjohoj_kzlkFQ5h7x3PFG7le5xHdUPDeYYaVZr3P0X2W895x--kkoY02"/>
+<img class="h-8 w-auto flex-shrink-0" data-alt="A iconic high-performance athletic footwear brand logo in solid white, symbolizing speed and excellence, suitable for a professional league sponsorship section." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAGw6eCo62_qy22FKNv0CJzkiqkA-I8Q7TPgO5yG1I4J008O_kvTWrsDNznh5kXV8rc5lDrw4CcHYQEJV_cPrS7p1ZG7Uo9xusENjdfDplaf5MHj92iOcawKTZZ11DMftq0Z2Lrrj8DNOTN8CisW3da4roTDDyqQh6jho5yD_SBRCjwoxjYJ81QDkitB3orRiUG38gr9SsoKRhZ_YgCucMI78pwTDFD8KONg5v0yAEJ39QzO6r9JP7V"/>
+<img class="h-8 w-auto flex-shrink-0" data-alt="A classic, globally recognized beverage brand logo in white, with flowing script typography that conveys heritage and energy." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCjOhJA9SwXJFE3jfgPPrAmZY9zEm3zkkO7QhdcFsFT56oZAt4bj_s2DaCQtXXihNkqnaOMAJ-MreH9t6oGmLPMBpT_XJbA7iN-tvl3quHETZckPrZI5iVJta_MPAdDBB9IdJJ4CQlAWZI3mb1FOMtTbU6DFOFSVSZR-AQSoH3zw8uknr_xYq-3khb3lYD0paOwBb_Ld-beQbP5UBWaJ_BoPpbiYhAt9YIyN-SwDy-4rfShix5d7L9"/>
+<img class="h-10 w-auto flex-shrink-0" data-alt="A leading sports drink brand logo in white, featuring a bold 'G' and a lightning bolt symbol representing hydration and athletic fuel." src="https://lh3.googleusercontent.com/aida-public/AB6AXuClSBXNv5SC5LKUIIyqhJBoV1OddZNtPNczDyM4zL7F03hIgTyidvREl8gPEE9P06MzQk2bvs1bbQpI-y2robS8x7jFOlAyMVHl9IsewLyV_WHW-8RmAIqxHopgy_Jrr36pX6yEODFPMWwaKltlwAWm3iFopBZobQmqqoaJ2qpB-H9oespMkawvxHsE-BF763HzSbpcIOioNc9wV7cVAYT9Qnkz0jZvSYYE5hE-BdEjQuMiMtBHytks"/>
+<a class="font-label-sm text-primary uppercase whitespace-nowrap border-b border-primary/30 pb-0.5" href="sponsors.html">View All Sponsors →</a>
+</div>
+</div>
+</header>
+<!-- Main Content Section -->
+<main class="max-w-container-max mx-auto px-margin-desktop py-section-gap">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter">
+<!-- Upcoming Fixtures (4 Cols) -->
+<section class="lg:col-span-4 space-y-stack-md">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-white uppercase tracking-wider">Upcoming Fixtures</h3>
+<a class="font-label-sm text-primary" href="fixtures.html">VIEW ALL →</a>
+</div>
+<div class="space-y-4">
+<!-- Fixture Card -->
+<div class="glass-card p-4 rounded-xl border-l-4 border-primary/20 hover:border-primary transition-all cursor-pointer group">
+<div class="flex items-center justify-between gap-4">
+<div class="flex flex-col items-center gap-1 w-16">
+<img class="w-10 h-10 object-contain" data-alt="A vibrant, stylized shield-shaped football team logo featuring a blue viking helmet, aggressive and modern digital illustration style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCrl7sq--4oIrPuvCHuVGGG5AhY7SUk18l3HkPUBBAwvpLF7oD_Ihk6iA43eYeCp4juQwNFiiLfY9lRJT1ZMZVNv6QuxWEIQARUZZYEcZVylsW7dnP4cniHot1cgGwrb59g3noK_wusKnf3LMPaThRsPKPAtO823F3a0GL-cQGxKqTmMQlpTKcx-fYfH4wqcV0A-a-3KlFfYfJkl6w-gVNRLpTZBKUpwz43V27d5BkaMJPlKem9-dka"/>
+<span class="font-label-sm text-[10px] text-center uppercase">Globe Warriors</span>
+</div>
+<div class="text-center">
+<span class="font-headline-md text-white/50 group-hover:text-primary transition-colors">VS</span>
+<div class="mt-1 font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                    25 MAY
+                                </div>
+</div>
+<div class="flex flex-col items-center gap-1 w-16">
+<img class="w-10 h-10 object-contain" data-alt="A dynamic football team crest showing a purple knight in armor, sleek lines and glowing highlights in a high-quality sports graphic style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDQLccEGnJJ2iI-x1kSXHW3hg7Rj8rrelOa72As6lEAZlE8n4IDB6s9f-3fzL4bc8Zzy3tZj9X0n0M61wShmSpFNTUmvCsBQB4rpYxEwFXQka2TZOL04jHt7A3Xq2bKHdxDwlJ9Bd73c06IPxNaNNrHX-juYh7UySsOJh5nOV_bWEjqVYn6zxWcNbWPWFZDquAMhJJy6cDIKDpmD-Gpl_qHyQpYSqCBcRUPRye3g9ze1bXudbhuJSeJ"/>
+<span class="font-label-sm text-[10px] text-center uppercase">Imperial Knights</span>
+</div>
+</div>
+</div>
+<!-- Fixture Card 2 -->
+<div class="glass-card p-4 rounded-xl border-l-4 border-transparent hover:border-primary transition-all cursor-pointer group">
+<div class="flex items-center justify-between gap-4">
+<div class="flex flex-col items-center gap-1 w-16">
+<img class="w-10 h-10 object-contain" data-alt="A striking sports logo of a golden bearded king wearing a crown, detailed line work and royal gold aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwHsJtTIu0tJlnZhF8ByebZEvmvLjgYnDAVS_YerbY81RRhjhj3c2wgpm4hXgfW6HlXygwIYYPnNfxWHe6ZfyRVihbDobPmbMa2ynDvHY43CpC_sK3_rp2SGQuCeClLA1wWKNLFwoLtbruaXaTOWIj7wIrhOFARFvOF1F9tLoJSpkB7Pa5TGzOnUDgXUFBY9OrUDCO81KzfarfhBN0vJkvl8_cGGrpZaOzUg8K-homE43uqu77CDxN"/>
+<span class="font-label-sm text-[10px] text-center uppercase">Kothari Sparks</span>
+</div>
+<div class="text-center">
+<span class="font-headline-md text-white/50 group-hover:text-primary transition-colors">VS</span>
+<div class="mt-1 font-label-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span>
+                                    26 MAY
+                                </div>
+</div>
+<div class="flex flex-col items-center gap-1 w-16">
+<img class="w-10 h-10 object-contain" data-alt="A powerful team emblem featuring a phoenix rising from flames, fiery orange and red colors with sharp modern typography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkeK9tONOw431iQX9TdBmY6v48elv0KQ1ZtQRVtxrHylk9ccgLAX2I_8QwpYOsxb52kgs_m0ZhvPLeoVP6JJWEZonHXwI2HaFmpDzVT0xLtnivAQDnFanDaBv3rG0x_euw9LcgfCnMVEJQzhoyjbH6VfqYESASQ8gZR-uzC7RD0-WPCTpluGOjYYUbOByPzM_ET5YeAofT4ScUmv2EY208Yuor2NdAeIXJGw9q_NjDU4HpjwdaqKWd"/>
+<span class="font-label-sm text-[10px] text-center uppercase">Texal Phoenix</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 glass-card rounded-xl font-label-bold text-on-surface-variant hover:text-white transition-colors">VIEW FULL SCHEDULE</button>
+</div>
+</section>
+<!-- League Table (5 Cols) -->
+<section id="standings" class="lg:col-span-5 space-y-stack-md scroll-mt-24">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-white uppercase tracking-wider">League Standings</h3>
+<a class="font-label-sm text-primary" href="index.html#standings">FULL TABLE →</a>
+</div>
+<div class="glass-card rounded-2xl overflow-hidden border border-white/5">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-white/5 font-label-bold text-on-surface-variant text-[10px] uppercase tracking-widest border-b border-white/10">
+<th class="py-4 px-6">Pos</th>
+<th class="py-4 px-2">Team</th>
+<th class="py-4 px-2 text-center">P</th>
+<th class="py-4 px-2 text-center">W</th>
+<th class="py-4 px-2 text-center">GD</th>
+<th class="py-4 px-6 text-right">Pts</th>
+</tr>
+</thead>
+<tbody class="font-label-sm">
+<tr class="group hover:bg-white/5 transition-colors border-b border-white/5">
+<td class="py-4 px-6"><span class="w-6 h-6 flex items-center justify-center bg-primary/20 text-primary rounded font-bold">1</span></td>
+<td class="py-4 px-2 flex items-center gap-3">
+<img class="w-6 h-6" data-alt="Small team icon, blue warrior helmet." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDBP3sucVVOlI0EqaosPDs4Pt9DIs5GycTTYnoRAilNTUHQ7bwfPYIihfA5tKDZ-K2IpFitblKALUxPuzoPqCTi_Z2sO-iXnKsYGe8nsYZmUIM6x93H5erdNJnfGmZDIyInLjBdARDg__4LcuApYGL4JEn-BnuwT5ZMpF8BI0JfNk7oN8kr4anwEAV8Omz-hRu9pWBzTUVVcrKMO25bmsM9mxISwLf7-7Bny06Ua0O_id9hNkkR0v2A"/>
+<span class="font-bold text-white">Globe Warriors</span>
+</td>
+<td class="py-4 px-2 text-center">6</td>
+<td class="py-4 px-2 text-center">5</td>
+<td class="py-4 px-2 text-center text-primary">+10</td>
+<td class="py-4 px-6 text-right font-bold text-white">15</td>
+</tr>
+<tr class="group hover:bg-white/5 transition-colors border-b border-white/5">
+<td class="py-4 px-6"><span class="w-6 h-6 flex items-center justify-center bg-white/5 text-white/50 rounded font-bold">2</span></td>
+<td class="py-4 px-2 flex items-center gap-3">
+<img class="w-6 h-6" data-alt="Small team icon, golden spark." src="https://lh3.googleusercontent.com/aida-public/AB6AXuALlT-F9-V41ATeFTUmknm3pH2HlihUhbx42vXnM7W_Jz4EuaqPss3TSpMAZrGdLlCmRnwyvBILyjdEi5FZLtcVy5Tuk6hVBf5mRsExhZC7gnbAHtarqt2rksXivFN8tlKjN9dHMKEksLXd3qqVVDAhC7W4xPEKHx9Hpu3xFkKLd68NIA3QMlJg2Q-Ud6v4TN6is_PuDpyk99pamkcbf1uJOlM7h7wLXmoAl_coNJcmBvbkdH2glnn1"/>
+<span class="text-on-surface">Kothari Sparks</span>
+</td>
+<td class="py-4 px-2 text-center">6</td>
+<td class="py-4 px-2 text-center">4</td>
+<td class="py-4 px-2 text-center text-primary">+6</td>
+<td class="py-4 px-6 text-right font-bold text-white">13</td>
+</tr>
+<tr class="group hover:bg-white/5 transition-colors border-b border-white/5">
+<td class="py-4 px-6"><span class="w-6 h-6 flex items-center justify-center bg-white/5 text-white/50 rounded font-bold">3</span></td>
+<td class="py-4 px-2 flex items-center gap-3">
+<img class="w-6 h-6" data-alt="Small team icon, phoenix crest." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaXxOiF6_SmRu9X71ZzcLz5dWE9eLLPHbxTP3C8qihesFXjG-Q3OMz9KdY4Qh90uMO5PtiQvdpL1lrOY1JIzpv_US6w_d_1cfGBetEu9sgfWOYM8-FeeQTnhuuTRKnJ3xsuJAcaaIo7KXRycf47rzxRmltLKMWJWk5pcsxigSKsGcrWckN5STKV3Sfjzx9ePyi-vRl7kRF1f8Yi9IpZXjnWY7w3Fjf2fLm25uDrqGxdk0nOrVs4Fpj"/>
+<span class="text-on-surface">Texal Phoenix</span>
+</td>
+<td class="py-4 px-2 text-center">6</td>
+<td class="py-4 px-2 text-center">4</td>
+<td class="py-4 px-2 text-center text-primary">+4</td>
+<td class="py-4 px-6 text-right font-bold text-white">12</td>
+</tr>
+<tr class="group hover:bg-white/5 transition-colors">
+<td class="py-4 px-6"><span class="w-6 h-6 flex items-center justify-center bg-white/5 text-white/50 rounded font-bold">4</span></td>
+<td class="py-4 px-2 flex items-center gap-3">
+<img class="w-6 h-6" data-alt="Small team icon, purple knight." src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_l-fWjIyXjE6hOqc4rEMvFi7YPNCI3NPdUdx6_onRgGQ4YotxeG4IHjZNKGe9WMq8ag9klMXSGtg-RvEZcyVg5oouf_DuUER9vTukSsYwDNhtCLmxEISmOUu0Nw3wMbFWM2deXOqcB7fF4ESH4FMxXuw91BNveercneGTp_lQfWapCuW9oPCX-RpcndIyrL1_aBtLEe8-HaCu5F4FtgYztCPXYBNlF8D3v8bAX07Mm-ZVxpTki8-w"/>
+<span class="text-on-surface">Imperial Knights</span>
+</td>
+<td class="py-4 px-2 text-center">6</td>
+<td class="py-4 px-2 text-center">3</td>
+<td class="py-4 px-2 text-center text-primary">+2</td>
+<td class="py-4 px-6 text-right font-bold text-white">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Top Scorers (3 Cols) -->
+<section class="lg:col-span-3 space-y-stack-md">
+<div class="flex justify-between items-end mb-6">
+<h3 class="font-headline-md text-white uppercase tracking-wider">Top Scorers</h3>
+</div>
+<div class="space-y-3">
+<!-- Player Row -->
+<div class="glass-card p-3 rounded-xl flex items-center gap-4 group hover:bg-primary/5 transition-all">
+<div class="relative w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Professional sports headshot of a focused male football player with a short fade haircut, looking directly into the camera with high-contrast studio lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiSuPXKHY-0gjbwc5zTm_-gxScoAhNYb-Vdw92ycp7ULA3p9BeabydBR7Tw_PfwlclvcWdGgsmPBehgE0-BNBzTnS1YX30TAXciJH7bzXuOWSgyjg_WCrsDMXdrrn6EAvFix_FYWQmE7ThSp9ZiVjE6jHkjJs0ZBus-r3hgVxJIVua_7lnXIKX_4KRZqSFFGVcJpeBY4Q8Uqbeh3bOjXkxCFjRaRNs5QsDKu3qCsTevYFRvk4YAW3d"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-bold text-white group-hover:text-primary transition-colors">Hatim Rangoon</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">Globe Warriors</p>
+</div>
+<div class="text-right">
+<span class="block font-headline-md text-primary">7</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Goals</span>
+</div>
+</div>
+<!-- Player Row 2 -->
+<div class="glass-card p-3 rounded-xl flex items-center gap-4 group hover:bg-primary/5 transition-all">
+<div class="relative w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Professional sports headshot of a confident football player with athletic features, sharp lighting highlighting facial structure, against a dark background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAK3IE0WLEGl6445PCd1XoFv36tnbzcyjkiXyouJjGcuH39tqLrkopFXnHKiC92saPsVG_AX62hB1jjfG_NZbaaV55m5v2QRlWoulMB6itqRiQdr8Aw2KJTh0y-bJxAzi_hr6v_6LQe-B9FvfgZq4b2LLeCPDr5Eh13FrQudyEzA0oZpK2G1D5XYzRtu6wRH2BAZSTOqcMiD4cRP0RH8bZYgRNWdxHQujeywMM8ZkO2m8ie317LUKJQ"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-bold text-white group-hover:text-primary transition-colors">Mustafa Najmi</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">Kothari Sparks</p>
+</div>
+<div class="text-right">
+<span class="block font-headline-md text-primary">6</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Goals</span>
+</div>
+</div>
+<!-- Player Row 3 -->
+<div class="glass-card p-3 rounded-xl flex items-center gap-4 group hover:bg-primary/5 transition-all">
+<div class="relative w-12 h-12 rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="Sharp, cinematic headshot of an elite football player, intense gaze, atmospheric shadow, sleek modern aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBBYtc4xiZ7T9o-v5GvUWkNZTTk_rLHzvhB4n_rVin4hDrO-n65hjg6Up7fQHw1oxDC1N2Q-OD6GqA7f8_6HnDcg5Tb0C6O1ccH3lQSFSW8BrnVMql-K9N_ydpOuf4v5xgNb12N7rpd8Xm4HwNP0l6ywp5X6hvKHVggylSOsq9y1T7sk2kwaqbebPn8ChkYa_3r2CGbmQzrDQJ4UB-gR8VovtU0-a7D6pipkHzKZj-b9QZ_9NmDEF0"/>
+</div>
+<div class="flex-1">
+<h4 class="font-label-bold text-white group-hover:text-primary transition-colors">Murtaza Kakosiwala</h4>
+<p class="text-[10px] text-on-surface-variant uppercase">Texal Phoenix</p>
+</div>
+<div class="text-right">
+<span class="block font-headline-md text-primary">5</span>
+<span class="text-[10px] text-on-surface-variant uppercase">Goals</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- Teams Section (Carousel Style) -->
+<section class="mt-section-gap">
+<div class="flex justify-between items-end mb-8">
+<div>
+<p class="font-label-bold text-primary tracking-widest uppercase mb-2">The Challengers</p>
+<h3 class="font-headline-lg text-white uppercase tracking-wider">Meet Our Teams</h3>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="w-10 h-10 rounded-full border border-white/20 flex items-center justify-center hover:bg-white/10 transition-all">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-8 gap-gutter">
+<!-- Team Card Loop (Simplified for demo) -->
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-primary group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of a football crest, blue viking helmet with intricate detail." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyY88nMZRDM25hGsYWb1OrXgtVzdgFhYTEob3FsbP9os5lUhdFtpkYEQWAOPGvhX_BPNAGr-c-8ACM6RcFv7GwixGY54XFSxWRwZNpXVPV8xHhCzGC1kInATeg3lyKGNmlpeTMLf3LTQ_PW_dYP2KRWB6fM1bvmk4ix2cDeZDyL1vfCVTao0FpBdSAkktklHdcu_bk3dC7d0fvu7X61eMAmNO12C3mZL22Xfs3K3iqTHW4ACIzH0d5"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">Globe Warriors</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-[#9333ea] group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of a purple knight team logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBuBzNAjs-7_3vE7EnQJYeJLDk6RKDZmCak6tEVu1aXNIfmZsbOsIpEL32Wf3DmN8WGkAConHC4S3rbIsn942d8XCoNlhh_evFwzVRlyaRbxt0mREJtPd-GW-NduKJ4VKZKHk37AN5XIW_VxpD7Yh7l7HyG08_pPg2wpzrE6TupomCeyTDLuc2ktDkCOAWdUaIBjmo8VqGRH5ipmAaF9_ms7TD-Mpv9N4nwDRN8T4hWSM1VN48Bk7I"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">Imperial Knights</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-primary group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of a golden king mascot logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcNg8kJKWG4L8h2K0vz9rMVIT-OBiJv7xglSXUMMy7CMCe2D5agMVA6JzwKvaQ1FN5KVGHB4LdYdsEV2PtBH71njA20TuD7b4lN33xVLzfTjgJhFiCumfUzXrMyyNmcAw9TZ5glqXPpd_hTk-lus_4q0RnYNNEX7ryzYkBIkCnv8KE9rR7snjlYzs33LgwnyW0aKQ4ZbQVan3RDWwwq_Bh0Aid3tTrcidqfXB8hIv7csXNVsrYh21y"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">Kothari Sparks</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-[#3b82f6] group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of a blue charger bull team logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvi-kDrq8ZZBq_wEex4_RViY_DrNI0cpUmyP1gDKwK4Mi96XRG7F4LgHRX6VLbqiRpHSEOIhTkXC36ngvM0TsOxBVFAa8xcfEIQlL0RL81n3oosi9sP6TEpzyc0_j2fWxUAh1vyI6P998Om4jnS-S6nvEAlZ6i5q5ys1uqXs_o6Zvg6h1vvM49PmHgoRvoxZtN0ymxkoNVgwGu5uXnu6RLEEEpmPs-ujESgXh38Lp_LNtfv-GscL6y"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">NR Chargers</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-[#ef4444] group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of a red phoenix team logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLeXVMw49VDmxGoQCSpAUnoFA3YGmZj1OflK3m6ljawGm7GxY3XsDJfEJCn0gBbiVNjBdf9wWHkQf0eiQqW1Z3xXj-8UaiTZV78RcOBYYVOG09Nv5NVPe-RJAn7GRkpTsjGJoIznCexXRJZevCnh__tBTYuacq1LR-iISdGcwMXkdq7hQVSIsRJT04EjgJTa4k0xmVKraOWFdosiIqFjgg7MSDBqoeZK-qcKXsjVGYQzoIwGdIrgcA"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">Texal Phoenix</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-[#0ea5e9] group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of a blue panther team logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAT0fivHLiK4z6niDJW5-lLahv5t0uQqHu6D5cIBthBtMQu8dFwjGVhRL4ygFHLmHrP-ddtZzBsexGVHt4U6GpM52ehK49qI2oLu1o_7zOyqrI_8tH1YhVNBoFbSzN1XkDRgJ3i1cgHR-YB4QuX8J8C37vd24AniQqzAcPI1grUbNFzf5d000_CSflYs47p9iWKMCnWJSm4l4-cUqcuEhkLM-gGH3b2VkNQWiNl3noNtNZ3Ic6hbvNU"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">Paramount Predators</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-[#f97316] group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of an orange inferno fire logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBcbTFNPaIZbEbGK5s-ArbrDDqWSxwnYahqX5Ll2xjc4tn5RI7m9JPcONL0fpGatBTL0_wirj_7a2u593wg2RrrsYt8bs9g4XYNTyF_P1awwk1TInVwc3YL2ftGwWu1LxK_WmoCc5qFWpjnsTuCIHDEqXWYFn1o6GKw7vkMd_DfDvU3A1yEVgeMP8E3an0LGz9uIRHCxUOt28zE7uzpEjJhJfiYdqLZi83ouRDK_QT3lu4rTBsXz4sI"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">Jindal Infernos</span>
+</div>
+</div>
+<div class="group cursor-pointer">
+<div class="glass-card aspect-square rounded-2xl p-6 flex flex-col items-center justify-center gap-4 border-b-4 border-transparent group-hover:border-primary group-hover:scale-105 transition-all duration-300">
+<img class="w-16 h-16 object-contain" data-alt="High-resolution digital art of a striking football striker logo." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAVtDPT3Q87Cm2G6Mp_to_KfWCZUWsaG_Z5Snf7t3YJT_cLfiCL6jAsUBP0yWacS-EpU4VjVOK13KBZI2oTJBjBcl1gSoFmZdL-plNNTggFb5Pldznz00Tyil_KPFNze5jh6kQ001c3YI7cW756dLSMQfcAUB9E_YN1zKmWfRxwot4oxm_xxlxJohpBUipZDuqlPkoVAwk6agA6_aXf_DiI-9jlWUY4rOLrqhJ6uF1qjKLSEnezQX7P"/>
+<span class="font-label-bold text-[10px] text-center uppercase tracking-tighter">Perfect Strikers</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Overview -->
+<section class="mt-section-gap grid grid-cols-2 md:grid-cols-5 gap-stack-lg border-t border-b border-white/5 py-12">
+<div class="text-center group">
+<span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform">sports_soccer</span>
+<p class="font-headline-lg text-white">96</p>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Matches</p>
+</div>
+<div class="text-center group">
+<span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform">grade</span>
+<p class="font-headline-lg text-white">312</p>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Goals</p>
+</div>
+<div class="text-center group">
+<span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform">groups</span>
+<p class="font-headline-lg text-white">120+</p>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Players</p>
+</div>
+<div class="text-center group">
+<span class="material-symbols-outlined text-primary mb-2 block group-hover:scale-110 transition-transform">stadium</span>
+<p class="font-headline-lg text-white">50K+</p>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-widest">Fans</p>
+</div>
+<div class="text-center group col-span-2 md:col-span-1">
+<div class="bg-primary/10 border border-primary/20 rounded-xl py-4 px-2 hover:bg-primary/20 transition-all">
+<span class="material-symbols-outlined text-primary mb-1 block">military_tech</span>
+<p class="font-headline-lg text-primary">1</p>
+<p class="font-label-sm text-primary uppercase tracking-widest">Championship</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-surface-container-lowest border-t border-outline-variant">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-gutter px-margin-desktop py-stack-lg max-w-container-max mx-auto">
+<div class="col-span-1 md:col-span-2">
+<h2 class="font-headline-lg text-primary mb-4">Hussaini Football League</h2>
+<p class="text-on-surface-variant max-w-md">The premier amateur football competition bringing together the finest talent and most passionate supporters. Experience the thrill of the game in a stadium-quality environment.</p>
+<div class="flex gap-4 mt-8">
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">public</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+</a>
+<a class="w-10 h-10 rounded-full glass-card flex items-center justify-center hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</a>
+</div>
+</div>
+<div>
+<h4 class="font-label-bold text-white uppercase mb-6 tracking-widest">Quick Links</h4>
+<ul class="space-y-4 font-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-all" href="sponsors.html">Sponsor Portal</a></li>
+<li><a class="hover:text-primary transition-all" href="gallery.html">Media Center</a></li>
+<li><a class="hover:text-primary transition-all" href="#">Privacy Policy</a></li>
+<li><a class="hover:text-primary transition-all" href="#">Terms of Service</a></li>
+</ul>
+</div>
+<div>
+<h4 class="font-label-bold text-white uppercase mb-6 tracking-widest">Contact</h4>
+<ul class="space-y-4 font-body-md text-on-surface-variant">
+<li><a class="hover:text-primary transition-all" href="#">Contact Support</a></li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">location_on</span>
+                        HFL Stadium, Hyderabad
+                    </li>
+<li class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">mail</span>
+                        info@hfl.com
+                    </li>
+</ul>
+</div>
+</div>
+<div class="border-t border-white/5 py-8 text-center">
+<p class="text-label-sm text-on-surface-variant">© 2024 Hussaini Football League. All Rights Reserved.</p>
+</div>
+</footer>
+<!-- Mobile Bottom Navigation -->
+<div class="fixed bottom-0 w-full rounded-t-xl bg-surface-container-lowest/90 backdrop-blur-2xl border-t border-primary/20 shadow-[0_-4px_20px_rgba(250,188,65,0.1)] flex justify-around items-center h-20 pb-safe px-4 z-50 md:hidden">
+<a class="text-primary flex flex-col items-center gap-1 scale-110 duration-200" href="index.html">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-label-sm text-[10px]">Home</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim" href="fixtures.html">
+<span class="material-symbols-outlined">sports_soccer</span>
+<span class="font-label-sm text-[10px]">Fixtures</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim" href="teams.html">
+<span class="material-symbols-outlined">shield</span>
+<span class="font-label-sm text-[10px]">Teams</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim" href="index.html#standings">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-sm text-[10px]">Table</span>
+</a>
+<a class="text-on-surface-variant flex flex-col items-center gap-1 hover:text-primary-fixed-dim" href="#">
+<span class="material-symbols-outlined">more_horiz</span>
+<span class="font-label-sm text-[10px]">More</span>
+</a>
+</div>
+<!-- Floating Action Button (Mobile Only contextually) -->
+<!-- Suppressed based on desktop primary intent focus, but could be added if needed for 'Live Match' -->
+<script>
+        // Micro-interactions for Countdown
+        setInterval(() => {
+            const secs = document.querySelectorAll('span')[8]; // Simple targeting for demo
+            if(secs && secs.innerText) {
+                let current = parseInt(secs.innerText);
+                if(current > 0) secs.innerText = (current - 1).toString().padStart(2, '0');
+                else secs.innerText = "59";
+            }
+        }, 1000);
+
+        // Header parallax effect
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroBg = document.querySelector('header div div');
+            if(heroBg) heroBg.style.transform = `translateY(${scrolled * 0.3}px)`;
+        });
+    </script>
+</body></html>

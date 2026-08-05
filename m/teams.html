@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HFL Teams Directory | Elite Athletics</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary": "#422d00",
+                    "on-tertiary-fixed-variant": "#763300",
+                    "on-primary-container": "#6a4a00",
+                    "inverse-on-surface": "#363026",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#3a342b",
+                    "secondary": "#abc7ff",
+                    "on-secondary-container": "#f2f4ff",
+                    "on-surface": "#ece1d3",
+                    "on-primary-fixed": "#271900",
+                    "surface-container-high": "#2f2920",
+                    "tertiary-container": "#ffb084",
+                    "on-tertiary-fixed": "#331200",
+                    "on-primary-fixed-variant": "#5e4200",
+                    "error": "#ffb4ab",
+                    "surface": "#17130b",
+                    "on-error": "#690005",
+                    "tertiary": "#ffd6c1",
+                    "primary-fixed-dim": "#fabc41",
+                    "secondary-container": "#046dd9",
+                    "on-secondary": "#002f65",
+                    "inverse-primary": "#7c5800",
+                    "surface-dim": "#17130b",
+                    "primary-container": "#f5b83d",
+                    "surface-container-lowest": "#120e06",
+                    "secondary-fixed-dim": "#abc7ff",
+                    "outline": "#9c8f7b",
+                    "tertiary-fixed": "#ffdbca",
+                    "surface-bright": "#3f382f",
+                    "secondary-fixed": "#d7e3ff",
+                    "on-tertiary-container": "#843a00",
+                    "on-secondary-fixed": "#001b3f",
+                    "inverse-surface": "#ece1d3",
+                    "surface-container": "#241f16",
+                    "on-background": "#ece1d3",
+                    "surface-tint": "#fabc41",
+                    "on-surface-variant": "#d4c4ae",
+                    "error-container": "#93000a",
+                    "on-secondary-fixed-variant": "#00458e",
+                    "surface-container-low": "#201b13",
+                    "on-tertiary": "#532200",
+                    "tertiary-fixed-dim": "#ffb68e",
+                    "background": "#17130b",
+                    "primary": "#ffd999",
+                    "surface-container-highest": "#3a342b",
+                    "outline-variant": "#504535",
+                    "primary-fixed": "#ffdea8"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "stack-lg": "32px",
+                    "section-gap": "80px",
+                    "margin-desktop": "48px",
+                    "margin-mobile": "16px",
+                    "gutter": "24px",
+                    "container-max": "1280px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Bebas Neue"],
+                    "label-bold": ["Inter"],
+                    "headline-lg": ["Bebas Neue"],
+                    "display-lg-mobile": ["Bebas Neue"],
+                    "headline-xl": ["Bebas Neue"],
+                    "label-sm": ["Inter"],
+                    "body-lg": ["Inter"],
+                    "body-md": ["Inter"],
+                    "display-lg": ["Bebas Neue"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "label-bold": ["14px", {"lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "36px", "fontWeight": "400"}],
+                    "display-lg-mobile": ["48px", {"lineHeight": "48px", "fontWeight": "400"}],
+                    "headline-xl": ["40px", {"lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "fontWeight": "500"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "display-lg": ["80px", {"lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #05070B;
+            color: #ece1d3;
+            overflow-x: hidden;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .stadium-glow {
+            background: radial-gradient(circle at 50% -20%, rgba(250, 188, 65, 0.15) 0%, rgba(5, 7, 11, 0) 60%);
+        }
+        .glass-card {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            border-color: #ffd999;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 30px -10px rgba(250, 188, 65, 0.2);
+        }
+        .gold-shimmer {
+            position: relative;
+            overflow: hidden;
+        }
+        .gold-shimmer::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 217, 153, 0.1), transparent);
+            transform: rotate(45deg);
+            animation: shimmer 6s infinite;
+        }
+        @keyframes shimmer {
+            0% { transform: translate(-100%, -100%) rotate(45deg); }
+            100% { transform: translate(100%, 100%) rotate(45deg); }
+        }
+    </style>
+<script>
+/* HFL preview: serve the layout that matches the viewport. Add ?full to any URL to opt out. */
+(function () {
+  try {
+    if (location.search.indexOf('full') > -1) return;
+    var narrow = window.matchMedia('(max-width: 767px)').matches;
+    var f = location.pathname.split('/').pop() || 'index.html';
+    if (!narrow) { location.replace('../' + f + location.hash); }
+  } catch (e) {}
+})();
+</script>
+</head>
+<body class="font-body-md text-body-md antialiased">
+<!-- Top App Bar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-white/5 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-16">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-headline-xl">sports_soccer</span>
+<span class="font-headline-xl text-headline-xl tracking-widest text-primary dark:text-primary">HFL</span>
+</div>
+<div class="hidden md:flex gap-8">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="fixtures.html">MATCHES</a>
+<a class="font-label-bold text-label-bold text-primary transition-colors" href="teams.html">TEAMS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary transition-colors" href="index.html#standings">STANDINGS</a>
+</div>
+<button class="bg-primary px-6 py-2 rounded-full text-on-primary font-label-bold text-label-bold hover:opacity-80 transition-opacity active:scale-95 duration-200">
+            WATCH LIVE
+        </button>
+</header>
+<main class="pt-32 pb-24 min-h-screen stadium-glow relative">
+<!-- Background Lighting Effect -->
+<div class="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-full pointer-events-none opacity-20">
+<div class="absolute top-0 left-1/4 w-px h-full bg-gradient-to-b from-primary to-transparent rotate-12"></div>
+<div class="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-primary to-transparent -rotate-12"></div>
+</div>
+<div class="max-w-container-max mx-auto px-margin-mobile md:px-margin-desktop relative z-10">
+<!-- Hero Header -->
+<div class="mb-12">
+<h1 class="font-display-lg text-display-lg-mobile md:text-display-lg text-on-surface mb-2">HFL TEAMS</h1>
+<p class="text-on-surface-variant max-w-xl font-body-lg text-body-lg">Explore the elite roster of the 2024 Championship. The world's most prestigious clubs, battling under the lights.</p>
+</div>
+<!-- Filters Section -->
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+<!-- Search Bar -->
+<div class="relative w-full md:w-96">
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-4 pl-12 pr-4 text-on-surface focus:ring-1 focus:ring-primary placeholder:text-on-surface-variant/40" placeholder="Search team names..." type="text"/>
+</div>
+<!-- Group Filter -->
+<div class="flex items-center gap-2 p-1 bg-surface-container-high rounded-xl">
+<button class="px-6 py-2 rounded-lg bg-primary text-on-primary font-label-bold text-label-bold">ALL TEAMS</button>
+<button class="px-6 py-2 rounded-lg text-on-surface-variant font-label-bold text-label-bold hover:text-on-surface transition-colors">GROUP A</button>
+<button class="px-6 py-2 rounded-lg text-on-surface-variant font-label-bold text-label-bold hover:text-on-surface transition-colors">GROUP B</button>
+</div>
+</div>
+<!-- Teams Grid (Bento style card distribution) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter">
+<!-- Team Card 1 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center gold-shimmer">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="A minimalist professional football club crest featuring a stylized golden lion and modern geometric shield, presented on a dark textured background with studio lighting and high-contrast gold highlights. The style is premium sports branding with clean lines and luxury finish." src="https://lh3.googleusercontent.com/aida-public/AB6AXuByQrcCCmy_otTP9ZDTSMbjp1NQBFpC7mMORGNgkh141mj2r8paQB34dxKK3IlXQybzhYKL3caMFj3DllrXbYaed1E2p-byZLLta5ISbhbSgTIMI8ig856513iBwJ6gmXg8WCOUAAhQFDSbdoVtfcEezuT92CXq-L7UdCCXUiZAxkPmMEN8PwoeGVdShq0u7JLTJieKem4hGE4tRwi09RFhztKYMbpByMyoVI3q6PfcUtsnvni0L0Lr"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-primary tracking-[0.2em] mb-2 block">GROUP A</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">TITAN UNITED</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">1st</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">24</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+<!-- Team Card 2 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="A sophisticated football team logo showcasing an abstract midnight-blue eagle with sharp, modern contours. The design is integrated with silver and chrome accents against a dark, moody background, resembling an elite sports franchise identity for a high-stakes professional league." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJZrqzzcpAGJEGAZ8rKTBSRpQA7pEI9nA8V_lMPpkoxGgr89nDLMQ3K8NVyBJoGrFoUcjenPBpJQcP8Zu0pY6jepmiA6DztpW7ShPN3GHLkOYj88BNR3A88ufKFupTNQ6JFtNfZurd_BQdXL_bIJtxrhOpqStU-Swb4gN2Oy8dbE7uKuaQnGt0Ywsyk7OxUBkesZUw5R5XsXWrMRIbxpOuL3F8cuV_TVdy-9hO5-6adNDcdq-9ap6H"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-on-surface-variant tracking-[0.2em] mb-2 block">GROUP B</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">NOVA CITY</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">3rd</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">19</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+<!-- Team Card 3 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="An elegant sports emblem featuring a stylized phoenix in vibrant orange and deep crimson, styled with minimalist, flowing lines. The crest is centered on a shield and set within a high-fidelity cinematic scene with volumetric lighting and subtle ember-like bokeh effects." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAhcLqy7cCqlENxKFAfHTnT_BLyUiKENBmlqi97fu0u89mWhM9G6bCVS0lvQOK-Y4MOXCQzSp5LNnKZQyYslb3mY8eCt22BHD4noPCCtbrSY-hgfAWNFIQlzmMl6kClARNrTvcXzOQhCFU0s8Jj9H8jOhIQUeiP2pZkRB2Hgbm06L89R0PrF3VkiUSEmDSo7d0ex4zz1dTwrLKbkYaUV9yAG09PbAlL2ARRuEqqKOQ22l-PEiSdmZxG"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-on-surface-variant tracking-[0.2em] mb-2 block">GROUP A</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">PHOENIX FC</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">5th</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">15</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+<!-- Team Card 4 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="A modern, high-end football club badge with a sleek metallic silver wolf head profile. The design uses sharp geometric patterns and is illuminated by cool blue stadium light, conveying a sense of speed, precision, and elite athletic power in a dark, atmospheric setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvzwyXtTmHuOQR6PA2Eg8FkIjZkOJNCpWWw5wn-gIG8QiQK5Lx3lG3wlQyaMOohRFoHCknXMLfMnYUDDOxO9nOyCZmNEpsg0aBAPz2tHG3MqgBHq2Q1_RHKvUDeuiw7YFmfwxeZ-Lsu4nr63MyxNyZuJOwwjCve1PoY11CFB4CRj4YWQYel9gaZTrBGARypCtOJDLb9YdNrznGBo0NN62tB39MHs5J1F8WAm6XBAHGohkkwRA8Z9Se"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-on-surface-variant tracking-[0.2em] mb-2 block">GROUP B</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">VALOR ATHLETIC</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">2nd</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">22</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+<!-- Team Card 5 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="An avant-garde sports logo representing an abstract lightning bolt through a minimal, circular emblem. The color palette consists of deep violets and electric neon blues, presented with a professional glassmorphism effect and soft glowing edges against a pitch-black canvas." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIo7QaStA9W8I-RSNqxZ0otIk8FCt4iakIVL19zxKAEjgzFc3EXqmRRc5WHt0Miyb2uSL_KPOB2JeguoJIe6QJmAHRZIESr7oc3C-w36im58Us0LhG8xHYPMLjcJpL7dY2BpVnqAuuShEeoJ2OsrxAkqw3ndMm6hcmy7RlsZ4wutdmGliaSKt9iv9xy7J9nRLRQoKsU-SwJAUZ3bUgheQBJkAPUBYmSXW-ANw7db7clfOr0iR7vfk6"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-on-surface-variant tracking-[0.2em] mb-2 block">GROUP A</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">BOLT SC</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">8th</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">10</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+<!-- Team Card 6 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="A prestigious football club crest featuring a stylized castle turret and crown in matte charcoal and emerald green. The design is heavy and authoritative, rendered in a luxury media style with subtle depth and 3D metallic textures that catch the light from the side." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8wajbk_9Oke0J--c9s9IFSziCIdYTJsnpr7VFLNKEe92wtP413xbFsu53Y4_ULkxfXMidgaqFvtbEbaY6_Np2_val80HrwVQ1Tus-a1u4ff0Y0hpL3etIE-kui7ox1vaNVmxV_RQNMukZq8Cqts4bNjyJ5ScA1sXhw--HDUA03N5860llyWs7zmo99OBSu351DRL-oMaeq2XBMvRTyKHOO0jFkUUgM6PFk9ox4RyK7IV3kBXgTNGB"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-on-surface-variant tracking-[0.2em] mb-2 block">GROUP B</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">CROWN UNITED</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">4th</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">17</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+<!-- Team Card 7 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="A minimalist professional sports logo of a soaring falcon in a futuristic style, using a palette of chrome silver and deep navy blue. The bird's wings are composed of sleek, aero-dynamic shards, presented with a high-fidelity digital gloss on a dark premium background." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQx63hzUpy3RZIggzLTBm0JxQyepJBbXPOB9zOQuB_Q6BOnTi7K8klyok40uFM4P7K7QLfPAAdqPtf3RYwNyT4iNUH6J5JxW89qqJ8_J2KQ4hdaye89rO9SL2FTs56gJrI05OxukB49VSkjvBAjFrr2k4C2CMr9a6-dJPTdF17VFnVZ9TqqhGwl6S0M94iPKecoDiMF-87SjC--ojJaV2N7G7tQYVb1Uq49bpD6pE-ovmoL6QT3g4f"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-on-surface-variant tracking-[0.2em] mb-2 block">GROUP A</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">FALCON FC</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">6th</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">14</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+<!-- Team Card 8 -->
+<div class="glass-card rounded-2xl p-8 flex flex-col items-center text-center">
+<div class="w-32 h-32 mb-6 flex items-center justify-center p-4 bg-surface-container-lowest rounded-full border border-white/5">
+<img class="w-full h-full object-contain" data-alt="A striking football emblem with an abstract mountain peak and rising sun, rendered in a palette of slate grey and bright gold. The design is modern and uplifting, utilizing a combination of flat design principles and cinematic lighting to create a prestigious look." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDnOz-v6qIDGhcZUsmcTm3cmwRqdkEgJT0y5-QPwhr5PxJPrRgvhRnNZ6MA0aoUaVqrs0ztXmBZLTZ3vKGbZj8QPMQ9mEpsFtTHirTBcIdXRvgwKZpAu2WMCSftpKQ1PvvQZQBnoPj5WxITN4n2gYK7Rh8md4PgBIpisYEgTd6OHzSVZRUKqpQKk0hyISL5BUcWKXq597E5tlZyIEDWWVdtVdigIEYB9k-X-GSpPHfRlbIYqMo9pm0G"/>
+</div>
+<div class="mb-6">
+<span class="font-label-bold text-label-sm text-on-surface-variant tracking-[0.2em] mb-2 block">GROUP B</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">SUMMIT SC</h3>
+</div>
+<div class="flex gap-4 mb-8">
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">7th</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Rank</div>
+</div>
+<div class="w-px h-10 bg-white/10"></div>
+<div class="text-center">
+<div class="font-headline-md text-headline-md text-on-surface">12</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant/60 uppercase">Points</div>
+</div>
+</div>
+<button class="w-full py-4 rounded-xl border border-white/20 text-on-surface font-label-bold text-label-bold hover:bg-white hover:text-black transition-all active:scale-95">VIEW SQUAD</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Mobile) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 rounded-t-xl bg-surface-container/80 dark:bg-surface-container/80 backdrop-blur-2xl border-t border-white/10 flex justify-around items-center py-3 pb-safe shadow-[0_-4px_20px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="index.html">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-sm text-label-sm">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="fixtures.html">
+<span class="material-symbols-outlined">calendar_month</span>
+<span class="font-label-sm text-label-sm">Fixtures</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="index.html#standings">
+<span class="material-symbols-outlined">leaderboard</span>
+<span class="font-label-sm text-label-sm">Table</span>
+</a>
+<a class="flex flex-col items-center justify-center text-primary font-bold gap-1 after:content-[''] after:w-1 after:h-1 after:bg-primary after:rounded-full transition-all duration-300 ease-in-out" href="teams.html">
+<span class="material-symbols-outlined">groups</span>
+<span class="font-label-sm text-label-sm">Teams</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant/60 gap-1 transition-all duration-300 ease-in-out hover:text-primary/80" href="#">
+<span class="material-symbols-outlined">menu</span>
+<span class="font-label-sm text-label-sm">More</span>
+</a>
+</nav>
+<script>
+        // Smooth scroll reveal or simple micro-interactions
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                // Potential for more complex JS animations here if needed
+            });
+        });
+    </script>
+</body></html>

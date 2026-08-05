@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>HFL - Elite Partner Network</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed-dim": "#ffb68e",
+                        "surface-container-lowest": "#120e06",
+                        "on-secondary": "#002f65",
+                        "inverse-primary": "#7c5800",
+                        "background": "#17130b",
+                        "on-primary-fixed": "#271900",
+                        "surface-bright": "#3f382f",
+                        "tertiary-fixed": "#ffdbca",
+                        "secondary-fixed-dim": "#abc7ff",
+                        "error": "#ffb4ab",
+                        "on-primary-fixed-variant": "#5e4200",
+                        "surface-container-highest": "#3a342b",
+                        "on-error": "#690005",
+                        "outline-variant": "#504535",
+                        "on-tertiary": "#532200",
+                        "inverse-surface": "#ece1d3",
+                        "on-secondary-fixed-variant": "#00458e",
+                        "surface": "#17130b",
+                        "on-secondary-container": "#f2f4ff",
+                        "surface-dim": "#17130b",
+                        "secondary-container": "#046dd9",
+                        "surface-container-high": "#2f2920",
+                        "surface-tint": "#fabc41",
+                        "primary-fixed": "#ffdea8",
+                        "on-surface-variant": "#d4c4ae",
+                        "on-error-container": "#ffdad6",
+                        "primary-fixed-dim": "#fabc41",
+                        "primary": "#ffd999",
+                        "error-container": "#93000a",
+                        "on-tertiary-container": "#843a00",
+                        "on-background": "#ece1d3",
+                        "surface-container": "#241f16",
+                        "on-primary-container": "#6a4a00",
+                        "tertiary": "#ffd6c1",
+                        "surface-variant": "#3a342b",
+                        "secondary": "#abc7ff",
+                        "surface-container-low": "#201b13",
+                        "primary-container": "#f5b83d",
+                        "outline": "#9c8f7b",
+                        "secondary-fixed": "#d7e3ff",
+                        "on-primary": "#422d00",
+                        "on-secondary-fixed": "#001b3f",
+                        "tertiary-container": "#ffb084",
+                        "on-tertiary-fixed": "#331200",
+                        "on-tertiary-fixed-variant": "#763300",
+                        "inverse-on-surface": "#363026",
+                        "on-surface": "#ece1d3"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-lg": "32px",
+                        "container-max": "1280px",
+                        "section-gap": "80px",
+                        "margin-desktop": "48px",
+                        "margin-mobile": "16px",
+                        "stack-md": "16px",
+                        "stack-sm": "8px",
+                        "gutter": "24px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Bebas Neue"],
+                        "headline-lg": ["Bebas Neue"],
+                        "label-bold": ["Inter"],
+                        "display-lg-mobile": ["Bebas Neue"],
+                        "body-lg": ["Inter"],
+                        "label-sm": ["Inter"],
+                        "body-md": ["Inter"],
+                        "display-lg": ["Bebas Neue"],
+                        "headline-xl": ["Bebas Neue"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "headline-lg": ["32px", { "lineHeight": "36px", "fontWeight": "400" }],
+                        "label-bold": ["14px", { "lineHeight": "20px", "letterSpacing": "0.1em", "fontWeight": "700" }],
+                        "display-lg-mobile": ["48px", { "lineHeight": "48px", "fontWeight": "400" }],
+                        "body-lg": ["18px", { "lineHeight": "28px", "fontWeight": "400" }],
+                        "label-sm": ["12px", { "lineHeight": "16px", "fontWeight": "500" }],
+                        "body-md": ["16px", { "lineHeight": "24px", "fontWeight": "400" }],
+                        "display-lg": ["80px", { "lineHeight": "80px", "letterSpacing": "0.02em", "fontWeight": "400" }],
+                        "headline-xl": ["40px", { "lineHeight": "44px", "letterSpacing": "0.03em", "fontWeight": "400" }]
+                    }
+                },
+            }
+        }
+    </script>
+</head>
+<body class="bg-background text-on-surface min-h-screen flex flex-col font-body-md overflow-x-hidden selection:bg-primary-container selection:text-on-primary-container">
+<!-- Atmospheric Glows -->
+<div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+<div class="absolute top-0 left-1/4 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px] mix-blend-screen transform -translate-y-1/2"></div>
+<div class="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-secondary/5 rounded-full blur-[100px] mix-blend-screen transform translate-y-1/3"></div>
+</div>
+<!-- TopNavBar -->
+<nav class="w-full sticky top-0 z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-outline-variant/20 shadow-2xl">
+<div class="flex justify-between items-center px-margin-desktop py-4 max-w-container-max mx-auto">
+<a class="font-headline-lg text-headline-lg tracking-tighter text-primary-fixed dark:text-primary-fixed scale-95 active:scale-90 transition-transform" href="#">
+                HFL
+            </a>
+<div class="hidden md:flex items-center gap-stack-lg">
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">TEAMS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">SQUAD</a>
+<a class="font-label-bold text-label-bold text-primary-fixed border-b-2 border-primary-fixed pb-1" href="#">SPONSORS</a>
+<a class="font-label-bold text-label-bold text-on-surface-variant hover:text-primary-fixed transition-colors" href="#">GALLERY</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary-fixed transition-colors scale-95 active:scale-90 transition-transform flex items-center justify-center p-2 rounded-full hover:bg-surface-container-highest/50 transition-all duration-300">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="bg-primary text-on-primary-fixed font-label-bold text-label-bold px-6 py-3 scale-95 active:scale-90 transition-transform uppercase">
+                    JOIN LEAGUE
+                </button>
+</div>
+</div>
+</nav>
+<main class="flex-grow w-full max-w-container-max mx-auto px-margin-desktop py-section-gap relative z-10 flex flex-col gap-section-gap">
+<!-- Header Section -->
+<header class="text-center flex flex-col items-center gap-stack-md relative">
+<div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-primary/20 rounded-full blur-[80px] -z-10"></div>
+<h1 class="font-display-lg text-display-lg text-on-surface uppercase tracking-tighter">Elite Partner <span class="text-primary-fixed">Network</span></h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto">
+                Aligning with global icons of performance and prestige. Our partners drive the evolution of night-match football.
+            </p>
+</header>
+<!-- Premium Partners Section -->
+<section class="flex flex-col gap-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase border-l-4 border-primary-fixed pl-4">Premium Partners</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
+<!-- Partner Card 1: Nike -->
+<div class="group relative bg-[#0D1117] border border-white/5 rounded-xl overflow-hidden flex flex-col justify-end min-h-[500px] transition-all duration-500 hover:border-primary/50 hover:scale-[1.02]">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" data-alt="Cinematic high-contrast shot of a sleek, black athletic cleat resting on artificial turf under dramatic stadium spotlighting. The lighting is moody, favoring deep blacks and pristine whites with a subtle golden glow illuminating the texture of the shoe. Luxury sports aesthetic, sharp focus, 8k resolution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCy3EhvXX6FFOoUAfJ8YHGs7XK-ZC5edeDwhxZ977MB8zmW9ixgshEgbuTa-HDTIp2W_OvbvF4aSE7dbNenXIxPhseoHIhLgKP9AVix5TBjk06P-hkBZfSSxenTj7O7jUOQipczcQrVWtaCGBqZhJl92qZqI4N8L5I2-7x_EzNglIyQhLpHjHPZrqKzJnJAKaEh_dEXugxgbXbKuECEV_EBkUybKjMWBd1P7WOsw_vDjEH5nib-hnTc"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#05070B] via-[#05070B]/80 to-transparent"></div>
+</div>
+<div class="relative z-10 p-stack-lg flex flex-col gap-stack-md">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center border border-white/10 shadow-[0_0_30px_rgba(255,217,153,0.1)] group-hover:shadow-[0_0_40px_rgba(255,217,153,0.2)] transition-shadow">
+<span class="material-symbols-outlined text-4xl text-on-surface">directions_run</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary-fixed uppercase tracking-tight">Nike</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-md">
+                                Official kit provider and innovation partner. Engineering the armor of champions for high-stakes night matches under the lights.
+                            </p>
+</div>
+</div>
+</div>
+<!-- Partner Card 2: Adidas -->
+<div class="group relative bg-[#0D1117] border border-white/5 rounded-xl overflow-hidden flex flex-col justify-end min-h-[500px] transition-all duration-500 hover:border-primary/50 hover:scale-[1.02]">
+<div class="absolute inset-0 z-0">
+<img class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" data-alt="Dramatic close-up of a premium, textured football resting on dark, wet asphalt, reflecting intense overhead stadium lights. The scene is cinematic and minimal, utilizing a dark mode palette with stark contrasts and a subtle cool blue accent light. Hyper-realistic, professional sports photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCWATZ8XVQu2kyXC8Sj2lLoUFIIgZ6jXokXnFY-ONIT030-tmCM2YpDvZci7ju2t8Zz7Pr8IKm1unVBJytEOHHH8oZKmB9rJhrfD7OL190V4VUDtfwmi7tDHNof9ley7xxd7fPo5MFZGzpy1oliTUEpnI9TQAj__W2z7MUM2_UsOy9BpyhGk98YxGrVqnxRTRdanZJV-2A1nUleJi3PJ6QsMLMejWrD4ZRlgbjTJd2RDVScpyImGPim"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#05070B] via-[#05070B]/80 to-transparent"></div>
+</div>
+<div class="relative z-10 p-stack-lg flex flex-col gap-stack-md">
+<div class="w-24 h-24 bg-surface-container rounded-full flex items-center justify-center border border-white/10 shadow-[0_0_30px_rgba(255,217,153,0.1)] group-hover:shadow-[0_0_40px_rgba(255,217,153,0.2)] transition-shadow">
+<span class="material-symbols-outlined text-4xl text-on-surface">sports_soccer</span>
+</div>
+<div>
+<h3 class="font-headline-lg text-headline-lg text-primary-fixed uppercase tracking-tight">Adidas</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mt-2 max-w-md">
+                                The official match ball supplier. Delivering precision aerodynamics tailored for the intensity and pace of the HFL arena.
+                            </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Sponsor Catalogues Section -->
+<section class="flex flex-col gap-stack-lg">
+<h2 class="font-headline-xl text-headline-xl text-on-surface uppercase border-l-4 border-secondary/50 pl-4">Sponsor Catalogues</h2>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Catalogue 1: Gatorade -->
+<div class="flex flex-col bg-[#111827] border border-white/5 rounded-lg overflow-hidden group shadow-lg relative isolate">
+<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent z-10"></div>
+<div class="h-64 relative overflow-hidden bg-[#05070B]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" data-alt="A stylized, high-contrast studio shot of a vibrant neon orange sports drink bottle surrounded by splashing water droplets against a pitch-black background. Cinematic lighting highlights the condensation on the bottle, creating a premium, refreshing aesthetic suitable for dark mode luxury design." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCST2diuKiKW-8lQpB1DunO7-9M-dPfTMmX09yXm8UOQLKG6yHcd9X5HsXNW6EO87m2fa8p2bV_MdcMfmjlGdn8KTt0j80DII7jw27cCxjGn-RyUQtNr8SRomu2dNZptm-8kz_bvoOLj7hsFvndyd6KeZNAdaHje4aSLDI_q698YK04Dv5NIt20LagTkNek-rQqIwagTBni7h6a4Jiv--2u-3ofKvXqpF_yWDI2k0Zol3wnnJ2U3YoK"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent"></div>
+<div class="absolute bottom-4 left-4 font-headline-md text-headline-md text-on-surface uppercase tracking-wide">
+                            Gatorade
+                        </div>
+</div>
+<div class="p-6 flex flex-col flex-grow gap-stack-md bg-surface-container/30 backdrop-blur-md">
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                            Explore the advanced hydration science fueling the stamina of HFL athletes through intense 90-minute night fixtures.
+                        </p>
+<div class="flex flex-col gap-3 mt-auto">
+<button class="w-full bg-primary text-on-primary-fixed font-label-bold text-label-bold py-3 uppercase flex items-center justify-center gap-2 hover:shadow-[0_0_15px_rgba(255,217,153,0.4)] transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Download Catalogue
+                            </button>
+<button class="w-full bg-transparent border border-white/20 text-on-surface font-label-bold text-label-bold py-3 uppercase flex items-center justify-center gap-2 hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                                Visit Website
+                            </button>
+</div>
+</div>
+</div>
+<!-- Catalogue 2: Hublot -->
+<div class="flex flex-col bg-[#111827] border border-white/5 rounded-lg overflow-hidden group shadow-lg relative isolate">
+<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent z-10"></div>
+<div class="h-64 relative overflow-hidden bg-[#05070B]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" data-alt="Macro photography of a highly detailed, luxurious mechanical watch face illuminated by dramatic, moody lighting against a pure black background. The metallic gold accents on the watch gears gleam subtly. Cinematic, high-end commercial aesthetic emphasizing precision and luxury." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpcSyakTx6UYnzQ_f5ySh8s2Yi1FhUZvot1jt3NH5K3fLSVp8sE9ASsR6uEjOuHPkuyvqCV6qSgAnk4H7grwFah9Lxk_LtS9WZzwjugwtrxaSWmWzgjHW58B3d9O2Ne9TGkdR7rH14xPqSHQiGVzhwxwZJ23fwxK2Dc1VQIWQXMR3CL2iiK6eq9t5OKjfDwnQfyFFotjSUazJZHN3bvGopJs3StQavZR5F7yy8I439EhJ-OsWecR1C"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent"></div>
+<div class="absolute bottom-4 left-4 font-headline-md text-headline-md text-on-surface uppercase tracking-wide">
+                            Hublot
+                        </div>
+</div>
+<div class="p-6 flex flex-col flex-grow gap-stack-md bg-surface-container/30 backdrop-blur-md">
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                            The Official Timekeeper. Browse the exclusive HFL championship collection, a fusion of mechanical perfection and sporting grit.
+                        </p>
+<div class="flex flex-col gap-3 mt-auto">
+<button class="w-full bg-primary text-on-primary-fixed font-label-bold text-label-bold py-3 uppercase flex items-center justify-center gap-2 hover:shadow-[0_0_15px_rgba(255,217,153,0.4)] transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Download Catalogue
+                            </button>
+<button class="w-full bg-transparent border border-white/20 text-on-surface font-label-bold text-label-bold py-3 uppercase flex items-center justify-center gap-2 hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                                Visit Website
+                            </button>
+</div>
+</div>
+</div>
+<!-- Catalogue 3: Qatar Airways -->
+<div class="flex flex-col bg-[#111827] border border-white/5 rounded-lg overflow-hidden group shadow-lg relative isolate">
+<div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent z-10"></div>
+<div class="h-64 relative overflow-hidden bg-[#05070B]">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-70" data-alt="A striking, minimalist image of a sleek commercial jet silhouette soaring against a deep, dark twilight sky. The scene features a subtle, elegant gradient of dark blues and blacks, with a hint of atmospheric glow along the horizon. High-end, cinematic aviation imagery suited for a luxury brand." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQg5PschzmnQFXOvrmWVHcoCANR9-B8s3FNTJV27GF-hM3w0gRza4Qm6bxAJzklknEZGCDAf45XJCUoe1KGdmASHxp-VuoLWdrR_AMB1XoaofvaSL8ib3EGDJureAIg8TvlAEhDrcmu-1nJU3hFieE9XRm83OCzd_vZ53FS3fQgueYoz2YjQrc8diY0DzgVq4O98hYz8VZn1-wN08ASXBn_hYvdeW8yXsZIO_qSeU1UxLK8BHzc_Z5"/>
+<div class="absolute inset-0 bg-gradient-to-t from-[#111827] to-transparent"></div>
+<div class="absolute bottom-4 left-4 font-headline-md text-headline-md text-on-surface uppercase tracking-wide">
+                            Qatar Airways
+                        </div>
+</div>
+<div class="p-6 flex flex-col flex-grow gap-stack-md bg-surface-container/30 backdrop-blur-md">
+<p class="font-body-md text-body-md text-on-surface-variant flex-grow">
+                            Connecting the league to the world. Discover elite travel packages and VIP hospitality for global fans and teams.
+                        </p>
+<div class="flex flex-col gap-3 mt-auto">
+<button class="w-full bg-primary text-on-primary-fixed font-label-bold text-label-bold py-3 uppercase flex items-center justify-center gap-2 hover:shadow-[0_0_15px_rgba(255,217,153,0.4)] transition-all">
+<span class="material-symbols-outlined text-sm">download</span>
+                                Download Catalogue
+                            </button>
+<button class="w-full bg-transparent border border-white/20 text-on-surface font-label-bold text-label-bold py-3 uppercase flex items-center justify-center gap-2 hover:bg-white/5 transition-colors">
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+                                Visit Website
+                            </button>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-section-gap bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/10">
+<div class="flex flex-col items-center gap-stack-lg px-margin-desktop py-12 max-w-container-max mx-auto">
+<div class="font-headline-xl text-headline-xl text-primary-fixed">
+                HFL
+            </div>
+<div class="flex flex-wrap justify-center gap-x-8 gap-y-4">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary-fixed opacity-80 hover:opacity-100 transition-opacity" href="#">ABOUT</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary-fixed opacity-80 hover:opacity-100 transition-opacity" href="#">LEAGUE RULES</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary-fixed opacity-80 hover:opacity-100 transition-opacity" href="#">PARTNERS</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary-fixed opacity-80 hover:opacity-100 transition-opacity" href="#">CONTACT</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary-fixed opacity-80 hover:opacity-100 transition-opacity" href="#">PRIVACY</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface transition-colors hover:text-primary-fixed opacity-80 hover:opacity-100 transition-opacity" href="#">TERMS</a>
+</div>
+<div class="font-body-md text-body-md text-primary-fixed dark:text-primary-fixed text-center opacity-60">
+                © 2024 HUSSAINI FOOTBALL LEAGUE. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+</body></html>
