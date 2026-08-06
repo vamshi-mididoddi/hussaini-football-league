@@ -1127,6 +1127,17 @@ body.is-locked { overflow: hidden; }
   border-top: 1px solid var(--line);
   flex: 1;
 }
+/* Catalogue links on sponsor cards */
+.sponsor__cat {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-2) var(--sp-4);
+  margin-top: var(--sp-2);
+}
+
+/* Tall catalogue boards crop to their masthead in square tiles */
+.shot--top img { object-position: top; }
+
 /* "Backs <team>" row on team-sponsor cards */
 .sponsor__team {
   display: inline-flex;

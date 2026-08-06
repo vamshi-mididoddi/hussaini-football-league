@@ -271,4 +271,10 @@ const sponsors = [
   },
 ];
 
+/* Every sponsor's print banner doubles as a product catalogue board, rendered
+   to assets/img/catalogues/. ESA's standee artwork spans two boards. */
+sponsors.forEach((s) => {
+  s.catalogue = s.slug === 'esa' ? ['esa-1.jpg', 'esa-2.jpg'] : [s.slug + '.jpg'];
+});
+
 module.exports = { league, teams, squads, matchdays, knockout, sponsors };

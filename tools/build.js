@@ -676,6 +676,11 @@ function pageSponsors() {
   const league_ = sponsors.filter((s) => !s.team && s.slug !== 'kalangi');
   const teamSponsors = sponsors.filter((s) => s.team);
 
+  const catLinks = (s) => (s.catalogue || []).map((f, i) => {
+    const label = s.catalogue.length > 1 ? `Catalogue ${i + 1}` : 'View catalogue';
+    return `<a class="link-more" href="assets/img/catalogues/${f}">${label} ${ARROW}</a>`;
+  }).join('\n            ');
+
   const leagueCards = league_.map((s) => `      <article class="card sponsor" data-reveal>
         <div class="sponsor__plate">
           <img src="assets/img/sponsors/${s.slug}.png" alt="${esc(s.name)} logo" loading="lazy" />
@@ -684,6 +689,9 @@ function pageSponsors() {
           <p class="label label--gold">${esc(s.role)}</p>
           <h3>${esc(s.name)}</h3>
           <p class="muted" style="font-size:var(--fs-sm)">${esc(s.note)}</p>
+          <div class="sponsor__cat">
+            ${catLinks(s)}
+          </div>
         </div>
       </article>`).join('\n');
 
@@ -697,6 +705,9 @@ function pageSponsors() {
           <p class="label label--gold">${esc(s.role)}</p>
           <h3>${esc(s.name)}</h3>
           <p class="muted" style="font-size:var(--fs-sm)">${esc(s.note)}</p>
+          <div class="sponsor__cat">
+            ${catLinks(s)}
+          </div>
           <a class="sponsor__team" href="squads.html#${t.slug}">
             <img src="${crest(t.slug)}" alt="" loading="lazy" width="22" height="22" />
             <span>Backs ${esc(t.name)}</span>
@@ -704,6 +715,14 @@ function pageSponsors() {
         </div>
       </article>`;
   }).join('\n');
+
+  const catalogueWall = sponsors.flatMap((s) => (s.catalogue || []).map((f, i) => {
+    const cap = s.catalogue.length > 1 ? `${s.name} — board ${i + 1}` : s.name;
+    return `      <a class="shot shot--top" href="assets/img/catalogues/${f}" data-reveal>
+        <img src="assets/img/catalogues/${f}" alt="${esc(cap)} product catalogue" loading="lazy" />
+        <span class="shot__cap">${esc(cap)}</span>
+      </a>`;
+  })).join('\n');
 
   const body = `<section class="page-head">
   <div class="shell page-head__inner">
@@ -730,6 +749,7 @@ function pageSponsors() {
         <span class="label label--gold">${esc(kalangi.role)}</span>
         <span class="billboard__name">${esc(kalangi.name)}</span>
         <span class="muted billboard__note">${esc(kalangi.note)}</span>
+        <span class="sponsor__cat">${catLinks(kalangi)}</span>
       </span>
       <span class="billboard__cue label">${esc(league.season)}</span>
     </div>
@@ -762,6 +782,24 @@ ${leagueCards}
     <div class="sponsor-grid">
 ${teamCards}
     </div>
+  </div>
+</section>
+
+<section class="section section--raised">
+  <div class="shell">
+    <div class="section-head" data-reveal>
+      <div class="section-head__text">
+        <p class="label label--gold">Products</p>
+        <h2>Sponsor catalogues</h2>
+      </div>
+      <span class="badge">${sponsors.reduce((a, s) => a + (s.catalogue || []).length, 0)} boards</span>
+    </div>
+    <div class="gallery">
+${catalogueWall}
+    </div>
+    <p class="muted" style="margin-top:var(--sp-5);font-size:var(--fs-sm)" data-reveal>
+      Every board is the sponsor's own Season 2 banner artwork — tap any tile to open the full catalogue.
+    </p>
   </div>
 </section>`;
 
