@@ -34,7 +34,13 @@ All of it is transcribed from the client's own artwork, not invented:
 | 64 players, positions, auction values | The eight players-list posters |
 | 16 group fixtures, kickoff times | `HFL schedule .pdf` (revised) pages 2–3 and 5–6 |
 | Knockout format | `HFL schedule .pdf` (revised) page 8 |
-| Partners and their tiers | `S2 Banners Final File Printing.pdf` |
+| 11 partners and their tiers | `S2 Banners Final File Printing.pdf` |
+
+Every franchise is named after the business backing it (Kothari Electrical →
+Kothari Sparks, Texal Engineering → Texal Rising Phoenix, and so on), so the
+partners page groups the roster as Title (Kalangi) → Co/Trophy → eight team
+sponsors. The Jindal Infernos crest comes from its 6×6 flex board (banners
+PDF page 17).
 
 The revised schedule swapped Day 1's matches 1 and 3 (Sparks v Knights now opens the
 season) and reworked the knockout: the top two in the combined table go straight to
@@ -72,8 +78,6 @@ editorial rather than a template.
   Paramount Predators) and `Hussain Fakkad` (Kothari Sparks and Jindal Infernos).
   These may be different people who share a name, or a transcription error on the
   posters.
-- No standalone Jindal Infernos crest was supplied; theirs is lifted from the
-  corner of their players-list poster and is lower resolution than the rest.
 - `Emerald Cheetahs` artwork was supplied but the team is not in the Season 2
   lineup, so it is not used.
 - Standings sit at zero until the first match; there is no results entry yet.

@@ -1125,7 +1125,22 @@ body.is-locked { overflow: hidden; }
   flex-direction: column;
   gap: var(--sp-2);
   border-top: 1px solid var(--line);
+  flex: 1;
 }
+/* "Backs <team>" row on team-sponsor cards */
+.sponsor__team {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sp-2);
+  margin-top: auto;
+  padding-top: var(--sp-3);
+  font-size: var(--fs-xs);
+  font-weight: 600;
+  color: var(--text-dim);
+  transition: color 0.25s var(--ease);
+}
+.sponsor__team:hover { color: var(--gold); }
+.sponsor__team img { width: 22px; height: 22px; object-fit: contain; }
 
 /* Title-sponsor billboard — the first thing after the hero */
 .billboard {
@@ -1176,7 +1191,8 @@ body.is-locked { overflow: hidden; }
   overflow: hidden;
 }
 @media (min-width: 720px) { .partner-strip { grid-template-columns: repeat(4, 1fr); } }
-@media (min-width: 720px) { .partner-strip--3 { grid-template-columns: repeat(3, 1fr); } }
+/* Ten logos: 2-up on phones, 5-up from tablet — two even rows */
+@media (min-width: 720px) { .partner-strip--many { grid-template-columns: repeat(5, 1fr); } }
 .partner-strip__cell {
   background: #fff;
   display: grid;

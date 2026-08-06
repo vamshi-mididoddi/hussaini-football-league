@@ -212,7 +212,10 @@ const knockout = {
 /* --- Partners ----------------------------------------------------------
    Taken from the client's own Season 2 print banners
    (S2 Banners Final File Printing.pdf) — these are confirmed sponsors,
-   not placeholders. Logos are cropped from that artwork.                  */
+   not placeholders. Logos are cropped from that artwork.
+
+   Every franchise is named after the business backing it, so each team
+   sponsor carries a `team` slug. Kalangi is the main (title) sponsor.      */
 const sponsors = [
   {
     slug: 'kalangi', name: 'Kalangi Estates & Projects', role: 'Title Sponsor',
@@ -227,8 +230,44 @@ const sponsors = [
     note: 'Authorised dealer and channel partner for T.S. & A.P.',
   },
   {
-    slug: 'kothari', name: 'Kothari Electrical & Hardware', role: 'Associate Sponsor',
+    slug: 'kothari', name: 'Kothari Electrical & Hardware', role: 'Team Sponsor',
+    team: 'kothari-sparks',
     note: 'Industry leader in industrial and electrical goods.',
+  },
+  {
+    slug: 'globe-trading', name: 'Globe Trading Corporation', role: 'Team Sponsor',
+    team: 'globe-warriors',
+    note: 'Manufacturer and stockist of industrial brushes.',
+  },
+  {
+    slug: 'jfe-steel', name: 'JFE Steel Corporation', role: 'Team Sponsor',
+    team: 'jindal-infernos',
+    note: 'Authorised dealers and bulk stockists in steel and pipes.',
+  },
+  {
+    slug: 'nr-industrial', name: 'NR Industrial Enterprises', role: 'Team Sponsor',
+    team: 'nr-chargers',
+    note: 'House of industrial supplies — hoses, valves and fittings.',
+  },
+  {
+    slug: 'imperial-eng', name: 'Imperial Engineering', role: 'Team Sponsor',
+    team: 'imperial-knights',
+    note: 'Fasteners for industry, from construction to railways.',
+  },
+  {
+    slug: 'texal', name: 'Texal Engineering', role: 'Team Sponsor',
+    team: 'texal-rising-phoenix',
+    note: 'One-stop solution for the pharma and food industries.',
+  },
+  {
+    slug: 'paramount-rubber', name: 'Paramount Rubber Enterprises', role: 'Team Sponsor',
+    team: 'paramount-predators',
+    note: 'Authorised stockist and distributor of Sunny Oil Seals.',
+  },
+  {
+    slug: 'perfect-trading', name: 'Perfect Trading Centre', role: 'Team Sponsor',
+    team: 'perfect-strikers',
+    note: 'Power transmission and mechanical components.',
   },
 ];
 

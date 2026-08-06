@@ -265,6 +265,7 @@ function squadSection(t) {
   const squad = squads[t.slug] || [];
   const value = squad.reduce((a, p) => a + p[2], 0);
   const top = squad.reduce((a, p) => (p[2] > a[2] ? p : a), squad[0]);
+  const backer = sponsors.find((s) => s.team === t.slug);
   const rows = squad.map(([name, pos, amt], i) => `
         <tr>
           <td class="table__pos tnum">${String(i + 1).padStart(2, '0')}</td>
@@ -284,6 +285,7 @@ function squadSection(t) {
     <dl class="squad__facts">
       <div><dt class="label">Squad value</dt><dd class="tnum">${money(value)}</dd></div>
       <div><dt class="label">Marquee</dt><dd>${esc(top[0])}</dd></div>
+      ${backer ? `<div><dt class="label">Backed by</dt><dd>${esc(backer.name)}</dd></div>` : ''}
     </dl>
   </div>
   <div class="table-wrap">
@@ -381,8 +383,8 @@ function pageHome() {
       </div>
       <a class="link-more" href="sponsors.html">All partners ${ARROW}</a>
     </div>
-    <div class="partner-strip partner-strip--3">
-${sponsors.filter((s) => s.slug !== 'kalangi').map((s) => `      <div class="partner-strip__cell" data-reveal>
+    <div class="partner-strip partner-strip--many">
+${sponsors.filter((s) => s.slug !== 'kalangi').map((s) => `      <div class="partner-strip__cell" title="${esc(s.name)} — ${esc(s.role)}" data-reveal>
         <img src="assets/img/sponsors/${s.slug}.png" alt="${esc(s.name)} — ${esc(s.role)}" loading="lazy" />
       </div>`).join('\n')}
     </div>
@@ -670,35 +672,11 @@ ${squadShots}
 }
 
 function pageSponsors() {
-  const tiers = [
-    ['Title Partner', 'One partner, top of every asset.', [
-      'Naming rights across all Season 2 artwork',
-      'Crest lock-up on fixture and squad sheets',
-      'Pitch-side and prize-ceremony presence',
-      'Full-season digital coverage',
-    ]],
-    ['Match Partner', 'Own a matchday.', [
-      'Branding on a full night of fixtures',
-      'Named as presenting partner of four matches',
-      'Team-sheet and highlight placement',
-    ]],
-    ['Team Partner', 'Back one of the eight.', [
-      'Kit and squad-sheet placement',
-      'Named on the team profile page',
-      'Auction and squad-reveal coverage',
-    ]],
-  ].map(([name, blurb, points]) => `      <article class="card tier" data-reveal>
-        <div>
-          <p class="label label--gold">${esc(name)}</p>
-          <p class="tier__price" style="margin-top:var(--sp-3)">${esc(blurb)}</p>
-        </div>
-        <ul class="tier__list">
-${points.map((p) => `          <li>${TICK}<span>${esc(p)}</span></li>`).join('\n')}
-        </ul>
-        <a class="btn btn--ghost btn--block" href="#enquire">Enquire ${ARROW}</a>
-      </article>`).join('\n');
+  const kalangi = sponsors.find((s) => s.slug === 'kalangi');
+  const league_ = sponsors.filter((s) => !s.team && s.slug !== 'kalangi');
+  const teamSponsors = sponsors.filter((s) => s.team);
 
-  const confirmed = sponsors.map((s) => `      <article class="card sponsor" data-reveal>
+  const leagueCards = league_.map((s) => `      <article class="card sponsor" data-reveal>
         <div class="sponsor__plate">
           <img src="assets/img/sponsors/${s.slug}.png" alt="${esc(s.name)} logo" loading="lazy" />
         </div>
@@ -709,17 +687,30 @@ ${points.map((p) => `          <li>${TICK}<span>${esc(p)}</span></li>`).join('\n
         </div>
       </article>`).join('\n');
 
-  const slots = Array.from({ length: 4 }, (_, i) => `      <div class="partner partner--empty" data-reveal>
-        <span class="label">Slot ${String(i + 1).padStart(2, '0')}</span>
-        <span class="faint" style="font-size:var(--fs-xs)">Available</span>
-      </div>`).join('\n');
+  const teamCards = teamSponsors.map((s) => {
+    const t = bySlug[s.team];
+    return `      <article class="card sponsor" data-reveal>
+        <div class="sponsor__plate">
+          <img src="assets/img/sponsors/${s.slug}.png" alt="${esc(s.name)} logo" loading="lazy" />
+        </div>
+        <div class="sponsor__body">
+          <p class="label label--gold">${esc(s.role)}</p>
+          <h3>${esc(s.name)}</h3>
+          <p class="muted" style="font-size:var(--fs-sm)">${esc(s.note)}</p>
+          <a class="sponsor__team" href="squads.html#${t.slug}">
+            <img src="${crest(t.slug)}" alt="" loading="lazy" width="22" height="22" />
+            <span>Backs ${esc(t.name)}</span>
+          </a>
+        </div>
+      </article>`;
+  }).join('\n');
 
   const body = `<section class="page-head">
   <div class="shell page-head__inner">
     <p class="label label--gold" data-reveal>Commercial</p>
     <h1 data-reveal>Partners</h1>
     <p class="lead" data-reveal>Season 2 reaches eight squads, 64 players and three nights of football,
-      backed by the partners below.</p>
+      backed by ${sponsors.length} partners — every franchise carries the name of the business behind it.</p>
   </div>
 </section>
 
@@ -727,13 +718,20 @@ ${points.map((p) => `          <li>${TICK}<span>${esc(p)}</span></li>`).join('\n
   <div class="shell">
     <div class="section-head" data-reveal>
       <div class="section-head__text">
-        <p class="label label--gold">Official</p>
-        <h2>Season 2 partners</h2>
+        <p class="label label--gold">Main sponsor</p>
+        <h2>Title Sponsor</h2>
       </div>
-      <span class="badge badge--gold">${sponsors.length} confirmed</span>
     </div>
-    <div class="sponsor-grid">
-${confirmed}
+    <div class="billboard" data-reveal>
+      <span class="billboard__plate">
+        <img src="assets/img/sponsors/kalangi.png" alt="${esc(kalangi.name)} logo" loading="lazy" />
+      </span>
+      <span class="billboard__body">
+        <span class="label label--gold">${esc(kalangi.role)}</span>
+        <span class="billboard__name">${esc(kalangi.name)}</span>
+        <span class="muted billboard__note">${esc(kalangi.note)}</span>
+      </span>
+      <span class="billboard__cue label">${esc(league.season)}</span>
     </div>
   </div>
 </section>
@@ -742,33 +740,28 @@ ${confirmed}
   <div class="shell">
     <div class="section-head" data-reveal>
       <div class="section-head__text">
-        <p class="label label--gold">Availability</p>
-        <h2>Open slots</h2>
+        <p class="label label--gold">League partners</p>
+        <h2>Co &amp; Trophy Sponsors</h2>
       </div>
     </div>
-    <div class="partners">
-${slots}
+    <div class="sponsor-grid">
+${leagueCards}
     </div>
-    <p class="muted" style="margin-top:var(--sp-5);font-size:var(--fs-sm)" data-reveal>
-      Further partner logos drop straight into these slots — send the artwork and they go live.
-    </p>
   </div>
 </section>
 
-<section class="section" id="enquire">
+<section class="section">
   <div class="shell">
     <div class="section-head" data-reveal>
       <div class="section-head__text">
-        <p class="label label--gold">Packages</p>
-        <h2>Ways to partner</h2>
+        <p class="label label--gold">One per franchise</p>
+        <h2>Team Sponsors</h2>
       </div>
+      <span class="badge badge--gold">${teamSponsors.length} teams backed</span>
     </div>
-    <div class="grid grid--3">
-${tiers}
+    <div class="sponsor-grid">
+${teamCards}
     </div>
-    <p class="muted" style="margin-top:var(--sp-6);font-size:var(--fs-sm)" data-reveal>
-      Package contents are a starting point for the client to confirm — no pricing is published yet.
-    </p>
   </div>
 </section>`;
 
