@@ -122,6 +122,7 @@ function footer() {
     <div class="site-footer__base">
       <p>© <span data-year>2026</span> ${esc(league.name)}. All rights reserved.</p>
       <p>Fixtures, squads and partners are taken from the official Season 2 artwork.</p>
+      <p class="dev-credit">Developed by <span>Vametrix</span></p>
     </div>
   </div>
 </footer>`;

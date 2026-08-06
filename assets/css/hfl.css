@@ -746,6 +746,12 @@ a.card:hover, .card--interactive:hover {
   display: flex; flex-wrap: wrap; gap: var(--sp-4); justify-content: space-between;
   font-size: var(--fs-xs); color: var(--text-faint);
 }
+.dev-credit span {
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+}
 
 /* Preview banner — this is a client review build, say so */
 .preview-note {
