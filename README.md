@@ -32,9 +32,15 @@ All of it is transcribed from the client's own artwork, not invented:
 | --- | --- |
 | 8 teams, crests, taglines, groups | Season 2 lineup + tournament groups posters |
 | 64 players, positions, auction values | The eight players-list posters |
-| 16 group fixtures, kickoff times | `Schedule HFL26.pdf` pages 2–3 and 5–6 |
-| Knockout bracket | `Schedule HFL26.pdf` page 8 |
+| 16 group fixtures, kickoff times | `HFL schedule .pdf` (revised) pages 2–3 and 5–6 |
+| Knockout format | `HFL schedule .pdf` (revised) page 8 |
 | Partners and their tiers | `S2 Banners Final File Printing.pdf` |
+
+The revised schedule swapped Day 1's matches 1 and 3 (Sparks v Knights now opens the
+season) and reworked the knockout: the top two in the combined table go straight to
+the semi-finals, 3rd–6th play the quarter-finals, and the bottom two are eliminated.
+The standings table on the site is a single all-eight table for the same reason —
+qualification runs off overall rank, with each row keeping its group letter.
 
 Team crests were lifted off their JPEG backdrops into transparent PNGs; sponsor
 logos were cropped from the print banners and sit on light tiles because they are
@@ -57,9 +63,8 @@ editorial rather than a template.
 
 ## Known gaps
 
-- **The knockout times don't add up.** Page 8 of the schedule puts the
-  quarter-finals at 7:15–9:30 PM but the semi-finals at 7:15 and 8:15 PM, which
-  is before the quarters finish. Worth confirming with the organisers.
+- The knockout poster gives one start time (7:15 PM) but no per-tie kickoffs, so
+  the site shows the structure without individual tie times.
 - `Jindal Infernos` is spelled `Infernose` on the lineup poster and `Infernos` on
   the groups poster; the site uses `Infernos`. The NR Chargers crest also reads
   `RR Chargers` on the groups poster.

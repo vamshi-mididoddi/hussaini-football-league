@@ -966,7 +966,7 @@ body.is-locked { overflow: hidden; }
    16. Knockout bracket
    -------------------------------------------------------------------------- */
 .bracket { display: grid; gap: var(--sp-6); }
-@media (min-width: 900px) { .bracket { grid-template-columns: 2fr 1.4fr 1fr; align-items: start; } }
+@media (min-width: 900px) { .bracket { grid-template-columns: 1fr 1fr 1fr; align-items: start; } }
 
 .round__name {
   font-size: var(--fs-h4);
@@ -1055,12 +1055,17 @@ body.is-locked { overflow: hidden; }
 
 .table--squad { min-width: 480px; }
 
-/* On a phone, seven standings columns would mean sideways scrolling to read a
+/* Combined league table: #, Team, Grp, P, W, D, L, Pts. The group cell reads
+   left-to-right with the team name rather than right-aligned like the numbers. */
+.table--group .table__grp,
+.table--group thead th:nth-child(3) { text-align: left; }
+
+/* On a phone, eight standings columns would mean sideways scrolling to read a
    row of zeros. Drop W/D/L and keep the columns that carry the story. */
 @media (max-width: 560px) {
   .table--group { min-width: 0; }
-  .table--group th:nth-child(n + 4):nth-child(-n + 6),
-  .table--group td:nth-child(n + 4):nth-child(-n + 6) { display: none; }
+  .table--group th:nth-child(n + 5):nth-child(-n + 7),
+  .table--group td:nth-child(n + 5):nth-child(-n + 7) { display: none; }
   .table--group th, .table--group td { padding-inline: var(--sp-2); }
 }
 .badge--pos { border-color: var(--line); }
@@ -1116,6 +1121,44 @@ body.is-locked { overflow: hidden; }
   border-top: 1px solid var(--line);
 }
 
+/* Title-sponsor billboard — the first thing after the hero */
+.billboard {
+  display: grid;
+  gap: var(--sp-5);
+  align-items: center;
+  padding: var(--sp-5);
+  border: 1px solid rgba(245, 184, 61, 0.35);
+  border-radius: var(--r-lg);
+  background: linear-gradient(120deg, var(--gold-wash), var(--surface-1) 58%);
+  transition: border-color 0.35s var(--ease), transform 0.35s var(--ease);
+}
+.billboard:hover { border-color: var(--gold); transform: translateY(-2px); }
+@media (min-width: 760px) {
+  .billboard { grid-template-columns: minmax(200px, 300px) 1fr auto; padding: var(--sp-6); }
+}
+.billboard__plate {
+  background: #fff;
+  border-radius: var(--r-md);
+  display: grid;
+  place-items: center;
+  padding: var(--sp-4);
+  min-height: 120px;
+}
+.billboard__plate img { max-height: 110px; width: auto; object-fit: contain; }
+.billboard__body { display: flex; flex-direction: column; gap: var(--sp-2); }
+.billboard__name {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-stretch: 112%;
+  font-size: clamp(1.375rem, 3vw, 2rem);
+  line-height: 1;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+.billboard__note { font-size: var(--fs-sm); max-width: 46ch; }
+.billboard__cue { align-self: start; white-space: nowrap; }
+@media (max-width: 759px) { .billboard__cue { display: none; } }
+
 /* Home-page partner strip */
 .partner-strip {
   display: grid;
@@ -1127,6 +1170,7 @@ body.is-locked { overflow: hidden; }
   overflow: hidden;
 }
 @media (min-width: 720px) { .partner-strip { grid-template-columns: repeat(4, 1fr); } }
+@media (min-width: 720px) { .partner-strip--3 { grid-template-columns: repeat(3, 1fr); } }
 .partner-strip__cell {
   background: #fff;
   display: grid;

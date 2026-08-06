@@ -209,36 +209,33 @@ function fixtureRow(m, day) {
 </li>`;
 }
 
-function groupTable(letter) {
-  const rows = teams.filter((t) => t.group === letter).map((t) => `
+/* One combined table for all eight teams — qualification for the knockout
+   stage runs off overall rank, not group position, so the table is league-wide
+   while each row still carries its group letter. */
+function leagueTable() {
+  const rows = teams.map((t) => `
       <tr>
         <td class="table__pos">—</td>
         <td><a class="table__team" href="squads.html#${t.slug}">
           <img src="${crest(t.slug)}" alt="" loading="lazy" width="26" height="26" />${esc(t.name)}
         </a></td>
+        <td class="table__grp"><span class="badge">${t.group}</span></td>
         <td class="tnum">0</td><td class="tnum">0</td><td class="tnum">0</td>
         <td class="tnum">0</td><td class="table__pts tnum">0</td>
       </tr>`).join('');
 
-  return `<div data-reveal>
-  <div class="section-head">
-    <div class="section-head__text">
-      <p class="label label--gold">Group ${letter}</p>
-      <h3>Four teams</h3>
-    </div>
-  </div>
-  <div class="table-wrap">
+  return `<div class="table-wrap" data-reveal>
     <table class="table table--group">
-      <caption class="visually-hidden">Group ${letter} standings, before the season starts</caption>
+      <caption class="visually-hidden">Combined league standings, before the season starts</caption>
       <thead>
-        <tr><th scope="col">#</th><th scope="col">Team</th><th scope="col">P</th>
-        <th scope="col">W</th><th scope="col">D</th><th scope="col">L</th><th scope="col">Pts</th></tr>
+        <tr><th scope="col">#</th><th scope="col">Team</th><th scope="col" style="text-align:left">Grp</th>
+        <th scope="col">P</th><th scope="col">W</th><th scope="col">D</th><th scope="col">L</th>
+        <th scope="col">Pts</th></tr>
       </thead>
       <tbody>${rows}
       </tbody>
     </table>
-  </div>
-</div>`;
+  </div>`;
 }
 
 function teamCard(t) {
@@ -362,6 +359,35 @@ function pageHome() {
   </div>
 </section>
 
+<section class="section--tight section--raised">
+  <div class="shell">
+    <a class="billboard" href="sponsors.html" data-reveal>
+      <span class="billboard__plate">
+        <img src="assets/img/sponsors/kalangi.png" alt="Kalangi Estates &amp; Projects logo" loading="lazy" />
+      </span>
+      <span class="billboard__body">
+        <span class="label label--gold">Title Sponsor</span>
+        <span class="billboard__name">Kalangi Estates &amp; Projects</span>
+        <span class="muted billboard__note">Building dreams, defining luxury — proud title sponsor of HFL Season 2.</span>
+      </span>
+      <span class="billboard__cue label">${esc(league.season)}</span>
+    </a>
+
+    <div class="section-head" style="margin-top:var(--sp-7)" data-reveal>
+      <div class="section-head__text">
+        <p class="label label--gold">Our sponsors</p>
+        <h2>Backed by the best</h2>
+      </div>
+      <a class="link-more" href="sponsors.html">All partners ${ARROW}</a>
+    </div>
+    <div class="partner-strip partner-strip--3">
+${sponsors.filter((s) => s.slug !== 'kalangi').map((s) => `      <div class="partner-strip__cell" data-reveal>
+        <img src="assets/img/sponsors/${s.slug}.png" alt="${esc(s.name)} — ${esc(s.role)}" loading="lazy" />
+      </div>`).join('\n')}
+    </div>
+  </div>
+</section>
+
 <section class="section">
   <div class="shell">
     <div class="section-head" data-reveal>
@@ -377,21 +403,20 @@ ${day1.matches.map((m) => matchCard(m, day1.day)).join('\n')}
   </div>
 </section>
 
-<section class="section section--raised">
+<section class="section section--raised" id="standings">
   <div class="shell">
     <div class="section-head" data-reveal>
       <div class="section-head__text">
-        <p class="label label--gold">The draw</p>
-        <h2>Two groups of four</h2>
+        <p class="label label--gold">The table</p>
+        <h2>League standings</h2>
       </div>
+      <span class="badge">Groups A &amp; B combined</span>
     </div>
-    <div class="grid grid--2">
-      ${groupTable('A')}
-      ${groupTable('B')}
-    </div>
+    ${leagueTable()}
     <p class="muted" style="margin-top:var(--sp-5);font-size:var(--fs-sm)" data-reveal>
-      Tables stay at zero until the first whistle on 8 August. The top eight across both groups carry
-      their seeding into the knockout stage on 15 August.
+      One table, all eight teams — each row keeps its group. It stays at zero until the first whistle
+      on 8 August. The top two go straight to the semi-finals, 3rd to 6th meet in the quarter-finals,
+      and the bottom two bow out.
     </p>
   </div>
 </section>
@@ -408,10 +433,11 @@ ${day1.matches.map((m) => matchCard(m, day1.day)).join('\n')}
       <div class="stat"><b>15</b><span class="label">Minutes per half</span></div>
       <div class="stat"><b>4</b><span class="label">Matches per slot</span></div>
       <div class="stat"><b>16</b><span class="label">Group matches</span></div>
-      <div class="stat"><b>7</b><span class="label">Knockout ties</span></div>
+      <div class="stat"><b>5</b><span class="label">Knockout ties</span></div>
     </div>
     <p class="lead" style="margin-top:var(--sp-6)" data-reveal>${esc(league.format.note)}
-      Quarter-finals seed 1v8, 2v7, 3v6 and 4v5, and the winner of the final lifts the Season 2 trophy.</p>
+      The top two in the combined table skip straight to the semi-finals, 3rd to 6th fight through the
+      quarter-finals, and the winner of the final lifts the Season 2 trophy.</p>
   </div>
 </section>
 
@@ -429,23 +455,6 @@ ${teams.map((t) => `      <a class="crest-chip" href="squads.html#${t.slug}" tit
         <img src="${crest(t.slug)}" alt="${esc(t.name)} crest" loading="lazy" />
         <span class="label">${esc(t.short)}</span>
       </a>`).join('\n')}
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="shell">
-    <div class="section-head" data-reveal>
-      <div class="section-head__text">
-        <p class="label label--gold">Backed by</p>
-        <h2>Season 2 partners</h2>
-      </div>
-      <a class="link-more" href="sponsors.html">Partner with HFL ${ARROW}</a>
-    </div>
-    <div class="partner-strip">
-${sponsors.map((s) => `      <div class="partner-strip__cell" data-reveal>
-        <img src="assets/img/sponsors/${s.slug}.png" alt="${esc(s.name)} — ${esc(s.role)}" loading="lazy" />
-      </div>`).join('\n')}
     </div>
   </div>
 </section>`;
@@ -478,14 +487,17 @@ ${d.matches.map((m) => fixtureRow(m, d)).join('\n')}
     <div class="round" data-reveal>
       <h3 class="round__name">${esc(r.name)}</h3>
       <ul class="round__ties">
-${r.ties.map(([id, t, a, b]) => `        <li class="tie">
-          <div class="tie__head"><span class="label label--gold">${esc(id)}</span><time class="tnum">${time12(t)}</time></div>
+${r.ties.map(([id, a, b]) => `        <li class="tie">
+          <div class="tie__head"><span class="label label--gold">${esc(id)}</span></div>
           <p class="tie__side">${esc(a)}</p>
           <span class="tie__vs" aria-hidden="true">V</span>
           <p class="tie__side">${esc(b)}</p>
         </li>`).join('\n')}
       </ul>
     </div>`).join('');
+
+  const qualification = knockout.qualification.map(([pos, fate]) => `
+      <div class="stat"><b>${esc(pos)}</b><span class="label">${esc(fate)}</span></div>`).join('');
 
   const body = `<section class="page-head">
   <div class="shell page-head__inner">
@@ -505,12 +517,15 @@ ${days}
         <p class="label label--gold">Day 3 · ${esc(knockout.stage)}</p>
         <h2>${esc(knockout.label)}</h2>
       </div>
-      <span class="badge">7 ties</span>
+      <span class="badge">Kicks off ${time12(knockout.start)}</span>
+    </div>
+    <div class="stat-row" style="margin-bottom:var(--sp-6)" data-reveal>${qualification}
     </div>
     <div class="bracket">${rounds}
     </div>
     <p class="muted" style="margin-top:var(--sp-6);font-size:var(--fs-sm)" data-reveal>
-      Knockout pairings resolve from the final group-stage ranking, so both sides stay open until Day 2 ends.
+      Placings come from the combined league table, so every pairing stays open until the last
+      group match on Day 2. The top two rest through the quarter-finals and enter at the semis.
     </p>
   </div>
 </section>`;

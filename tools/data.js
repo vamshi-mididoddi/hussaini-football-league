@@ -149,9 +149,9 @@ const matchdays = [
   {
     day: 1, date: '2026-08-08', label: 'Saturday 8 August 2026', stage: 'Group Stage',
     matches: [
-      [1, '19:00', 'jindal-infernos', 'paramount-predators'],
+      [1, '19:00', 'kothari-sparks', 'imperial-knights'],
       [2, '19:15', 'globe-warriors', 'texal-rising-phoenix'],
-      [3, '20:00', 'kothari-sparks', 'imperial-knights'],
+      [3, '20:00', 'jindal-infernos', 'paramount-predators'],
       [4, '20:15', 'nr-chargers', 'perfect-strikers'],
       [5, '21:00', 'kothari-sparks', 'texal-rising-phoenix'],
       [6, '21:15', 'globe-warriors', 'imperial-knights'],
@@ -174,30 +174,37 @@ const matchdays = [
   },
 ];
 
-/* Knockout stage — Schedule HFL26.pdf page 8. Seeds resolve from the
-   combined group-stage table, so both sides are placeholders for now. */
+/* Knockout stage — "HFL schedule .pdf" page 8 (revised format).
+   Qualification comes off the combined group-stage table: the top two skip
+   straight to the semi-finals, 3rd–6th contest the quarter-finals, and the
+   bottom two are eliminated. The poster gives one start time (7:15 PM), not
+   per-tie kickoffs. */
 const knockout = {
   date: '2026-08-15', label: 'Saturday 15 August 2026', stage: 'Knockout Stage',
+  start: '19:15',
+  qualification: [
+    ['1st – 2nd', 'Straight to the semi-finals'],
+    ['3rd – 6th', 'Quarter-finals'],
+    ['7th – 8th', 'Eliminated'],
+  ],
   rounds: [
     {
       name: 'Quarter Finals',
       ties: [
-        ['QF1', '19:15', '1st ranked team', '8th ranked team'],
-        ['QF2', '20:00', '2nd ranked team', '7th ranked team'],
-        ['QF3', '20:45', '3rd ranked team', '6th ranked team'],
-        ['QF4', '21:30', '4th ranked team', '5th ranked team'],
+        ['QF1', '3rd placed team', '5th placed team'],
+        ['QF2', '4th placed team', '6th placed team'],
       ],
     },
     {
       name: 'Semi Finals',
       ties: [
-        ['SF1', '19:15', 'Winner of QF1', 'Winner of QF4'],
-        ['SF2', '20:15', 'Winner of QF2', 'Winner of QF3'],
+        ['SF1', 'Winner of QF1', '1st placed team'],
+        ['SF2', 'Winner of QF2', '2nd placed team'],
       ],
     },
     {
       name: 'Final',
-      ties: [['Final', '21:30', 'Winner of SF1', 'Winner of SF2']],
+      ties: [['Final', 'Winner of SF1', 'Winner of SF2']],
     },
   ],
 };
