@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>HFL Admin — Season 2</title>
+<meta name="theme-color" content="#07090C" />
+<link rel="icon" href="../assets/img/crests/hfl.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="../assets/css/hfl.css" />
+<script>window.HFL_DATA = {"repo":"vamshi-mididoddi/hussaini-football-league","path":"data/live.json","teams":[{"slug":"kothari-sparks","name":"Kothari Sparks","short":"Sparks"},{"slug":"globe-warriors","name":"Globe Warriors","short":"Warriors"},{"slug":"jindal-infernos","name":"Jindal Infernos","short":"Infernos"},{"slug":"nr-chargers","name":"NR Chargers","short":"Chargers"},{"slug":"imperial-knights","name":"Imperial Knights","short":"Knights"},{"slug":"texal-rising-phoenix","name":"Texal Rising Phoenix","short":"Phoenix"},{"slug":"paramount-predators","name":"Paramount Predators","short":"Predators"},{"slug":"perfect-strikers","name":"Perfect Strikers","short":"Strikers"}],"fixtures":[{"no":1,"day":1,"time":"19:00","home":"kothari-sparks","away":"imperial-knights"},{"no":2,"day":1,"time":"19:15","home":"globe-warriors","away":"texal-rising-phoenix"},{"no":3,"day":1,"time":"20:00","home":"jindal-infernos","away":"paramount-predators"},{"no":4,"day":1,"time":"20:15","home":"nr-chargers","away":"perfect-strikers"},{"no":5,"day":1,"time":"21:00","home":"kothari-sparks","away":"texal-rising-phoenix"},{"no":6,"day":1,"time":"21:15","home":"globe-warriors","away":"imperial-knights"},{"no":7,"day":1,"time":"22:00","home":"jindal-infernos","away":"perfect-strikers"},{"no":8,"day":1,"time":"22:15","home":"nr-chargers","away":"paramount-predators"},{"no":9,"day":2,"time":"19:00","home":"kothari-sparks","away":"paramount-predators"},{"no":10,"day":2,"time":"19:15","home":"globe-warriors","away":"perfect-strikers"},{"no":11,"day":2,"time":"20:00","home":"jindal-infernos","away":"imperial-knights"},{"no":12,"day":2,"time":"20:15","home":"nr-chargers","away":"texal-rising-phoenix"},{"no":13,"day":2,"time":"21:00","home":"kothari-sparks","away":"perfect-strikers"},{"no":14,"day":2,"time":"21:15","home":"globe-warriors","away":"paramount-predators"},{"no":15,"day":2,"time":"22:00","home":"jindal-infernos","away":"texal-rising-phoenix"},{"no":16,"day":2,"time":"22:15","home":"nr-chargers","away":"imperial-knights"}],"ties":[{"id":"QF1","round":"Quarter Finals","a":"3rd placed team","b":"5th placed team"},{"id":"QF2","round":"Quarter Finals","a":"4th placed team","b":"6th placed team"},{"id":"SF1","round":"Semi Finals","a":"Winner of QF1","b":"1st placed team"},{"id":"SF2","round":"Semi Finals","a":"Winner of QF2","b":"2nd placed team"},{"id":"Final","round":"Final","a":"Winner of SF1","b":"Winner of SF2"}]};</script>
+</head>
+<body class="admin-body">
+<header class="admin-top">
+  <a class="wordmark" href="../index.html">
+    <img class="wordmark__crest" src="../assets/img/crests/hfl.png" alt="" width="30" height="34" />
+    HFL<span>.</span>
+  </a>
+  <span class="label label--gold">Score console</span>
+  <button class="btn btn--ghost admin-top__token" type="button" data-change-token hidden>Change token</button>
+</header>
+
+<main class="shell admin-main">
+  <!-- Token gate -->
+  <section class="card admin-gate" data-gate>
+    <h1 style="font-size:var(--fs-h2)">Connect to publish</h1>
+    <p class="muted">Scores publish straight to the website through GitHub. Paste your access
+      token once — it stays in this browser only.</p>
+    <label class="label" for="token">GitHub access token</label>
+    <input class="admin-input" id="token" type="password" autocomplete="off"
+      placeholder="github_pat_…" />
+    <button class="btn btn--primary" type="button" data-save-token>Save &amp; continue</button>
+    <details class="admin-help">
+      <summary class="label label--gold">How to create the token (one time, 2 minutes)</summary>
+      <ol class="muted">
+        <li>On github.com (logged in as the repo owner) go to <b>Settings → Developer settings →
+          Personal access tokens → Fine-grained tokens → Generate new token</b>.</li>
+        <li>Name it <b>hfl-admin</b>, set expiry after the season ends.</li>
+        <li>Repository access: <b>Only select repositories → hussaini-football-league</b>.</li>
+        <li>Permissions → Repository permissions → <b>Contents: Read and write</b>. Nothing else.</li>
+        <li>Generate, copy the <b>github_pat_…</b> value, paste it above.</li>
+      </ol>
+      <p class="muted">Treat the token like a password — anyone holding it can edit the site.</p>
+    </details>
+  </section>
+
+  <!-- Console -->
+  <section data-console hidden>
+    <div class="admin-status" data-msg hidden></div>
+    <div data-days></div>
+
+    <section class="admin-day">
+      <div class="section-head">
+        <div class="section-head__text">
+          <p class="label label--gold">Day 3 · 15 August</p>
+          <h2 style="font-size:var(--fs-h3)">Knockout</h2>
+        </div>
+      </div>
+      <div data-ties></div>
+    </section>
+
+    <section class="admin-day">
+      <div class="section-head">
+        <div class="section-head__text">
+          <p class="label label--gold">Season</p>
+          <h2 style="font-size:var(--fs-h3)">Champion</h2>
+        </div>
+      </div>
+      <div class="admin-row">
+        <label class="label" for="champion" style="align-self:center">Champions of Season 2</label>
+        <select class="admin-input" id="champion" data-champion-input>
+          <option value="">— not decided yet —</option>
+          <option value="kothari-sparks">Kothari Sparks</option>
+          <option value="globe-warriors">Globe Warriors</option>
+          <option value="jindal-infernos">Jindal Infernos</option>
+          <option value="nr-chargers">NR Chargers</option>
+          <option value="imperial-knights">Imperial Knights</option>
+          <option value="texal-rising-phoenix">Texal Rising Phoenix</option>
+          <option value="paramount-predators">Paramount Predators</option>
+          <option value="perfect-strikers">Perfect Strikers</option>
+        </select>
+      </div>
+    </section>
+  </section>
+</main>
+
+<div class="admin-bar" data-bar hidden>
+  <span class="admin-bar__hint" data-hint>Unpublished changes</span>
+  <button class="btn btn--primary" type="button" data-publish>Publish to website</button>
+</div>
+
+<script src="../assets/js/admin.js" defer></script>
+</body>
+</html>

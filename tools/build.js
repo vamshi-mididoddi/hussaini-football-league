@@ -128,7 +128,7 @@ function footer() {
 </footer>`;
 }
 
-function layout({ title, description, page, hero = false, body }) {
+function layout({ title, description, page, hero = false, live = false, body }) {
   return `<!doctype html>
 <html lang="en">
 <head>
@@ -155,6 +155,7 @@ ${body}
 </main>
 ${footer()}
 <script src="assets/js/hfl.js" defer></script>
+${live ? '<script src="assets/js/hfl-data.js" defer></script>\n<script src="assets/js/live.js" defer></script>' : ''}
 </body>
 </html>`;
 }
@@ -164,17 +165,17 @@ function matchCard(m, day) {
   const [no, t, homeSlug, awaySlug] = m;
   const home = bySlug[homeSlug];
   const away = bySlug[awaySlug];
-  return `<article class="card match" data-reveal>
+  return `<article class="card match" data-match="${no}" data-reveal>
   <div class="match__top">
     <span class="label">Match ${no}</span>
-    <span class="badge">Day ${day}</span>
+    <span class="badge" data-status>Day ${day}</span>
   </div>
   <div class="match__teams">
     <div class="match__side">
       <img class="match__crest" src="${crest(home.slug)}" alt="${esc(home.name)} crest" loading="lazy" width="52" height="52" />
       <span class="match__name">${esc(home.name)}</span>
     </div>
-    <span class="match__vs" aria-hidden="true">V</span>
+    <span class="match__vs" data-score aria-hidden="true">V</span>
     <div class="match__side">
       <img class="match__crest" src="${crest(away.slug)}" alt="${esc(away.name)} crest" loading="lazy" width="52" height="52" />
       <span class="match__name">${esc(away.name)}</span>
@@ -191,17 +192,18 @@ function fixtureRow(m, day) {
   const [no, t, homeSlug, awaySlug] = m;
   const home = bySlug[homeSlug];
   const away = bySlug[awaySlug];
-  return `<li class="fixture" data-reveal>
+  return `<li class="fixture" data-match="${no}" data-reveal>
   <div class="fixture__meta">
     <span class="label">M${no}</span>
     <time class="fixture__time tnum" datetime="${day.date}T${t}">${time12(t)}</time>
+    <span class="badge" data-status hidden></span>
   </div>
   <div class="fixture__tie">
     <div class="fixture__side fixture__side--home">
       <span class="fixture__name">${esc(home.name)}</span>
       <img src="${crest(home.slug)}" alt="" loading="lazy" width="40" height="40" />
     </div>
-    <span class="fixture__vs" aria-label="versus">V</span>
+    <span class="fixture__vs" data-score aria-label="versus">V</span>
     <div class="fixture__side fixture__side--away">
       <img src="${crest(away.slug)}" alt="" loading="lazy" width="40" height="40" />
       <span class="fixture__name">${esc(away.name)}</span>
@@ -215,14 +217,15 @@ function fixtureRow(m, day) {
    while each row still carries its group letter. */
 function leagueTable() {
   const rows = teams.map((t) => `
-      <tr>
-        <td class="table__pos">—</td>
+      <tr data-team="${t.slug}">
+        <td class="table__pos" data-col="pos">—</td>
         <td><a class="table__team" href="squads.html#${t.slug}">
           <img src="${crest(t.slug)}" alt="" loading="lazy" width="26" height="26" />${esc(t.name)}
         </a></td>
         <td class="table__grp"><span class="badge">${t.group}</span></td>
-        <td class="tnum">0</td><td class="tnum">0</td><td class="tnum">0</td>
-        <td class="tnum">0</td><td class="table__pts tnum">0</td>
+        <td class="tnum" data-col="p">0</td><td class="tnum" data-col="w">0</td>
+        <td class="tnum" data-col="d">0</td><td class="tnum" data-col="l">0</td>
+        <td class="table__pts tnum" data-col="pts">0</td>
       </tr>`).join('');
 
   return `<div class="table-wrap" data-reveal>
@@ -331,6 +334,7 @@ function pageHome() {
     <div class="hero__eyebrow" data-reveal>
       <span class="badge badge--gold">${esc(league.season)}</span>
       <span class="label">${esc(league.name)}</span>
+      <span class="badge badge--gold" data-champion hidden></span>
     </div>
 
     <h1 class="display hero__title" data-reveal>Season<br />Two</h1>
@@ -465,7 +469,7 @@ ${teams.map((t) => `      <a class="crest-chip" href="squads.html#${t.slug}" tit
   return layout({
     title: 'Hussaini Football League — Season 2',
     description: 'Season 2 of the Hussaini Football League: 8 teams, 16 group matches and a knockout final across 8, 9 and 15 August 2026.',
-    page: 'index.html', hero: true, body,
+    page: 'index.html', hero: true, live: true, body,
   });
 }
 
@@ -490,11 +494,11 @@ ${d.matches.map((m) => fixtureRow(m, d)).join('\n')}
     <div class="round" data-reveal>
       <h3 class="round__name">${esc(r.name)}</h3>
       <ul class="round__ties">
-${r.ties.map(([id, a, b]) => `        <li class="tie">
-          <div class="tie__head"><span class="label label--gold">${esc(id)}</span></div>
-          <p class="tie__side">${esc(a)}</p>
+${r.ties.map(([id, a, b]) => `        <li class="tie" data-tie="${esc(id)}">
+          <div class="tie__head"><span class="label label--gold">${esc(id)}</span><span class="badge" data-status hidden></span></div>
+          <p class="tie__side" data-side="a"><span data-name>${esc(a)}</span><b class="tie__goals tnum" data-goals></b></p>
           <span class="tie__vs" aria-hidden="true">V</span>
-          <p class="tie__side">${esc(b)}</p>
+          <p class="tie__side" data-side="b"><span data-name>${esc(b)}</span><b class="tie__goals tnum" data-goals></b></p>
         </li>`).join('\n')}
       </ul>
     </div>`).join('');
@@ -536,7 +540,7 @@ ${days}
   return layout({
     title: 'Fixtures — HFL Season 2',
     description: 'Every HFL Season 2 fixture: 16 group matches on 8 and 9 August 2026, and the knockout stage on 15 August.',
-    page: 'fixtures.html', body,
+    page: 'fixtures.html', live: true, body,
   });
 }
 
@@ -810,6 +814,117 @@ ${catalogueWall}
   });
 }
 
+/* --- shared data for the live-score layer ------------------------------ */
+function liveData() {
+  const fixtures = matchdays.flatMap((d) => d.matches.map(([no, t, h, a]) => ({
+    no, day: d.day, time: t, home: h, away: a,
+  })));
+  const ties = knockout.rounds.flatMap((r) => r.ties.map(([id, a, b]) => ({
+    id, round: r.name, a, b,
+  })));
+  return {
+    repo: 'vamshi-mididoddi/hussaini-football-league',
+    path: 'data/live.json',
+    teams: teams.map((t) => ({ slug: t.slug, name: t.name, short: t.short })),
+    fixtures, ties,
+  };
+}
+
+/* --- admin console ------------------------------------------------------ */
+function pageAdmin() {
+  const d = liveData();
+  return `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" />
+<title>HFL Admin — Season 2</title>
+<meta name="theme-color" content="#07090C" />
+<link rel="icon" href="../assets/img/crests/hfl.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Inter:wght@400;500;600;700&display=swap" />
+<link rel="stylesheet" href="../assets/css/hfl.css" />
+<script>window.HFL_DATA = ${JSON.stringify(d)};</script>
+</head>
+<body class="admin-body">
+<header class="admin-top">
+  <a class="wordmark" href="../index.html">
+    <img class="wordmark__crest" src="../assets/img/crests/hfl.png" alt="" width="30" height="34" />
+    HFL<span>.</span>
+  </a>
+  <span class="label label--gold">Score console</span>
+  <button class="btn btn--ghost admin-top__token" type="button" data-change-token hidden>Change token</button>
+</header>
+
+<main class="shell admin-main">
+  <!-- Token gate -->
+  <section class="card admin-gate" data-gate>
+    <h1 style="font-size:var(--fs-h2)">Connect to publish</h1>
+    <p class="muted">Scores publish straight to the website through GitHub. Paste your access
+      token once — it stays in this browser only.</p>
+    <label class="label" for="token">GitHub access token</label>
+    <input class="admin-input" id="token" type="password" autocomplete="off"
+      placeholder="github_pat_…" />
+    <button class="btn btn--primary" type="button" data-save-token>Save &amp; continue</button>
+    <details class="admin-help">
+      <summary class="label label--gold">How to create the token (one time, 2 minutes)</summary>
+      <ol class="muted">
+        <li>On github.com (logged in as the repo owner) go to <b>Settings → Developer settings →
+          Personal access tokens → Fine-grained tokens → Generate new token</b>.</li>
+        <li>Name it <b>hfl-admin</b>, set expiry after the season ends.</li>
+        <li>Repository access: <b>Only select repositories → hussaini-football-league</b>.</li>
+        <li>Permissions → Repository permissions → <b>Contents: Read and write</b>. Nothing else.</li>
+        <li>Generate, copy the <b>github_pat_…</b> value, paste it above.</li>
+      </ol>
+      <p class="muted">Treat the token like a password — anyone holding it can edit the site.</p>
+    </details>
+  </section>
+
+  <!-- Console -->
+  <section data-console hidden>
+    <div class="admin-status" data-msg hidden></div>
+    <div data-days></div>
+
+    <section class="admin-day">
+      <div class="section-head">
+        <div class="section-head__text">
+          <p class="label label--gold">Day 3 · 15 August</p>
+          <h2 style="font-size:var(--fs-h3)">Knockout</h2>
+        </div>
+      </div>
+      <div data-ties></div>
+    </section>
+
+    <section class="admin-day">
+      <div class="section-head">
+        <div class="section-head__text">
+          <p class="label label--gold">Season</p>
+          <h2 style="font-size:var(--fs-h3)">Champion</h2>
+        </div>
+      </div>
+      <div class="admin-row">
+        <label class="label" for="champion" style="align-self:center">Champions of Season 2</label>
+        <select class="admin-input" id="champion" data-champion-input>
+          <option value="">— not decided yet —</option>
+${d.teams.map((t) => `          <option value="${t.slug}">${esc(t.name)}</option>`).join('\n')}
+        </select>
+      </div>
+    </section>
+  </section>
+</main>
+
+<div class="admin-bar" data-bar hidden>
+  <span class="admin-bar__hint" data-hint>Unpublished changes</span>
+  <button class="btn btn--primary" type="button" data-publish>Publish to website</button>
+</div>
+
+<script src="../assets/js/admin.js" defer></script>
+</body>
+</html>`;
+}
+
 /* --- write ------------------------------------------------------------- */
 const PAGES = {
   'index.html': pageHome,
@@ -827,6 +942,16 @@ for (const [file, fn] of Object.entries(PAGES)) {
   console.log(`  ${file.padEnd(16)} ${String(Buffer.byteLength(html) / 1024).slice(0, 5)}KB`);
   n++;
 }
+
+fs.mkdirSync(path.join(ROOT, 'admin'), { recursive: true });
+fs.writeFileSync(path.join(ROOT, 'admin', 'index.html'), pageAdmin(), 'utf8');
+fs.writeFileSync(
+  path.join(ROOT, 'assets', 'js', 'hfl-data.js'),
+  `window.HFL_DATA = ${JSON.stringify(liveData())};\n`,
+  'utf8'
+);
+console.log('  admin/index.html + assets/js/hfl-data.js');
+
 console.log(`\n${n} pages built from ${teams.length} teams, `
   + `${matchdays.reduce((a, d) => a + d.matches.length, 0)} group matches, `
   + `${Object.values(squads).flat().length} players.`);
