@@ -95,7 +95,10 @@
       var diff = target - Date.now();
       if (diff <= 0) {
         clock.setAttribute('data-live', 'true');
-        Object.keys(cells).forEach(function (k) { if (cells[k]) cells[k].textContent = '00'; });
+        var label = clock.querySelector('.label');
+        if (label) label.textContent = 'Season 2 is under way — scores update live below';
+        var row = clock.querySelector('.countdown__row');
+        if (row) row.hidden = true;
         return;
       }
       var s = Math.floor(diff / 1000);

@@ -1,0 +1,40 @@
+# Mirror the live score store into data/live.json so the site always has a
+# validated fallback copy, even if the store disappears.
+name: Mirror live scores
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency: mirror-scores
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch store
+        run: >
+          curl -fsS --max-time 30
+          "https://jsonblob.com/api/jsonBlob/019fe5c0-1e59-7d7a-ba5c-c6b88420c697"
+          -H "Accept: application/json" -o /tmp/live-raw.json
+
+      - name: Validate
+        run: node tools/validate-live.js /tmp/live-raw.json data/live.json
+
+      - name: Commit if changed
+        run: |
+          if ! git diff --quiet data/live.json; then
+            git config user.name "hfl-scorebot"
+            git config user.email "scorebot@users.noreply.github.com"
+            git add data/live.json
+            git commit -m "Mirror live scores"
+            git push
+          else
+            echo "No change."
+          fi

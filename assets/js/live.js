@@ -150,11 +150,16 @@
   }
 
   function refresh() {
-    // 30s cache-bust window: spectators refreshing during a match stay fresh
+    // The store is the live source (instant updates); the repo file is a
+    // mirrored fallback for when the store is unreachable.
     var bust = Math.floor(Date.now() / 30000);
     var base = location.pathname.indexOf('/admin/') > -1 ? '../' : '';
-    fetch(base + 'data/live.json?v=' + bust, { cache: 'no-store' })
-      .then(function (r) { return r.ok ? r.json() : null; })
+    fetch(D.store + '?v=' + bust, { cache: 'no-store' })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .catch(function () {
+        return fetch(base + 'data/live.json?v=' + bust, { cache: 'no-store' })
+          .then(function (r) { return r.ok ? r.json() : null; });
+      })
       .then(render)
       .catch(function () { /* offline — leave the static page as-is */ });
   }

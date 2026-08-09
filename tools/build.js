@@ -823,8 +823,13 @@ function liveData() {
     id, round: r.name, a, b,
   })));
   return {
-    repo: 'vamshi-mididoddi/hussaini-football-league',
-    path: 'data/live.json',
+    // Anonymous JSON store the admin console publishes to and the public
+    // pages read from. data/live.json in the repo is a mirrored fallback,
+    // kept fresh by .github/workflows/mirror-scores.yml.
+    store: 'https://jsonblob.com/api/jsonBlob/019fe5c0-1e59-7d7a-ba5c-c6b88420c697',
+    // SHA-256 of the league password. A courtesy lock for the console UI,
+    // not cryptographic protection — the scores are public data anyway.
+    gate: '6e0f4670b2268d1da40093fcbd314e98ac0bb1e25ae9465d90e5180d985bb0a8',
     teams: teams.map((t) => ({ slug: t.slug, name: t.name, short: t.short })),
     fixtures, ties,
   };
@@ -855,31 +860,20 @@ function pageAdmin() {
     HFL<span>.</span>
   </a>
   <span class="label label--gold">Score console</span>
-  <button class="btn btn--ghost admin-top__token" type="button" data-change-token hidden>Change token</button>
+  <button class="btn btn--ghost admin-top__token" type="button" data-change-token hidden>Lock console</button>
 </header>
 
 <main class="shell admin-main">
-  <!-- Token gate -->
+  <!-- Password gate -->
   <section class="card admin-gate" data-gate>
-    <h1 style="font-size:var(--fs-h2)">Connect to publish</h1>
-    <p class="muted">Scores publish straight to the website through GitHub. Paste your access
-      token once — it stays in this browser only.</p>
-    <label class="label" for="token">GitHub access token</label>
+    <h1 style="font-size:var(--fs-h2)">Score console</h1>
+    <p class="muted">Enter the league password to open the console. You only do this once
+      on each device.</p>
+    <label class="label" for="token">League password</label>
     <input class="admin-input" id="token" type="password" autocomplete="off"
-      placeholder="github_pat_…" />
-    <button class="btn btn--primary" type="button" data-save-token>Save &amp; continue</button>
-    <details class="admin-help">
-      <summary class="label label--gold">How to create the token (one time, 2 minutes)</summary>
-      <ol class="muted">
-        <li>On github.com (logged in as the repo owner) go to <b>Settings → Developer settings →
-          Personal access tokens → Fine-grained tokens → Generate new token</b>.</li>
-        <li>Name it <b>hfl-admin</b>, set expiry after the season ends.</li>
-        <li>Repository access: <b>Only select repositories → hussaini-football-league</b>.</li>
-        <li>Permissions → Repository permissions → <b>Contents: Read and write</b>. Nothing else.</li>
-        <li>Generate, copy the <b>github_pat_…</b> value, paste it above.</li>
-      </ol>
-      <p class="muted">Treat the token like a password — anyone holding it can edit the site.</p>
-    </details>
+      placeholder="word-word-00" />
+    <button class="btn btn--primary" type="button" data-save-token>Open console</button>
+    <p class="muted" style="font-size:var(--fs-xs)">Don't have it? Ask the league organiser.</p>
   </section>
 
   <!-- Console -->
