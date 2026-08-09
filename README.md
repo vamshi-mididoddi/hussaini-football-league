@@ -24,6 +24,25 @@ Pages are written to the repo root: `index`, `fixtures`, `teams`, `squads`,
 `gallery`, `sponsors`. There is no `/m/` mobile variant — the pages are
 responsive from 375 px up.
 
+## Live scores and the admin console
+
+Scores don't go through the build. `/admin/` is a phone-first score console:
+it commits `data/live.json` to this repo via the GitHub Contents API using a
+fine-grained personal access token (repo-scoped, Contents read & write) that
+the admin pastes once per device. The public home and fixtures pages fetch
+that file every 60 s and paint:
+
+- scores and LIVE / HT / FT chips on match cards and fixture rows,
+- the league table, computed from full-time results (win 3, draw 1;
+  tie-breaks: points → goal difference → goals for → name) with rows
+  re-ordered live,
+- knockout teams, scores, penalty winners, and a champions badge once the
+  final is decided (or via the explicit champion field).
+
+GitHub Pages redeploys on each publish, so an update is visible in about a
+minute. The token holder effectively has write access to the site — treat the
+token like a password and set it to expire after the season.
+
 ## Where the content came from
 
 All of it is transcribed from the client's own artwork, not invented:
