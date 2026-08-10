@@ -82,6 +82,39 @@
       "s": "ft"
     }
   },
-  "knockout": {},
+  "knockout": {
+    "QF1": {
+      "a": "jindal-infernos",
+      "b": "perfect-strikers",
+      "ha": null,
+      "hb": null,
+      "s": "",
+      "w": ""
+    },
+    "QF2": {
+      "a": "nr-chargers",
+      "b": "paramount-predators",
+      "ha": null,
+      "hb": null,
+      "s": "",
+      "w": ""
+    },
+    "SF1": {
+      "a": "",
+      "b": "kothari-sparks",
+      "ha": null,
+      "hb": null,
+      "s": "",
+      "w": ""
+    },
+    "SF2": {
+      "a": "",
+      "b": "globe-warriors",
+      "ha": null,
+      "hb": null,
+      "s": "",
+      "w": ""
+    }
+  },
   "champion": ""
 }
