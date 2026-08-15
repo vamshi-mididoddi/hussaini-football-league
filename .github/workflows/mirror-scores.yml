@@ -24,12 +24,19 @@ jobs:
 
       - name: Mirror if the store is reachable
         run: |
-          STORE="https://jsonblob.com/api/jsonBlob/019fe5c0-1e59-7d7a-ba5c-c6b88420c697"
-          if ! curl -fsS --max-time 30 "$STORE" -H "Accept: application/json" -o /tmp/live-raw.json; then
+          STORE="https://textdb.online/hfl-s2-f591ea762c834db0"
+          if ! curl -fsS --max-time 30 "$STORE" -o /tmp/live-raw.json; then
             echo "::warning::Score store unreachable — nothing mirrored this run."
             exit 0
           fi
-          node tools/validate-live.js /tmp/live-raw.json data/live.json
+          if [ ! -s /tmp/live-raw.json ]; then
+            echo "Store empty — nothing to mirror."
+            exit 0
+          fi
+          if ! node tools/validate-live.js /tmp/live-raw.json data/live.json; then
+            echo "::warning::Store data invalid — mirror unchanged this run."
+            exit 0
+          fi
           if ! git diff --quiet data/live.json; then
             git config user.name "hfl-scorebot"
             git config user.email "scorebot@users.noreply.github.com"

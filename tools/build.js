@@ -12,6 +12,10 @@ const { league, teams, squads, matchdays, knockout, sponsors } = require('./data
 const ROOT = path.join(__dirname, '..');
 const bySlug = Object.fromEntries(teams.map((t) => [t.slug, t]));
 
+// Cache-buster appended to script URLs so phones pick up new code on the
+// next reload instead of waiting out the CDN's ten-minute asset cache.
+const BUILD_V = Date.now().toString(36);
+
 /* --- helpers ----------------------------------------------------------- */
 const esc = (s) => String(s)
   .replace(/&/g, '&amp;').replace(/</g, '&lt;')
@@ -154,8 +158,8 @@ ${header(page)}
 ${body}
 </main>
 ${footer()}
-<script src="assets/js/hfl.js" defer></script>
-${live ? '<script src="assets/js/hfl-data.js" defer></script>\n<script src="assets/js/live.js" defer></script>' : ''}
+<script src="assets/js/hfl.js?v=${BUILD_V}" defer></script>
+${live ? `<script src="assets/js/hfl-data.js?v=${BUILD_V}" defer></script>\n<script src="assets/js/live.js?v=${BUILD_V}" defer></script>` : ''}
 </body>
 </html>`;
 }
@@ -823,10 +827,14 @@ function liveData() {
     id, round: r.name, a, b,
   })));
   return {
-    // Anonymous JSON store the admin console publishes to and the public
-    // pages read from. data/live.json in the repo is a mirrored fallback,
-    // kept fresh by .github/workflows/mirror-scores.yml.
-    store: 'https://jsonblob.com/api/jsonBlob/019fe5c0-1e59-7d7a-ba5c-c6b88420c697',
+    // Anonymous key-value store the admin console publishes to and the
+    // public pages read from. textdb needs no account and no creation step:
+    // the key springs into existence on first write, so an expired entry
+    // heals itself on the next publish. data/live.json in the repo is a
+    // mirrored fallback kept fresh by .github/workflows/mirror-scores.yml.
+    store: 'https://textdb.online/hfl-s2-f591ea762c834db0',
+    storeWrite: 'https://textdb.online/update/',
+    storeKey: 'hfl-s2-f591ea762c834db0',
     // SHA-256 of the league password. A courtesy lock for the console UI,
     // not cryptographic protection — the scores are public data anyway.
     gate: '6e0f4670b2268d1da40093fcbd314e98ac0bb1e25ae9465d90e5180d985bb0a8',
@@ -914,7 +922,7 @@ ${d.teams.map((t) => `          <option value="${t.slug}">${esc(t.name)}</option
   <button class="btn btn--primary" type="button" data-publish>Publish to website</button>
 </div>
 
-<script src="../assets/js/admin.js" defer></script>
+<script src="../assets/js/admin.js?v=${BUILD_V}" defer></script>
 </body>
 </html>`;
 }

@@ -155,7 +155,11 @@
     var bust = Math.floor(Date.now() / 30000);
     var base = location.pathname.indexOf('/admin/') > -1 ? '../' : '';
     fetch(D.store + '?v=' + bust, { cache: 'no-store' })
-      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.text(); })
+      .then(function (text) {
+        if (!text || !text.trim()) throw new Error('empty');
+        return JSON.parse(text);
+      })
       .catch(function () {
         return fetch(base + 'data/live.json?v=' + bust, { cache: 'no-store' })
           .then(function (r) { return r.ok ? r.json() : null; });

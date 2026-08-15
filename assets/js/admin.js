@@ -219,11 +219,15 @@
     return fetch(STORE + '?v=' + Math.floor(Date.now() / 1000), { cache: 'no-store' })
       .then(function (r) {
         if (!r.ok) throw new Error('store ' + r.status);
-        return r.json();
+        return r.text();
       })
-      .then(adopt)
+      .then(function (text) {
+        if (!text || !text.trim()) throw new Error('empty');
+        adopt(JSON.parse(text));
+      })
       .catch(function () {
-        // Store unreachable — fall back to the mirrored copy in the site.
+        // Store empty or unreachable — fall back to the mirrored copy, so
+        // the console always opens pre-filled with the latest known scores.
         return fetch('../data/live.json', { cache: 'no-store' })
           .then(function (r) { return r.ok ? r.json() : {}; })
           .then(adopt);
@@ -241,10 +245,10 @@
     $('[data-publish]').disabled = true;
     $('[data-hint]').textContent = 'Publishing…';
 
-    return fetch(STORE, {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: body,
+    return fetch(D.storeWrite, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: 'key=' + encodeURIComponent(D.storeKey) + '&value=' + encodeURIComponent(body),
     }).then(function (r) {
       if (!r.ok) throw new Error('store ' + r.status);
       dirty = false;
