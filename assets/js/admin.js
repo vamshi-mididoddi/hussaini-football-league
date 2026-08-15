@@ -245,12 +245,18 @@
     $('[data-publish]').disabled = true;
     $('[data-hint]').textContent = 'Publishing…';
 
-    return fetch(D.storeWrite, {
+    // The store wants the key in the query string and the value as a form
+    // field, and reports success as {"status":1} — an HTTP 200 alone can
+    // still be a rejection, so both are checked.
+    return fetch(D.storeWrite + '?key=' + encodeURIComponent(D.storeKey), {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: 'key=' + encodeURIComponent(D.storeKey) + '&value=' + encodeURIComponent(body),
+      body: 'value=' + encodeURIComponent(body),
     }).then(function (r) {
       if (!r.ok) throw new Error('store ' + r.status);
+      return r.json();
+    }).then(function (j) {
+      if (!j || j.status !== 1) throw new Error('store rejected the update');
       dirty = false;
       $('[data-bar]').hidden = true;
       msg('Published ✓ — scores are live on the site within a minute.', 'ok');
